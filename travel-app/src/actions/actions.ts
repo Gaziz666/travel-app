@@ -4,7 +4,7 @@
 
 const countriesLoaded = (newCountries: any) => {
   return {
-    type: 'BOOKS_LOADED',
+    type: 'COUNTRIES_LOADED',
     payload: newCountries,
   };
 };
