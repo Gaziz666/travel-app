@@ -1,15 +1,3 @@
-// Example
-// const reducer = (state = 0, action: { type: string; payload: any }) => {
-//   switch (action.type) {
-//     case 'EXAMPLE_ACTION':
-//       return state + action.payload;
-//     case 'EXAMPLE_INCREMENT':
-//       return state + 1;
-//     default:
-//       return state;
-//   }
-// };
-
 const initialState = {
   countries: [],
 };
