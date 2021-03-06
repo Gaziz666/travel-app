@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #0f052f;
+  margin: 5px;
+  transition: margin 0.2s ease-in-out;
+}
+
+.footer__link:hover {
+  margin-top: -1px;
+}
+
+.footer__rs-logo {
+  width: 51px;
+  height: 19px;
+
+  color: transparent;
+
+  background-image: url('../../assets/images/rs_school_js.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}

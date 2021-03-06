@@ -11,3 +11,7 @@
 .app__title {
   font-weight: 500;
 }
+
+.app__main {
+  min-height: calc(100vh - 174px);
+}
