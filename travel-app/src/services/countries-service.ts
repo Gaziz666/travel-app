@@ -1,8 +1,18 @@
 export default class CountriesService {
-  getCountries() {
-    return [
-      { id: 1, name: 'Italy', capital: 'Rome' },
-      { id: 2, name: 'England', capital: 'London' },
-    ];
+  _countryUrl = 'https://travel-react-app.herokuapp.com/country';
+
+  async getResource(url?: string) {
+    const res = await fetch(`${this._countryUrl}${url ? url : ''}`);
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(`could not fetch ${url}`);
+    }
+
+    return data;
+  }
+
+  async getAllCountry() {
+    return await this.getResource();
   }
 }

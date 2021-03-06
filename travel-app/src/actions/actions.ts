@@ -1,12 +1,17 @@
-// export const exampleAction = () => ({ type: 'EXAMPLE_ACTION' });
+import { Countries } from '../reducers/reducer';
 
-// export const exampleIncrement = () => ({ type: 'EXAMPLE_INCREMENT' });
+const COUNTRIES_LOAD = 'COUNTRIES_LOAD';
 
-const countriesLoaded = (newCountries: any) => {
+const countriesLoaded = (newCountries: Array<Countries>) => {
   return {
-    type: 'COUNTRIES_LOADED',
+    type: COUNTRIES_LOAD,
     payload: newCountries,
   };
 };
 
-export { countriesLoaded };
+export type CountriesLoadedActionType = {
+  type: string;
+  payload: Array<Countries>;
+};
+
+export { countriesLoaded, COUNTRIES_LOAD };
