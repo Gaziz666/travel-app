@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.app__container {
+  max-width: 1440px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
 .app__title {
   font-weight: 500;
+}
+
+.app__main {
+  min-height: calc(100vh - 180px);
 }
