@@ -4,7 +4,7 @@
 
 .app__container {
   max-width: 1440px;
-  padding: 0 47px;
+  padding: 0 10px;
   margin: 0 auto;
 }
 
@@ -13,5 +13,5 @@
 }
 
 .app__main {
-  min-height: calc(100vh - 174px);
+  min-height: calc(100vh - 180px);
 }

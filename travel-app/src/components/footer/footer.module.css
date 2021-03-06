@@ -1,6 +1,7 @@
 .footer {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .footer__link {
@@ -8,6 +9,10 @@
   color: #0f052f;
   margin: 5px;
   transition: margin 0.2s ease-in-out;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .footer__link:hover {
