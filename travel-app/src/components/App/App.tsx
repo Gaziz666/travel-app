@@ -11,10 +11,12 @@ const App: React.FC = () => {
       <div className={classes.app}>
         <div className={classes.app__container}>
           <Header />
-          <Switch>
-            <Route path="/" component={MainPage} exact />
-            <Route path="/country" component={CountryPage} />
-          </Switch>
+          <main>
+            <Switch>
+              <Route path="/" component={MainPage} exact />
+              <Route path="/country" component={CountryPage} />
+            </Switch>
+          </main>
         </div>
       </div>
     </Router>
