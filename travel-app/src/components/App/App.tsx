@@ -18,7 +18,7 @@ const App: React.FC = () => {
               <Route path="/" component={MainPage} exact />
               <Route path="/country" component={CountryPage} />
             </Switch>
-            <CurrencyWidget />
+
           </main>
           <Footer />
         </div>

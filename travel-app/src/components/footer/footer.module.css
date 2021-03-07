@@ -1,7 +1,9 @@
 .footer {
   display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  /* justify-content: flex-end;
+  flex-wrap: wrap; */
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 
 .footer__link {
@@ -28,4 +30,16 @@
   background-image: url('../../assets/images/rs_school_js.svg');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.footer__link__wrapper{
+  display: flex;
+  align-self: flex-end;
+
+}
+
+.widget__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
