@@ -5,6 +5,7 @@ import MainPage from '../pages/main-page';
 import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import CurrencyWidget from '../currencyWidget/CurrencyWidget'
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
               <Route path="/" component={MainPage} exact />
               <Route path="/country" component={CountryPage} />
             </Switch>
+            <CurrencyWidget />
           </main>
           <Footer />
         </div>
