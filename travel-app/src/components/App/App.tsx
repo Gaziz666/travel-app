@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './App.module.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from '../pages/main-page';
 import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import AuthPage from '../pages/Auth-page/Auth-page';
 
 const App: React.FC = () => {
   return (
@@ -14,8 +15,9 @@ const App: React.FC = () => {
           <Header />
           <main className={classes.app__main}>
             <Switch>
-              <Route path="/" component={MainPage} exact />
+              <Route path="/main" component={MainPage} />
               <Route path="/country" component={CountryPage} />
+              <Route path="/" component={AuthPage} exact />
             </Switch>
           </main>
           <Footer />

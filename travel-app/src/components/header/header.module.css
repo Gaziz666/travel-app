@@ -3,8 +3,6 @@
   align-items: center;
   justify-content: space-between;
   height: 60px;
-
-  padding: 44px 47px 0;
   margin-bottom: 34px;
 }
 
@@ -18,8 +16,8 @@
   display: block;
 
   margin-right: 14px;
-  width: 68px;
-  height: 67px;
+  width: 6.8rem;
+  height: 6.7rem;
 
   background-image: url('../../assets/images/logo-no-text-compressed.svg');
   background-repeat: no-repeat;
@@ -27,20 +25,21 @@
 }
 
 .header__logo-text {
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
 }
 
 .header__link {
   margin: 0 14px;
-  text-decoration: none;
   color: #0f052f;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
 }
 
 .header__login {
   display: inline-block;
-  width: 68px;
-  height: 67px;
+  width: 6.8rem;
+  height: 6.7rem;
 
   border-radius: 10px;
   transition: box-shadow 0.2s ease;
