@@ -5,7 +5,7 @@ import MainPage from '../pages/main-page';
 import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import CurrencyWidget from '../currencyWidget/CurrencyWidget'
+import CurrencyWidget from '../currencyWidget/CurrencyWidget.js'
 
 const App: React.FC = () => {
   return (
