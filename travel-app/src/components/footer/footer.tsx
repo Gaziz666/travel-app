@@ -7,8 +7,7 @@ const Footer: React.FC = () => {
     <div className={classes.footer}>
       <div className={classes.widget__wrapper}>
         <CurrencyWidget />
-        <CurrencyWidget />
-        <CurrencyWidget />
+
       </div>
 
       <div className={classes.footer__link__wrapper} >
