@@ -29,3 +29,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.footer__rs-logo:hover {
+  color: transparent;
+}
