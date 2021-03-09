@@ -14,6 +14,7 @@ export type Countries = {
     y: number;
   };
   placesCount: number;
+  rate: string;
   translations: {
     en: {
       name: string;
@@ -25,6 +26,7 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
     ru: {
       name: string;
@@ -36,6 +38,7 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
     uk: {
       name: string;
@@ -47,6 +50,7 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
   };
 };

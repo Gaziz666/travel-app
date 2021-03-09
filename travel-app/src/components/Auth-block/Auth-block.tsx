@@ -23,40 +23,48 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
     <div className={styles['auth-container']}>
       {authStatus === 0 ? (
         <div className={styles['auth-header']}>
-          {t('main-page.header-link.about')}
+          {t('auth-page.auth-block.sign-in')}
         </div>
       ) : null}
       {authStatus === 1 ? (
-        <div className={styles['auth-header']}>Log in</div>
+        <div className={styles['auth-header']}>
+          {t('auth-page.auth-block.log-in')}
+        </div>
       ) : null}
       <form className={styles['auth-form']}>
-        <label className={styles['auth-label']}>name</label>
+        <label className={styles['auth-label']}>
+          {t('auth-page.auth-block.name')}
+        </label>
         <input className={styles['auth-input']} type="text" name="name" />
         {authStatus === 1 ? (
           <>
-            <label className={styles['auth-label']}>email</label>
+            <label className={styles['auth-label']}>
+              {t('auth-page.auth-block.email')}
+            </label>
             <input className={styles['auth-input']} type="email" name="email" />
           </>
         ) : null}
-        <label className={styles['auth-label']}>password</label>
+        <label className={styles['auth-label']}>
+          {t('auth-page.auth-block.password')}
+        </label>
         <input className={styles['auth-input']} type="text" name="password" />
         {authStatus === 0 ? (
           <>
             <div className={styles['button__wrapper']}>
               <AuthButton
-                value="sign in"
+                value={t('auth-page.auth-block.sign-in')}
                 handleClick={(event) => event.preventDefault()}
               />
             </div>
             <div className={styles['skip-button']}>
-              <Link to="/main">skip</Link>
+              <Link to="/main">{t('auth-page.auth-block.skip')}</Link>
             </div>
           </>
         ) : null}
         {authStatus === 1 ? (
           <div className={styles['button__wrapper']}>
             <AuthButton
-              value="login in"
+              value={t('auth-page.auth-block.log-in')}
               handleClick={(event) => event.preventDefault()}
             />
           </div>
@@ -67,7 +75,7 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
           className={styles['change-login__text']}
           onClick={() => authStatusChange(1)}
         >
-          Don’t have an account yet? Sing up
+          {t('auth-page.auth-block.sign-up-text')}
         </div>
       ) : null}
       {authStatus === 1 ? (
@@ -75,7 +83,7 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
           className={styles['change-login__text']}
           onClick={() => authStatusChange(0)}
         >
-          You have an account yet? Sing In
+          {t('auth-page.auth-block.sign-in-text')}
         </div>
       ) : null}
     </div>
