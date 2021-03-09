@@ -5,12 +5,14 @@ import styles from './language-menu.module.css';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions-country';
 import { LanguageType } from '../../reducers/country-reducer';
+import { useTranslation } from 'react-i18next';
 
 type MapDispatchToProps = {
   languageSelect: (value: LanguageType) => actions.languageSelectActionType;
 };
 
 const LanguageMenu: React.FC<MapDispatchToProps> = ({ languageSelect }) => {
+  const { i18n } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -19,6 +21,7 @@ const LanguageMenu: React.FC<MapDispatchToProps> = ({ languageSelect }) => {
 
   const handleClose = (value: LanguageType) => {
     languageSelect(value);
+    i18n.changeLanguage(value);
     setAnchorEl(null);
   };
 

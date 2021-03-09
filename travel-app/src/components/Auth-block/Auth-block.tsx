@@ -6,6 +6,7 @@ import { RootStateType } from '../../reducers/root-reducer';
 import * as actions from '../../actions/auth-actions';
 import styles from './auth-block.module.css';
 import { AuthButton } from '../AuthButton/Auth-button';
+import { useTranslation } from 'react-i18next';
 
 type MapDispatchToProps = {
   authStatusChange: (
@@ -16,10 +17,14 @@ type MapDispatchToProps = {
 type Props = AuthStateType & MapDispatchToProps;
 
 const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles['auth-container']}>
       {authStatus === 0 ? (
-        <div className={styles['auth-header']}>Sign in</div>
+        <div className={styles['auth-header']}>
+          {t('main-page.header-link.about')}
+        </div>
       ) : null}
       {authStatus === 1 ? (
         <div className={styles['auth-header']}>Log in</div>
