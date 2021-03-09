@@ -4,7 +4,7 @@ import CountryListItem from '../country-list-item/country-list-item';
 import { connect } from 'react-redux';
 
 import withCountriesService from '../hoc/with-countries-service';
-import { countriesLoaded } from '../../actions/actions';
+import { countriesLoaded } from '../../actions/actions-country';
 import compose from '../../utils/compose';
 
 // export type CountriesTypes = Array<{

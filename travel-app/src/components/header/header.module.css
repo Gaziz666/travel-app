@@ -16,8 +16,8 @@
   display: block;
 
   margin-right: 14px;
-  width: 6.8rem;
-  height: 6.7rem;
+  width: 5.8rem;
+  height: 5.7rem;
 
   background-image: url('../../assets/images/logo-no-text-compressed.svg');
   background-repeat: no-repeat;
@@ -38,8 +38,8 @@
 
 .header__login {
   display: inline-block;
-  width: 6.8rem;
-  height: 6.7rem;
+  width: 5.8rem;
+  height: 5.7rem;
 
   border-radius: 10px;
   transition: box-shadow 0.2s ease;

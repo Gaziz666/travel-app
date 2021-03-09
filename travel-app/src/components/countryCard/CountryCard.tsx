@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { CountriesStateType } from '../../reducers/reducer';
+import { CountriesStateType } from '../../reducers/country-reducer';
+import { RootStateType } from '../../reducers/root-reducer';
 import styles from './CountryCard.module.css';
 
 type OwnProps = { index: number };
@@ -18,6 +19,8 @@ const CountryCard: React.FC<Props> = ({ index, countries }) => {
   );
 };
 
-const mapStateToProps = (state: CountriesStateType) => state;
+const mapStateToProps = (state: RootStateType) => {
+  return state.countryState;
+};
 
 export default connect(mapStateToProps)(CountryCard);
