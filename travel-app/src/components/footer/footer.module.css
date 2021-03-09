@@ -32,7 +32,6 @@
   background-position: center;
 }
 
-<<<<<<< HEAD
 .footer__link__wrapper{
   display: flex;
   align-self: flex-end;
@@ -44,8 +43,3 @@
   flex-direction: row;
   justify-content: space-between;
 }
-=======
-.footer__rs-logo:hover {
-  color: transparent;
-}
->>>>>>> 7a8a2166fcaeabdab40305318953a2877fa4d487
