@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CountriesService from '../../services/countries-service';
-import * as actions from '../../actions/actions';
-import { Countries, CountriesStateType } from '../../reducers/reducer';
+import * as actions from '../../actions/actions-country';
+import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountryCard from '../countryCard/CountryCard';
+import { RootStateType } from '../../reducers/root-reducer';
 // import styles from './CountryList.module.css';
 
 type MapDispatchToProps = {
@@ -34,6 +35,8 @@ const CountriesList: React.FC<Props> = ({ countriesLoaded, countries }) => {
   );
 };
 
-const mapStateToProps = (state: CountriesStateType) => state;
+const mapStateToProps = (state: RootStateType) => {
+  return state.countryState;
+};
 
 export default connect(mapStateToProps, actions)(CountriesList);

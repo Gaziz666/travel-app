@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './header.module.css';
 import { Link } from 'react-router-dom';
+import LanguageMenu from '../LanguageMenu/Language-menu';
 
 const Header: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Header: React.FC = () => {
         <Link to="/" className={classes['header__link']}>
           Destinations
         </Link>
+        <LanguageMenu />
         <Link to="/" className={classes.header__login}></Link>
       </div>
     </div>

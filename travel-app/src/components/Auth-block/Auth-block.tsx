@@ -1,16 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { AuthStateType, AuthStatusNum } from '../../reducers/auth-reducer';
+import { RootStateType } from '../../reducers/root-reducer';
+import * as actions from '../../actions/auth-actions';
 import styles from './auth-block.module.css';
+import { AuthButton } from '../AuthButton/Auth-button';
 
-const AuthBlock: React.FC = () => {
+type MapDispatchToProps = {
+  authStatusChange: (
+    newStatus: AuthStatusNum,
+  ) => actions.AuthStatusChangeActionType;
+};
+
+type Props = AuthStateType & MapDispatchToProps;
+
+const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
   return (
     <div className={styles['auth-container']}>
-      {true ? <div className={styles['auth-header']}>Sign in</div> : null}
-      {false ? <div className={styles['auth-header']}>Log in</div> : null}
+      {authStatus === 0 ? (
+        <div className={styles['auth-header']}>Sign in</div>
+      ) : null}
+      {authStatus === 1 ? (
+        <div className={styles['auth-header']}>Log in</div>
+      ) : null}
       <form className={styles['auth-form']}>
         <label className={styles['auth-label']}>name</label>
         <input className={styles['auth-input']} type="text" name="name" />
-        {false ? (
+        {authStatus === 1 ? (
           <>
             <label className={styles['auth-label']}>email</label>
             <input className={styles['auth-input']} type="email" name="email" />
@@ -18,31 +35,47 @@ const AuthBlock: React.FC = () => {
         ) : null}
         <label className={styles['auth-label']}>password</label>
         <input className={styles['auth-input']} type="text" name="password" />
-        {true ? (
-          <input
-            className={styles['auth-button']}
-            type="submit"
-            value="sign in"
-            onClick={(event) => event.preventDefault()}
-          />
+        {authStatus === 0 ? (
+          <>
+            <div className={styles['button__wrapper']}>
+              <AuthButton
+                value="sign in"
+                handleClick={(event) => event.preventDefault()}
+              />
+            </div>
+            <div className={styles['skip-button']}>
+              <Link to="/main">skip</Link>
+            </div>
+          </>
         ) : null}
-        {false ? (
-          <input
-            className={styles['auth-button']}
-            type="submit"
-            value="login in"
-            onClick={(event) => event.preventDefault()}
-          />
+        {authStatus === 1 ? (
+          <div className={styles['button__wrapper']}>
+            <AuthButton
+              value="login in"
+              handleClick={(event) => event.preventDefault()}
+            />
+          </div>
         ) : null}
-        <div className={styles['skip-button']}>
-          <Link to="/main">skip</Link>
-        </div>
       </form>
-      <div className={styles['change-login__text']}>
-        Don’t have an account yet? Sing up
-      </div>
+      {authStatus === 0 ? (
+        <div
+          className={styles['change-login__text']}
+          onClick={() => authStatusChange(1)}
+        >
+          Don’t have an account yet? Sing up
+        </div>
+      ) : null}
+      {authStatus === 1 ? (
+        <div
+          className={styles['change-login__text']}
+          onClick={() => authStatusChange(0)}
+        >
+          You have an account yet? Sing In
+        </div>
+      ) : null}
     </div>
   );
 };
+const mapStateToProps = (state: RootStateType) => state.authStatusState;
 
-export default AuthBlock;
+export default connect(mapStateToProps, actions)(AuthBlock);
