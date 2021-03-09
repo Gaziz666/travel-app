@@ -1,12 +1,14 @@
 import React from 'react';
 import classes from './footer.module.css';
 import CurrencyWidget from '../currencyWidget/CurrencyWidget.js'
+import WeatherWidget from '../WeatherWidget/WeatherWidget';
 
 const Footer: React.FC = () => {
   return (
     <div className={classes.footer}>
       <div className={classes.widget__wrapper}>
         <CurrencyWidget />
+        <WeatherWidget />
 
       </div>
 
