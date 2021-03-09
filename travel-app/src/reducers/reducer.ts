@@ -46,6 +46,7 @@ export type Countries = {
     };
   };
 };
+
 export type CountriesStateType = {
   countries: Array<Countries>;
 };

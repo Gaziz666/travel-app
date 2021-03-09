@@ -6,12 +6,22 @@ import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import AuthPage from '../pages/Auth-page/Auth-page';
+import { useTranslation } from 'react-i18next';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+  };
+
   return (
     <Router basename="/travel-app">
       <div className={classes.app}>
         <div className={classes.app__container}>
+          <button onClick={() => changeLanguage('en')}>EN</button>
+          <button onClick={() => changeLanguage('ru')}>RU</button>
+          <div>{t('main-page.header-link.about')}</div>
           <Header />
           <main className={classes.app__main}>
             <Switch>
