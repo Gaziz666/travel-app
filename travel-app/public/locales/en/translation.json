@@ -1,0 +1,15 @@
+{
+  "main-page": {
+    "header-link": {
+      "about": "About us",
+      "destination": "Destination"
+    },
+    "auth": {
+      "sign-in": "Sign in",
+      "name": "Name",
+      "password": "Password",
+      "skip": "Skip",
+      "sign-up": "Don’t Have An Account Yet? Sing Up"
+    }
+  }
+}

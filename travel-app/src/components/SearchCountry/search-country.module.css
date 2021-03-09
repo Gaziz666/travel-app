@@ -1,0 +1,21 @@
+.search-country-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  justify-self: flex-end;
+  margin-top: 1rem;
+}
+
+.search-form {
+  width: 30rem;
+}
+
+.search-button-wrapper {
+  width: 20rem;
+}
+
+.select-placeholder {
+  font-size: 1.8rem;
+  color: black;
+}

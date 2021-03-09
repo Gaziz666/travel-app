@@ -1,8 +1,8 @@
 export default class CountriesService {
-  _countryUrl = 'https://travel-react-app.herokuapp.com/country';
+  countryUrl = 'https://travel-react-app.herokuapp.com/country';
 
   async getResource(url?: string) {
-    const res = await fetch(`${this._countryUrl}${url ? url : ''}`);
+    const res = await fetch(`${this.countryUrl}${url ? url : ''}`);
     const data = await res.json();
 
     if (!res.ok) {
