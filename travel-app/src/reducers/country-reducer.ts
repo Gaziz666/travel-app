@@ -18,6 +18,7 @@ export type Countries = {
   translations: {
     en: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -30,6 +31,7 @@ export type Countries = {
     };
     ru: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -42,6 +44,7 @@ export type Countries = {
     };
     uk: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -63,13 +66,13 @@ export enum LanguageType {
 
 export type CountriesStateType = {
   countries: Array<Countries>;
-  selectedCountryId: string;
+  selectedCountryIndex: number;
   selectedLanguage: LanguageType;
 };
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryId: '',
+  selectedCountryIndex: 0,
   selectedLanguage: LanguageType.en,
 };
 
@@ -86,7 +89,7 @@ const countryReducer = (
     case COUNTRY_SELECT:
       return {
         ...state,
-        selectedCountryId: action.payload,
+        selectedCountryIndex: action.payload,
       };
     case LANGUAGE_SELECT:
       return {

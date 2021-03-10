@@ -1,0 +1,26 @@
+.name-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 50%;
+  margin-left: 10%;
+}
+
+.country-name {
+  display: block;
+  font-weight: bold;
+  font-size: 7.2rem;
+  line-height: 10.8rem;
+  color: #ffffff;
+}
+
+.country-info {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  display: block;
+  color: #ffffff;
+  text-align: left;
+}
