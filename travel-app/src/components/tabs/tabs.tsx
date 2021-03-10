@@ -12,7 +12,7 @@ import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
 import { RootStateType } from '../../reducers/root-reducer';
 import { connect } from 'react-redux';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -80,11 +80,14 @@ const NavTabs: React.FC<Props> = ({
   selectedLanguage,
 }) => {
   useEffect(() => {
+    console.log('Using Effect');
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
       countriesLoaded(countries.data);
     });
   }, [countriesLoaded]);
+
+  const { path, url } = useRouteMatch();
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -97,6 +100,7 @@ const NavTabs: React.FC<Props> = ({
 
   return (
     <div className={`${classes.root} ${styles.tabs}`}>
+      {console.log('Render')}
       <AppBar position="static" className={styles.tabs}>
         <Tabs
           variant="fullWidth"
@@ -110,7 +114,7 @@ const NavTabs: React.FC<Props> = ({
           <LinkTab
             label={t('country-page.tabs.first')}
             component={Link}
-            to="/country/inspire"
+            to={`${url}/inspire`}
             {...a11yProps(0)}
           />
           <LinkTab
@@ -118,43 +122,69 @@ const NavTabs: React.FC<Props> = ({
               countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
                     .name
-                : ''
+                : 'No Country'
             }`}
             component={Link}
-            to={`/country/introducing/${
-              countries[selectedCountryIndex]
-                ? countries[selectedCountryIndex].translations[selectedLanguage]
-                    .name
-                : ''
-            }`}
+            to={`${url}/introducing`}
             {...a11yProps(1)}
           />
           <LinkTab
             label={t('country-page.tabs.third')}
             component={Link}
-            to="/country/while"
+            to={`${url}/while`}
             {...a11yProps(2)}
           />
           <LinkTab
             label={t('country-page.tabs.fourth')}
             component={Link}
-            to="/country/map"
+            to={`${url}/map`}
             {...a11yProps(3)}
           />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Inspire
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Introducing
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        While you’re there
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Map
-      </TabPanel>
+      <Switch>
+        <Route
+          exact
+          path={`${path}/inspire`}
+          component={() => {
+            return (
+              <TabPanel value={value} index={0}>
+                Inspire
+              </TabPanel>
+            );
+          }}
+        />
+        <Route
+          path={`${path}/introducing`}
+          component={() => {
+            return (
+              <TabPanel value={value} index={1}>
+                Introducing
+              </TabPanel>
+            );
+          }}
+        />
+        <Route
+          path={`${path}/while`}
+          component={() => {
+            return (
+              <TabPanel value={value} index={2}>
+                While you’re there
+              </TabPanel>
+            );
+          }}
+        />
+        <Route
+          path={`${path}/map`}
+          component={() => {
+            return (
+              <TabPanel value={value} index={3}>
+                Map
+              </TabPanel>
+            );
+          }}
+        />
+      </Switch>
     </div>
   );
 };
