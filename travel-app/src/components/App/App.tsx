@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './App.module.css';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import MainPage from '../pages/main-page';
+import MainPage from '../pages/main-page/main-page';
 import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';

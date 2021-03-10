@@ -1,0 +1,15 @@
+.country-list-wrapper {
+  height: 50%;
+  margin-left: 10%;
+  width: 100%;
+}
+
+.explore-button {
+  width: 10%;
+  display: inline-block;
+}
+
+.country-list {
+  width: 60%;
+  display: inline-block;
+}

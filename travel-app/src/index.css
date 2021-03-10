@@ -76,8 +76,14 @@ span.MuiTabs-indicator {
   }
 }
 
-@media (max-width: 1440px) and (min-width: 501px) {
+@media (max-width: 900px) and (min-width: 501px) {
   html {
     font-size: 8px;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 901px) {
+  html {
+    font-size: 10px;
   }
 }
