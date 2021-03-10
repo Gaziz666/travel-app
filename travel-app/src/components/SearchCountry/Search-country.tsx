@@ -71,6 +71,7 @@ const SearchCountry: React.FC<Props> = ({
     </div>
   );
 };
+
 const mapStateToProps = (state: RootStateType) => {
   return state.countryState;
 };
