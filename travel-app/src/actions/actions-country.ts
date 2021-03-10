@@ -11,7 +11,7 @@ const countriesLoaded = (newCountries: Array<Countries>) => {
   };
 };
 
-const countrySelect = (value: string) => {
+const countrySelect = (value: number) => {
   return {
     type: COUNTRY_SELECT,
     payload: value,
@@ -32,7 +32,7 @@ export type CountriesLoadedActionType = {
 
 export type CountrySelectActionType = {
   type: string;
-  payload: string;
+  payload: number;
 };
 
 export type languageSelectActionType = {
