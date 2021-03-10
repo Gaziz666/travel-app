@@ -15,7 +15,7 @@ type MapDispatchToProps = {
   countriesLoaded: (
     value: Array<Countries>,
   ) => actions.CountriesLoadedActionType;
-  countrySelect: (value: string) => actions.CountrySelectActionType;
+  countrySelect: (value: number) => actions.CountrySelectActionType;
 };
 type Props = MapDispatchToProps & CountriesStateType;
 
@@ -23,7 +23,7 @@ const SearchCountry: React.FC<Props> = ({
   countriesLoaded,
   countrySelect,
   countries,
-  selectedCountryId,
+  selectedCountryIndex,
   selectedLanguage,
 }) => {
   useEffect(() => {
@@ -34,9 +34,9 @@ const SearchCountry: React.FC<Props> = ({
   }, [countriesLoaded]);
 
   const renderOptions = () => {
-    return countries.map((country) => {
+    return countries.map((country, index) => {
       return (
-        <MenuItem value={country._id} key={country._id}>
+        <MenuItem value={index} key={country._id}>
           {country.translations[selectedLanguage].name}
         </MenuItem>
       );
@@ -44,14 +44,14 @@ const SearchCountry: React.FC<Props> = ({
   };
 
   const inputChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    countrySelect(event.target.value as string);
+    countrySelect(Number(event.target.value));
   };
 
   return (
     <div className={styles['search-country-wrapper']}>
       <FormControl className={styles['search-form']}>
         <Select
-          value={selectedCountryId}
+          value={selectedCountryIndex}
           onChange={inputChange}
           inputProps={{ 'aria-label': 'Without label' }}
         >

@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classes from './WeatherWidget.module.css';
 
-import { connect } from 'react-redux';
-import * as actions from '../../actions/actions-country';
-import { Countries, CountriesStateType } from '../../reducers/country-reducer';
-import { RootStateType } from '../../reducers/root-reducer';
-
 const CountryCapital = { name: "Vena", zip: "542420" };
 const lang = 'ru';
 
 const WEATHER_API = `http://api.openweathermap.org/data/2.5/weather?q=${CountryCapital.name}&appid=630198738706e6feb41dd55034d68b96&units=imperial&lang=${lang}`
-
-// type MapDispatchToProps = {
-//     countriesLoaded: (
-//         value: Array<Countries>,
-//     ) => actions.CountriesLoadedActionType;
-// };
-// type Props = MapDispatchToProps & CountriesStateType;
 
 export default function WeatherWidget() {
     const [temperature, setTemperature] = useState(0);
@@ -54,5 +42,3 @@ export default function WeatherWidget() {
         </div>
     )
 }
-
-// export default connect(mapStateToProps, actions)(WeatherWidget);

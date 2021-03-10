@@ -14,9 +14,11 @@ export type Countries = {
     y: number;
   };
   placesCount: number;
+  rate: string;
   translations: {
     en: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -25,9 +27,11 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
     ru: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -36,9 +40,11 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
     uk: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -47,6 +53,7 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
   };
 };
@@ -59,13 +66,13 @@ export enum LanguageType {
 
 export type CountriesStateType = {
   countries: Array<Countries>;
-  selectedCountryId: string;
+  selectedCountryIndex: number;
   selectedLanguage: LanguageType;
 };
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryId: '',
+  selectedCountryIndex: 0,
   selectedLanguage: LanguageType.en,
 };
 
@@ -82,7 +89,7 @@ const countryReducer = (
     case COUNTRY_SELECT:
       return {
         ...state,
-        selectedCountryId: action.payload,
+        selectedCountryIndex: action.payload,
       };
     case LANGUAGE_SELECT:
       return {
