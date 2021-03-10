@@ -12,6 +12,7 @@ import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
 import { RootStateType } from '../../reducers/root-reducer';
 import { connect } from 'react-redux';
+import { Switch, Route, Redirect, Link } from 'react-router-dom';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,19 +50,12 @@ function a11yProps(index: any) {
 interface LinkTabProps {
   label?: string;
   href?: string;
+  component?: any;
+  to?: string;
 }
 
 function LinkTab(props: LinkTabProps) {
-  return (
-    <Tab
-      className={styles.myTab}
-      component="a"
-      onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
+  return <Tab className={styles.myTab} component="a" {...props} />;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -75,14 +69,14 @@ type MapDispatchToProps = {
   countriesLoaded: (
     value: Array<Countries>,
   ) => actions.CountriesLoadedActionType;
-  countrySelect: (value: string) => actions.CountrySelectActionType;
 };
-type Props = MapDispatchToProps & CountriesStateType;
+
+type Props = CountriesStateType & MapDispatchToProps;
 
 const NavTabs: React.FC<Props> = ({
   countriesLoaded,
   countries,
-  selectedCountryId,
+  selectedCountryIndex,
   selectedLanguage,
 }) => {
   useEffect(() => {
@@ -101,14 +95,6 @@ const NavTabs: React.FC<Props> = ({
     setValue(newValue);
   };
 
-  // const findCountry = () => {
-  //   return countries.filter((country) => {
-  //     return country._id === selectedCountryId
-  //       ? country.translations[selectedLanguage].name
-  //       : false;
-  //   });
-  // };
-
   return (
     <div className={`${classes.root} ${styles.tabs}`}>
       <AppBar position="static" className={styles.tabs}>
@@ -121,25 +107,47 @@ const NavTabs: React.FC<Props> = ({
           textColor="primary"
           className={styles.tabs}
         >
-          <LinkTab label={t('country-page.tabs.first')} {...a11yProps(0)} />
           <LinkTab
-            label={`${t('country-page.tabs.second')}
-            ${
-              ''
-              // countries[currentCountryIndex]
-            }
-            `}
+            label={t('country-page.tabs.first')}
+            component={Link}
+            to="/country/inspire"
+            {...a11yProps(0)}
+          />
+          <LinkTab
+            label={`${t('country-page.tabs.second')} ${
+              countries[selectedCountryIndex]
+                ? countries[selectedCountryIndex].translations[selectedLanguage]
+                    .name
+                : ''
+            }`}
+            component={Link}
+            to={`/country/introducing/${
+              countries[selectedCountryIndex]
+                ? countries[selectedCountryIndex].translations[selectedLanguage]
+                    .name
+                : ''
+            }`}
             {...a11yProps(1)}
           />
-          <LinkTab label={t('country-page.tabs.third')} {...a11yProps(2)} />
-          <LinkTab label={t('country-page.tabs.fourth')} {...a11yProps(3)} />
+          <LinkTab
+            label={t('country-page.tabs.third')}
+            component={Link}
+            to="/country/while"
+            {...a11yProps(2)}
+          />
+          <LinkTab
+            label={t('country-page.tabs.fourth')}
+            component={Link}
+            to="/country/map"
+            {...a11yProps(3)}
+          />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         Inspire
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Introducing Italy
+        Introducing
       </TabPanel>
       <TabPanel value={value} index={2}>
         While you’re there
