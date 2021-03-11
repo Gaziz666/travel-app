@@ -96,6 +96,24 @@ const NavTabs: React.FC<Props> = ({
     });
   }, [countriesLoaded]);
 
+  useEffect(() => {
+    switch (history.location.pathname) {
+      case '/country/map':
+        setValue(3);
+        break;
+      case '/country/while':
+        setValue(2);
+        break;
+      case '/country/introducing':
+        setValue(1);
+        break;
+
+      default:
+        setValue(0);
+        break;
+    }
+  }, [history]);
+
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
