@@ -9,6 +9,7 @@
     background-color: #D8F5F7;
     max-height: 445px;
     height: 100%;
+    border-radius: 30px;
     
 }
 .card-info-sidebar{
@@ -22,6 +23,43 @@
     max-height: 158px;
     height: 100%;
 }
-.card-key-facts{
+.country-key-facts{
+    background-color: #D8F5F7;
+    border-radius:15px;
+    /* padding: 5px; */
+}
+.area{
+    display: flex;
+    flex-direction: row;
 
+}
+.area__first{
+    max-width: 50%;
+    width: 100%;
+    text-align: start;
+}
+.population{
+    display:flex;
+    flex-direction: row;
+}
+.population-density{
+    display: flex;
+    flex-direction: row;
+}
+.capital{
+    display: flex;
+    flex-direction: row;
+}
+
+.government{
+    display: flex;
+    flex-direction: row;
+}
+.head-of-state{
+    display: flex;
+    flex-direction: row;
+}
+.head-of-government{
+    display: flex;
+    flex-direction: row;
 }
