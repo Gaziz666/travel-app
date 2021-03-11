@@ -21,5 +21,13 @@
       "header2": "in The World",
       "text-p": "Plan Your Vacations on the Most Beautifully Places in The World"
     }
+  },
+  "country-page": {
+    "tabs": {
+      "first": "Inspire",
+      "second": "Introducing",
+      "third": "While you’re there",
+      "fourth": "Map"
+    }
   }
 }
