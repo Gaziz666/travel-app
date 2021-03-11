@@ -9,6 +9,8 @@ import { RootStateType } from '../../reducers/root-reducer';
 import styles from './CountriesList.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import NextArrow from './NextArrow';
+import PrevArrow from './PrevArrow';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -26,12 +28,43 @@ const CountriesList: React.FC<Props> = ({ countriesLoaded, countries }) => {
   }, [countriesLoaded]);
 
   const settings = {
-    className: 'center',
-    centerMode: true,
+    dots: false,
     infinite: true,
-    centerPadding: '60px',
-    slidesToShow: 3,
     speed: 500,
+    focusOnSelect: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 850,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+    ],
   };
 
   const renderCard = () => {

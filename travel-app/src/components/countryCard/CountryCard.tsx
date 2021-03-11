@@ -11,8 +11,12 @@ type Props = OwnProps & CountriesStateType;
 const CountryCard: React.FC<Props> = ({ index, countries }) => {
   const country = countries[index];
   const info = country.translations.en;
+  const img = country.smallImg;
   return (
-    <div className={styles['card-wrapper']}>
+    <div
+      className={styles['card-wrapper']}
+      style={{ backgroundImage: `url('${img}')` }}
+    >
       <div>{info.name}</div>
       <div>{country.placesCount}&nbsp;Must seen Places</div>
     </div>
