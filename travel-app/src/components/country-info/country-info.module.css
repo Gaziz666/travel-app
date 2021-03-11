@@ -1,0 +1,27 @@
+.card-info-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.card-info-about{
+    max-width: 919px;
+    width: 100%;
+    background-color: #D8F5F7;
+    max-height: 445px;
+    height: 100%;
+    
+}
+.card-info-sidebar{
+    display: flex;
+    flex-direction: column;
+    max-width: 292px;
+    width: 100%;
+
+}
+.flag{
+    max-height: 158px;
+    height: 100%;
+}
+.card-key-facts{
+
+}
