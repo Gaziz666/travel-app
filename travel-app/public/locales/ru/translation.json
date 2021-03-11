@@ -3,6 +3,9 @@
     "header-link": {
       "about": "О нас",
       "destination": "Места назначения"
+    },
+    "main-body": {
+      "explore": "исследовать"
     }
   },
   "auth-page": {

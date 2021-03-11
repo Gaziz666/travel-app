@@ -3,6 +3,9 @@
     "header-link": {
       "about": "About us",
       "destination": "Destination"
+    },
+    "main-body": {
+      "explore": "explore"
     }
   },
   "auth-page": {
