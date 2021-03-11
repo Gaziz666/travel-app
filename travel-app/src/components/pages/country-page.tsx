@@ -1,22 +1,16 @@
-import React from 'react';
-<<<<<<< HEAD
-import CountryInfo from '../country-info/country-info';
+import React from "react";
 
-const CountryPage: React.FC = () => {
-  // return <div>Country Page</div>;
-  return(
-    <CountryInfo/>
-  )
-=======
-import CenteredTabs from '../tabs/tabs';
+import CountryInfo from "../country-info/country-info";
+
+import CenteredTabs from "../tabs/tabs";
 
 const CountryPage: React.FC = () => {
   return (
     <React.Fragment>
       <CenteredTabs />
+      <CountryInfo />
     </React.Fragment>
   );
->>>>>>> bb53cdcc6ba03d825336d2ce017a8ae6061b56a0
 };
 
 export default CountryPage;

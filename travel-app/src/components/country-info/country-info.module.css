@@ -1,65 +1,74 @@
-.card-info-wrapper{
-    display: flex;
-    flex-direction: row;
+.card-info-wrapper {
+  display: flex;
+  flex-direction: row;
 }
 
-.card-info-about{
-    max-width: 919px;
-    width: 100%;
-    background-color: #D8F5F7;
-    max-height: 445px;
-    height: 100%;
-    border-radius: 30px;
-    
+.card-info-about {
+  max-width: 919px;
+  width: 100%;
+  background-color: #d8f5f7;
+  max-height: 445px;
+  height: 100%;
+  border-radius: 30px;
 }
-.card-info-sidebar{
-    display: flex;
-    flex-direction: column;
-    max-width: 292px;
-    width: 100%;
+.card-info-sidebar {
+  display: flex;
+  flex-direction: column;
+  max-width: 292px;
+  width: 100%;
+}
+.flag {
+  max-height: 158px;
+  height: 158px;
+  border-radius: 15px;
+  background-color: #d8f5f7;
 
+  border: 1px solid black;
 }
-.flag{
-    max-height: 158px;
-    height: 100%;
+.country-key-facts {
+  background-color: #d8f5f7;
+  border-radius: 15px;
+  /* padding: 5px; */
 }
-.country-key-facts{
-    background-color: #D8F5F7;
-    border-radius:15px;
-    /* padding: 5px; */
+.area {
+  display: flex;
+  flex-direction: row;
 }
-.area{
-    display: flex;
-    flex-direction: row;
-
+.area__first,
+.population__first,
+.pop_den,
+.capital__first,
+.gov__first,
+.head,
+.head__gov{
+  max-width: 50%;
+  width: 100%;
+  text-align: start;
 }
-.area__first{
-    max-width: 50%;
-    width: 100%;
-    text-align: start;
-}
-.population{
-    display:flex;
-    flex-direction: row;
-}
-.population-density{
-    display: flex;
-    flex-direction: row;
-}
-.capital{
-    display: flex;
-    flex-direction: row;
+.population {
+  display: flex;
+  flex-direction: row;
 }
 
-.government{
-    display: flex;
-    flex-direction: row;
+
+.population-density {
+  display: flex;
+  flex-direction: row;
 }
-.head-of-state{
-    display: flex;
-    flex-direction: row;
+.capital {
+  display: flex;
+  flex-direction: row;
 }
-.head-of-government{
-    display: flex;
-    flex-direction: row;
+
+.government {
+  display: flex;
+  flex-direction: row;
+}
+.head-of-state {
+  display: flex;
+  flex-direction: row;
+}
+.head-of-government {
+  display: flex;
+  flex-direction: row;
 }
