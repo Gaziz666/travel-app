@@ -13,6 +13,8 @@ import { RootStateType } from '../../reducers/root-reducer';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
 import { Divider } from '@material-ui/core';
+import MapComponent from '../MapComponent/MapComponent';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 export const routs = {
   main: '/main',

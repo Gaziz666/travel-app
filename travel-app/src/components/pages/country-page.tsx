@@ -1,6 +1,7 @@
 import React from 'react';
 import Inspire from '../Inspire/Inspire';
 import NavTabs from '../tabs/tabs';
+import MapComponent from '../MapComponent/MapComponent';
 
 export const tabs = {
   inspire: 'inspire',
@@ -21,7 +22,9 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.while:
         return <div>while</div>;
       case tabs.map:
-        return <div>map</div>;
+        return <div>
+          <MapComponent />
+          map</div>;
       default:
         return null;
     }
@@ -30,6 +33,7 @@ const CountryPage: React.FC<Props> = (props) => {
     <React.Fragment>
       <NavTabs history={props.history} />
       {renderContent()}
+
     </React.Fragment>
   );
 };
