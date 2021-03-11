@@ -33,13 +33,13 @@ const CountryInfo: React.FC<Props> = ({
   return (
     <div className={classes["card-info-wrapper"]}>
       <div className={classes["card-info-about"]}>
-        <h2>
+        <h3 className={classes.card__title}>
           About {}
           {countries[selectedCountryIndex]
             ? countries[selectedCountryIndex].translations[selectedLanguage]
                 .name
             : "No Country"}
-        </h2>
+        </h3>
         <div className={classes.about}>
           {countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].info : ''}
         </div>
@@ -51,7 +51,7 @@ const CountryInfo: React.FC<Props> = ({
           className={classes.flag}
         />
         <div className={classes["country-key-facts"]}>
-          <div>Key facts:</div>
+          <div className={classes.title}>Key facts:</div>
           <div className={classes.area}>
             <div className={classes.area__first}>Area: </div>
             <div>{countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].area : ''}</div>

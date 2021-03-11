@@ -21,7 +21,7 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.inspire:
         return <Inspire />;
       case tabs.introducing:
-        return <div>introduction</div>;
+        return  <CountryInfo />;
       case tabs.while:
         return <div>while</div>;
       case tabs.map:
@@ -32,9 +32,9 @@ const CountryPage: React.FC<Props> = (props) => {
   };
   return (
     <React.Fragment>
-      <CountryInfo />
       <NavTabs history={props.history} />
       {renderContent()}
+     
     </React.Fragment>
   );
 };
