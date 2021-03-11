@@ -5,6 +5,10 @@ header.tabs {
   border: 0.1px solid rgba(15, 5, 47, 0.5);
 }
 
+.root {
+  background: rgba(60, 205, 215, 0.2);
+}
+
 a.myTab {
   color: black;
 

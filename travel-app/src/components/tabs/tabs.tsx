@@ -42,7 +42,7 @@ import { tabs } from '../pages/country-page';
 
 function a11yProps(index: any) {
   return {
-    'id': `nav-tab-${index}`,
+    id: `nav-tab-${index}`,
     'aria-controls': `nav-tabpanel-${index}`,
   };
 }
@@ -69,7 +69,6 @@ function LinkTab(props: LinkTabProps) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
   },
 }));
 
