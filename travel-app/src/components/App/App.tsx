@@ -5,12 +5,20 @@ import MainPage from '../pages/main-page/main-page';
 import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import NewTabs from '../tabs/tabs';
 import AuthPage from '../pages/Auth-page/Auth-page';
 import * as actions from '../../actions/actions-country';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
+import { Divider } from '@material-ui/core';
+
+export const routs = {
+  main: '/main',
+  auth: '/auth',
+  country: '/country',
+};
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -58,9 +66,10 @@ const App: React.FC<Props> = ({
           <Header />
           <main className={classes.app__main}>
             <Switch>
-              <Route path="/main" component={MainPage} />
-              <Route path="/country" component={CountryPage} />
-              <Route path="/" component={AuthPage} exact />
+              <Route path={routs.main} component={MainPage} />
+              {/* <Route path={routs.country} component={CountryPage} /> */}
+              <Route path={`${routs.country}/:id`} component={CountryPage} />
+              <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
           </main>
           {/* <Footer /> */}
