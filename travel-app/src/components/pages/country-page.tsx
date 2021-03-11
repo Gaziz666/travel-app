@@ -1,12 +1,16 @@
-import React from 'react';
-import Inspire from '../Inspire/Inspire';
-import NavTabs from '../tabs/tabs';
+import CountryInfo from "../country-info/country-info";
+
+import CenteredTabs from "../tabs/tabs";
+
+import React from "react";
+import Inspire from "../Inspire/Inspire";
+import NavTabs from "../tabs/tabs";
 
 export const tabs = {
-  inspire: 'inspire',
-  introducing: 'introducing',
-  while: 'while',
-  map: 'map',
+  inspire: "inspire",
+  introducing: "introducing",
+  while: "while",
+  map: "map",
 };
 type Props = any;
 
@@ -17,7 +21,7 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.inspire:
         return <Inspire />;
       case tabs.introducing:
-        return <div>introduction</div>;
+        return  <CountryInfo />;
       case tabs.while:
         return <div>while</div>;
       case tabs.map:
@@ -30,6 +34,7 @@ const CountryPage: React.FC<Props> = (props) => {
     <React.Fragment>
       <NavTabs history={props.history} />
       {renderContent()}
+     
     </React.Fragment>
   );
 };
