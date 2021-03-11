@@ -34,23 +34,25 @@
   color: #0f052f;
   font-size: 1.4rem;
   line-height: 2.1rem;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .header__login {
-  display: inline-block;
-  width: 5.8rem;
-  height: 5.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
 
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  border: 1px solid #0f052f;
+  box-sizing: border-box;
   border-radius: 10px;
-  transition: box-shadow 0.2s ease;
-
-  background-image: url('../../assets/images/login-comressed.svg');
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .header__login:hover {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 }
 
 .header__menu {
