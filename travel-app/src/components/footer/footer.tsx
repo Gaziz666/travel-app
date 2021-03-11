@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './footer.module.css';
 import CurrencyWidget from '../currencyWidget/CurrencyWidget.js'
-import WeatherWidget from '../WeatherWidget/WeatherWidget';
+import WeatherWidget from '../WeatherWidget/WeatherWidget.js';
 
 const Footer: React.FC = () => {
   return (

@@ -1,18 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import classes from './CurrencyWidget.module.css';
+import { connect } from 'react-redux';
+import CountriesService from '../../services/countries-service';
+import * as actions from '../../actions/actions-country';
+import { Countries, CountriesStateType } from '../../reducers/country-reducer';
+import { RootStateType } from '../../reducers/root-reducer';
 
-const CURRENCY_EXCHANGE = ['USD', 'EUR', 'RUB'];
-const currencyBase = {
-    currency: 'Thai Baht',
-    rate: 'THB'
-}
-const CURRENCY_API = `https://api.exchangeratesapi.io/latest?base=${currencyBase.rate}`;
+type MapDispatchToProps = {
+    countriesLoaded: (
+        value: Array<Countries>,
+    ) => actions.CountriesLoadedActionType;
+    countrySelect: (value: number) => actions.CountrySelectActionType;
+};
+type Props = MapDispatchToProps & CountriesStateType;
 
-export default function CurrencyWidget() {
 
+const CurrencyWidget: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, countries, selectedLanguage }) => {
+    const CURRENCY_EXCHANGE = ['USD', 'EUR', 'RUB'];
+    let currencyBase = '';
+    let rate = '';
     const [outputCurrency, setOutputCurrency] = useState([]);
+    if (countries.length > 0) {
+        currencyBase = countries[selectedCountryIndex].translations[selectedLanguage].currency;
+        rate = countries[selectedCountryIndex].rate;
+        // if (rate === 'EUR') setOutputCurrency(['EUR: 1']);
+
+    }
+    useEffect(() => {
+        const countryService = new CountriesService();
+        countryService.getAllCountry().then((countries) => {
+            countriesLoaded(countries.data);
+        });
+    }, [countriesLoaded]);
+
 
     useEffect(() => {
+        const CURRENCY_API = `https://api.exchangeratesapi.io/latest?base=${rate}`;
         let cleanupFunction = false;
         const request = async () => {
             try {
@@ -23,11 +46,12 @@ export default function CurrencyWidget() {
                         ([key, value]) => {
                             if (key === rate) {
                                 if (!cleanupFunction) {
-                                    setOutputCurrency(outputCurrency => {
-                                        return [
+                                    console.log(outputCurrency)
+                                    setOutputCurrency(outputCurrency => (
+                                        [
                                             ...outputCurrency, `${key}: ${value.toFixed(2)}`
                                         ]
-                                    })
+                                    ))
                                 }
                             }
                         }
@@ -55,8 +79,14 @@ export default function CurrencyWidget() {
 
     return (
         <div className={classes.widget}>
-            <div>{currencyBase.currency}</div>
+            <div>{currencyBase}</div>
             {ouputC()}
         </div>
     )
 }
+
+const mapStateToProps = (state: RootStateType) => {
+    return state.countryState;
+};
+
+export default connect(mapStateToProps, actions)(CurrencyWidget);
