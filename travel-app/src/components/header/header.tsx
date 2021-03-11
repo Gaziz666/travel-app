@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import LanguageMenu from '../LanguageMenu/Language-menu';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 
+import { useTranslation } from 'react-i18next';
+
 const Header: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <header className={classes.header}>
       <div className={classes.header__logo}>
@@ -13,14 +16,14 @@ const Header: React.FC = () => {
       </div>
       <div className={classes.header__menu}>
         <Link to="/" className={classes['header__link']}>
-          About us
+          {t('main-page.header-link.about')}
         </Link>
         <Link to="/" className={classes['header__link']}>
-          Destinations
+          {t('main-page.header-link.destination')}
         </Link>
         <LanguageMenu />
         <Link to="/" className={classes.header__login}>
-          <UserSvg fill="#3ccdd7" className={classes.header__login_svg} />
+          <UserSvg fill="white" className={classes.header__login_svg} />
         </Link>
       </div>
     </header>

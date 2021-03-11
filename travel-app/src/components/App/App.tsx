@@ -72,7 +72,7 @@ const App: React.FC<Props> = ({
               <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </Router>

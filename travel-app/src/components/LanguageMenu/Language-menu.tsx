@@ -34,7 +34,7 @@ const LanguageMenu: React.FC<MapDispatchToProps> = ({ languageSelect }) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <LangSvg fill="#3ccdd7" className={styles.lang__icon} />
+        <LangSvg fill="white" className={styles.lang__icon} />
       </div>
       <Menu
         id="simple-menu"
