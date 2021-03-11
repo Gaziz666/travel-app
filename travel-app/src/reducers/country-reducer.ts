@@ -7,6 +7,7 @@ import {
 export type Countries = {
   _id: string;
   imgUrl: string;
+  smallImg: string;
   flagUrl: string;
   videoUrl: string;
   coordinate: {
@@ -72,7 +73,7 @@ export type CountriesStateType = {
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryIndex: 0,
+  selectedCountryIndex: 1,
   selectedLanguage: LanguageType.en,
 };
 

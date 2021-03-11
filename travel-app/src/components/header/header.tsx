@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <header className={classes.header}>
       <div className={classes.header__logo}>
-        <Link to="/" className={classes['header__logo-icon']}></Link>
+        <Link to="/main" className={classes['header__logo-icon']}></Link>
         <span className={classes['header__logo-text']}>Explore the World</span>
       </div>
       <div className={classes.header__menu}>
