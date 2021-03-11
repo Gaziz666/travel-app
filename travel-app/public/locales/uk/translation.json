@@ -3,6 +3,9 @@
     "header-link": {
       "about": "Про нас",
       "destination": "Місця призначення"
+    },
+    "main-body": {
+      "explore": "досліджувати"
     }
   },
   "auth-page": {

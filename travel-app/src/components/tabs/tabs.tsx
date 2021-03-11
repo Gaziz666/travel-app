@@ -12,37 +12,37 @@ import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
 import { RootStateType } from '../../reducers/root-reducer';
 import { connect } from 'react-redux';
-import { Switch, Route, useRouteMatch, Link } from 'react-router-dom';
+import { routs } from '../App/App';
+import { tabs } from '../pages/country-page';
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
-}
+// interface TabPanelProps {
+//   children?: React.ReactNode;
+//   index: any;
+//   value: any;
+// }
 
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`nav-tabpanel-${index}`}
-      aria-labelledby={`nav-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
+// function TabPanel(props: TabPanelProps) {
+//   const { children, value, index, ...other } = props;
+//   return (
+//     <div
+//       role="tabpanel"
+//       hidden={value !== index}
+//       id={`nav-tabpanel-${index}`}
+//       aria-labelledby={`nav-tab-${index}`}
+//       {...other}
+//     >
+//       {value === index && (
+//         <Box p={3}>
+//           <Typography>{children}</Typography>
+//         </Box>
+//       )}
+//     </div>
+//   );
+// }
 
 function a11yProps(index: any) {
   return {
-    id: `nav-tab-${index}`,
+    'id': `nav-tab-${index}`,
     'aria-controls': `nav-tabpanel-${index}`,
   };
 }
@@ -52,10 +52,18 @@ interface LinkTabProps {
   href?: string;
   component?: any;
   to?: string;
+  click?: any;
 }
 
 function LinkTab(props: LinkTabProps) {
-  return <Tab className={styles.myTab} component="a" {...props} />;
+  return (
+    <Tab
+      className={styles.myTab}
+      component="a"
+      {...props}
+      onClick={props.click}
+    />
+  );
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -71,23 +79,23 @@ type MapDispatchToProps = {
   ) => actions.CountriesLoadedActionType;
 };
 
-type Props = CountriesStateType & MapDispatchToProps;
+type OwnProps = { history: any };
+
+type Props = CountriesStateType & MapDispatchToProps & OwnProps;
 
 const NavTabs: React.FC<Props> = ({
+  history,
   countriesLoaded,
   countries,
   selectedCountryIndex,
   selectedLanguage,
 }) => {
   useEffect(() => {
-    console.log('Using Effect');
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
       countriesLoaded(countries.data);
     });
   }, [countriesLoaded]);
-
-  const { path, url } = useRouteMatch();
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -100,7 +108,6 @@ const NavTabs: React.FC<Props> = ({
 
   return (
     <div className={`${classes.root} ${styles.tabs}`}>
-      {console.log('Render')}
       <AppBar position="static" className={styles.tabs}>
         <Tabs
           variant="fullWidth"
@@ -113,8 +120,7 @@ const NavTabs: React.FC<Props> = ({
         >
           <LinkTab
             label={t('country-page.tabs.first')}
-            component={Link}
-            to={`${url}/inspire`}
+            click={() => history.push(`${routs.country}/${tabs.inspire}`)}
             {...a11yProps(0)}
           />
           <LinkTab
@@ -124,67 +130,21 @@ const NavTabs: React.FC<Props> = ({
                     .name
                 : 'No Country'
             }`}
-            component={Link}
-            to={`${url}/introducing`}
+            click={() => history.push(`${routs.country}/${tabs.introducing}`)}
             {...a11yProps(1)}
           />
           <LinkTab
             label={t('country-page.tabs.third')}
-            component={Link}
-            to={`${url}/while`}
+            click={() => history.push(`${routs.country}/${tabs.while}`)}
             {...a11yProps(2)}
           />
           <LinkTab
             label={t('country-page.tabs.fourth')}
-            component={Link}
-            to={`${url}/map`}
+            click={() => history.push(`${routs.country}/${tabs.map}`)}
             {...a11yProps(3)}
           />
         </Tabs>
       </AppBar>
-      <Switch>
-        <Route
-          exact
-          path={`${path}/inspire`}
-          component={() => {
-            return (
-              <TabPanel value={value} index={0}>
-                Inspire
-              </TabPanel>
-            );
-          }}
-        />
-        <Route
-          path={`${path}/introducing`}
-          component={() => {
-            return (
-              <TabPanel value={value} index={1}>
-                Introducing
-              </TabPanel>
-            );
-          }}
-        />
-        <Route
-          path={`${path}/while`}
-          component={() => {
-            return (
-              <TabPanel value={value} index={2}>
-                While you’re there
-              </TabPanel>
-            );
-          }}
-        />
-        <Route
-          path={`${path}/map`}
-          component={() => {
-            return (
-              <TabPanel value={value} index={3}>
-                Map
-              </TabPanel>
-            );
-          }}
-        />
-      </Switch>
     </div>
   );
 };
