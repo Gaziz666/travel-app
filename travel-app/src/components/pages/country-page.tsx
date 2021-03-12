@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { RootStateType } from '../../reducers/root-reducer';
+import * as actions from '../../actions/auth-actions';
 import Inspire from '../Inspire/Inspire';
 import NavTabs from '../tabs/tabs';
+<<<<<<< HEAD
 import MapComponent from '../MapComponent/MapComponent';
+=======
+import { AuthStateType } from '../../reducers/auth-reducer';
+import CountryInfo from '../country-info/country-info';
+>>>>>>> 96b5db0b1891a1b52b4120f2ec3906fb75b55885
 
 export const tabs = {
   inspire: 'inspire',
@@ -9,16 +17,23 @@ export const tabs = {
   while: 'while',
   map: 'map',
 };
-type Props = any;
+
+type MapDispatchToProps = {
+  mainPageIsOpen: (value: boolean) => actions.AuthStatusChangeActionType;
+};
+type Props = MapDispatchToProps & AuthStateType & any;
 
 const CountryPage: React.FC<Props> = (props) => {
+  useEffect(() => {
+    props.mainPageIsOpen(false);
+  }, []);
+
   const renderContent = () => {
-    console.log(props);
     switch (props.match.params.id) {
       case tabs.inspire:
         return <Inspire />;
       case tabs.introducing:
-        return <div>introduction</div>;
+        return <CountryInfo />;
       case tabs.while:
         return <div>while</div>;
       case tabs.map:
@@ -29,6 +44,7 @@ const CountryPage: React.FC<Props> = (props) => {
         return null;
     }
   };
+
   return (
     <React.Fragment>
       <NavTabs history={props.history} />
@@ -38,4 +54,8 @@ const CountryPage: React.FC<Props> = (props) => {
   );
 };
 
-export default CountryPage;
+const mapStateToProps = (state: RootStateType) => {
+  return state.authStatusState;
+};
+
+export default connect(mapStateToProps, actions)(CountryPage);
