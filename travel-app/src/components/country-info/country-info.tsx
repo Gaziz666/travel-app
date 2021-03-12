@@ -26,7 +26,6 @@ const CountryInfo: React.FC<Props> = ({
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
       countriesLoaded(countries.data);
-      console.log(countries);
     });
   }, [countriesLoaded]);
 
