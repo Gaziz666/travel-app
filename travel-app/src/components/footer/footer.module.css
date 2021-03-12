@@ -1,17 +1,9 @@
 .footer {
   display: flex;
-<<<<<<< HEAD
   /* justify-content: flex-end;
   flex-wrap: wrap; */
   flex-direction: column;
   /* justify-content: space-between; */
-=======
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  position: absolute;
-  right: 25px;
-  bottom: 25px;
->>>>>>> 96b5db0b1891a1b52b4120f2ec3906fb75b55885
 }
 
 .footer__link {

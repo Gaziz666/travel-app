@@ -12,12 +12,6 @@ import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import { Countries } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
-<<<<<<< HEAD
-import { Divider } from '@material-ui/core';
-import MapComponent from '../MapComponent/MapComponent';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-=======
->>>>>>> 96b5db0b1891a1b52b4120f2ec3906fb75b55885
 
 export const routs = {
   main: '/main',
