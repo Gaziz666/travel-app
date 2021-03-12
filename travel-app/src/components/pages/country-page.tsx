@@ -6,6 +6,7 @@ import Inspire from '../Inspire/Inspire';
 import NavTabs from '../tabs/tabs';
 import { AuthStateType } from '../../reducers/auth-reducer';
 import CountryInfo from '../country-info/country-info';
+import CountryGallery from '../country-gallery/CountryGallery';
 
 export const tabs = {
   inspire: 'inspire',
@@ -31,7 +32,7 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.introducing:
         return <CountryInfo />;
       case tabs.while:
-        return <div>while</div>;
+        return <CountryGallery/>;
       case tabs.map:
         return <div>map</div>;
       default:

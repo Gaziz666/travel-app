@@ -18,6 +18,8 @@
   src: local('Poppins-Bold'),
     url(./assets/fonts/Poppins-Bold.ttf) format('truetype');
 }
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
 
 body {
   margin: 0;
