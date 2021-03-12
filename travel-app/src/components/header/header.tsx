@@ -13,16 +13,21 @@ import { AuthStateType } from '../../reducers/auth-reducer';
 
 type MapDispatchToProps = {
   countrySelect: (value: number) => actionCountry.CountrySelectActionType;
+  mainPageIsOpen: (value: boolean) => actionsAuth.AuthStatusChangeActionType;
 };
 type Props = MapDispatchToProps & AuthStateType;
 
-const Header: React.FC<Props> = ({ countrySelect, mainIsOpen }) => {
+const Header: React.FC<Props> = ({
+  countrySelect,
+  mainPageIsOpen,
+  mainIsOpen,
+}) => {
   const { t } = useTranslation();
   let color = mainIsOpen ? '#fff' : '#000';
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     color = mainIsOpen ? '#fff' : '#000';
-  }, [mainIsOpen]);
+  }, []);
 
   const toMain = () => {
     countrySelect(1);
@@ -61,6 +66,7 @@ const Header: React.FC<Props> = ({ countrySelect, mainIsOpen }) => {
           className={`${classes.header__login} ${
             mainIsOpen ? '' : classes.header__login_black
           }`}
+          onClick={() => mainPageIsOpen(false)}
         >
           <UserSvg fill={color} className={classes.header__login_svg} />
         </Link>

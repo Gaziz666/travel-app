@@ -10,7 +10,6 @@ import CountryInfo from '../country-info/country-info';
 import CurrencyWidget from '../currencyWidget/CurrencyWidget';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
 
-
 export const tabs = {
   inspire: 'inspire',
   introducing: 'introducing',
@@ -26,7 +25,7 @@ type Props = MapDispatchToProps & AuthStateType & any;
 const CountryPage: React.FC<Props> = (props) => {
   useEffect(() => {
     props.mainPageIsOpen(false);
-  }, [props]);
+  }, [props.mainPageIsOpen]);
 
   const renderContent = () => {
     switch (props.match.params.id) {
@@ -37,8 +36,7 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.while:
         return <div>while</div>;
       case tabs.map:
-        return <div>
-          map</div>;
+        return <div>map</div>;
       default:
         return null;
     }
@@ -49,10 +47,9 @@ const CountryPage: React.FC<Props> = (props) => {
       <NavTabs history={props.history} />
       {renderContent()}
       {/* <MapComponent /> */}
-      <div >
+      <div>
         <CurrencyWidget />
         <WeatherWidget />
-
       </div>
     </React.Fragment>
   );
