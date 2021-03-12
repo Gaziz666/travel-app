@@ -11,7 +11,7 @@ type MapDispatchToProps = {
 type Props = MapDispatchToProps & AuthStateType;
 
 const Footer: React.FC<Props> = ({ mainIsOpen }) => {
-  let linkBlack = mainIsOpen
+  const linkBlack = mainIsOpen
     ? classes.footer__link_white
     : classes.footer__link_black;
 

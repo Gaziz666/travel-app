@@ -17,7 +17,7 @@ type Props = MapDispatchToProps & AuthStateType;
 
 const Header: React.FC<Props> = ({ mainPageIsOpen, mainIsOpen }) => {
   const { t } = useTranslation();
-  let color = mainIsOpen ? '#fff' : '#000';
+  const color = mainIsOpen ? '#fff' : '#000';
 
   return (
     <header className={classes.header}>
