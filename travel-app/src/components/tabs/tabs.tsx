@@ -10,11 +10,11 @@ import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
 import { connect } from 'react-redux';
 import { routs } from '../App/App';
-import { tabs } from '../pages/country-page';
+import { tabs } from '../pages/country-page/country-page';
 
 function a11yProps(index: any) {
   return {
-    'id': `nav-tab-${index}`,
+    id: `nav-tab-${index}`,
     'aria-controls': `nav-tabpanel-${index}`,
   };
 }

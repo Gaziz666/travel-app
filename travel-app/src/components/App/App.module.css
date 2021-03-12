@@ -26,5 +26,5 @@
 
 .app__main {
   height: calc(100vh - 122px);
-  min-height: 600px;
+  min-height: 590px;
 }
