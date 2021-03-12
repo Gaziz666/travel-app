@@ -21,11 +21,12 @@ type Props = OwnProps & CountriesStateType & MapDispatchToProps;
 const CountryCard: React.FC<Props> = ({
   index,
   countries,
+  selectedLanguage,
   countrySelect,
   mainPageIsOpen,
 }) => {
   const country = countries[index];
-  const info = country.translations.en;
+  const info = country.translations[selectedLanguage];
   const img = country.smallImg;
 
   const selectCountry = () => {
@@ -39,8 +40,8 @@ const CountryCard: React.FC<Props> = ({
         style={{ backgroundImage: `url('${img}')` }}
         onClick={selectCountry}
       >
-        <div>{info.name}</div>
-        <div>{country.placesCount}&nbsp;Must seen Places</div>
+        <div className={styles['country-name']}>{info.name}</div>
+       
       </div>
     </Link>
   );

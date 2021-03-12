@@ -26,7 +26,7 @@ type Props = MapDispatchToProps & AuthStateType & any;
 const CountryPage: React.FC<Props> = (props) => {
   useEffect(() => {
     props.mainPageIsOpen(false);
-  }, []);
+  }, [props]);
 
   const renderContent = () => {
     switch (props.match.params.id) {
