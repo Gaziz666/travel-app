@@ -5,13 +5,13 @@ import MainPage from '../pages/main-page/main-page';
 import CountryPage from '../pages/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import NewTabs from '../tabs/tabs';
 import AuthPage from '../pages/Auth-page/Auth-page';
 import * as actions from '../../actions/actions-country';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import { Countries } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
+import { useTranslation } from 'react-i18next';
 
 export const routs = {
   main: '/main',
@@ -33,14 +33,17 @@ const App: React.FC<Props> = ({
   countriesLoaded,
 }) => {
   const appDiv = useRef(null);
-  const { countries, selectedCountryIndex } = countryState;
+  const { countries, selectedCountryIndex, selectedLanguage } = countryState;
   const { mainIsOpen } = authStatusState;
+  const { i18n } = useTranslation();
+
   useEffect(() => {
+    i18n.changeLanguage(selectedLanguage);
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
       countriesLoaded(countries.data);
     });
-  }, [countriesLoaded]);
+  }, [countriesLoaded, i18n, selectedLanguage]);
 
   useEffect(() => {
     const countryImg = () => {
@@ -71,6 +74,7 @@ const App: React.FC<Props> = ({
               <Route path={`${routs.country}/:id`} component={CountryPage} />
               <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
+
           </main>
           <Footer />
         </div>

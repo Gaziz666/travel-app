@@ -35,6 +35,8 @@ const Footer: React.FC<Props> = ({ mainIsOpen }) => {
       >
         Rs School
       </a>
+
+
     </footer>
   );
 };
