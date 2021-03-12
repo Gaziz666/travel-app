@@ -10,9 +10,8 @@ import AuthPage from '../pages/Auth-page/Auth-page';
 import * as actions from '../../actions/actions-country';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
-import { Countries, CountriesStateType } from '../../reducers/country-reducer';
+import { Countries } from '../../reducers/country-reducer';
 import CountriesService from '../../services/countries-service';
-import { Divider } from '@material-ui/core';
 
 export const routs = {
   main: '/main',
@@ -26,14 +25,16 @@ type MapDispatchToProps = {
   ) => actions.CountriesLoadedActionType;
 };
 
-type Props = CountriesStateType & MapDispatchToProps;
+type Props = RootStateType & MapDispatchToProps;
 
 const App: React.FC<Props> = ({
-  countries,
-  selectedCountryIndex,
+  countryState,
+  authStatusState,
   countriesLoaded,
 }) => {
   const appDiv = useRef(null);
+  const { countries, selectedCountryIndex } = countryState;
+  const { mainIsOpen } = authStatusState;
   useEffect(() => {
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
@@ -43,21 +44,24 @@ const App: React.FC<Props> = ({
 
   useEffect(() => {
     const countryImg = () => {
-      if (countries.length > 0) {
+      if (countries.length > 0 && mainIsOpen) {
         const img = new Image();
         const url = countries[selectedCountryIndex].imgUrl;
         img.src = url;
         console.log('before');
         img.onload = () => {
-          if (appDiv) {
-            console.log(appDiv.current);
+          if (appDiv && mainIsOpen) {
+            console.log(appDiv.current, mainIsOpen);
             (appDiv.current! as HTMLElement).style.backgroundImage = `url(${url})`;
           }
         };
+      } else if (countries.length > 0) {
+        (appDiv.current! as HTMLElement).style.backgroundImage = '';
+        console.log('bck change ', mainIsOpen);
       }
     };
     countryImg();
-  }, [selectedCountryIndex]);
+  }, [countries, selectedCountryIndex, mainIsOpen]);
 
   return (
     <Router basename="/travel-app">
@@ -67,7 +71,6 @@ const App: React.FC<Props> = ({
           <main className={classes.app__main}>
             <Switch>
               <Route path={routs.main} component={MainPage} />
-              {/* <Route path={routs.country} component={CountryPage} /> */}
               <Route path={`${routs.country}/:id`} component={CountryPage} />
               <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
@@ -80,7 +83,7 @@ const App: React.FC<Props> = ({
 };
 
 const mapStateToProps = (state: RootStateType) => {
-  return state.countryState;
+  return state;
 };
 
 export default connect(mapStateToProps, actions)(App);

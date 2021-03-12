@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { RootStateType } from '../../reducers/root-reducer';
+import * as actions from '../../actions/auth-actions';
 import Inspire from '../Inspire/Inspire';
 import NavTabs from '../tabs/tabs';
+import { AuthStateType } from '../../reducers/auth-reducer';
 
 export const tabs = {
   inspire: 'inspire',
@@ -8,9 +12,17 @@ export const tabs = {
   while: 'while',
   map: 'map',
 };
-type Props = any;
+
+type MapDispatchToProps = {
+  mainPageIsOpen: (value: boolean) => actions.AuthStatusChangeActionType;
+};
+type Props = MapDispatchToProps & AuthStateType & any;
 
 const CountryPage: React.FC<Props> = (props) => {
+  useEffect(() => {
+    props.mainPageIsOpen(false);
+  }, []);
+
   const renderContent = () => {
     console.log(props);
     switch (props.match.params.id) {
@@ -34,4 +46,8 @@ const CountryPage: React.FC<Props> = (props) => {
   );
 };
 
-export default CountryPage;
+const mapStateToProps = (state: RootStateType) => {
+  return state.authStatusState;
+};
+
+export default connect(mapStateToProps, actions)(CountryPage);
