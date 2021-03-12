@@ -40,3 +40,15 @@
 .footer__rs-logo:hover {
   color: transparent;
 }
+
+.footer__link__wrapper{
+  display: flex;
+  align-self: flex-end;
+
+}
+
+.widget__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

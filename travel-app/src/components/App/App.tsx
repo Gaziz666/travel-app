@@ -74,6 +74,7 @@ const App: React.FC<Props> = ({
               <Route path={`${routs.country}/:id`} component={CountryPage} />
               <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
+
           </main>
           <Footer />
         </div>
