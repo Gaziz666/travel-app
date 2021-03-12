@@ -56,7 +56,12 @@ const Header: React.FC<Props> = ({ countrySelect, mainIsOpen }) => {
           {t('main-page.header-link.destination')}
         </Link>
         <LanguageMenu />
-        <Link to={routs.auth} className={classes.header__login}>
+        <Link
+          to={routs.auth}
+          className={`${classes.header__login} ${
+            mainIsOpen ? '' : classes.header__login_black
+          }`}
+        >
           <UserSvg fill={color} className={classes.header__login_svg} />
         </Link>
       </div>

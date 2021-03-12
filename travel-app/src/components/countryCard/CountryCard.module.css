@@ -14,3 +14,9 @@
 .card-wrapper:hover {
   transform: scale(1.1, 1.1);
 }
+
+.country-name {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
