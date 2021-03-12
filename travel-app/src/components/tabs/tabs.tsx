@@ -4,45 +4,17 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import { useTranslation } from 'react-i18next';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
-import CountriesService from '../../services/countries-service';
 import { RootStateType } from '../../reducers/root-reducer';
 import { connect } from 'react-redux';
 import { routs } from '../App/App';
 import { tabs } from '../pages/country-page';
 
-// interface TabPanelProps {
-//   children?: React.ReactNode;
-//   index: any;
-//   value: any;
-// }
-
-// function TabPanel(props: TabPanelProps) {
-//   const { children, value, index, ...other } = props;
-//   return (
-//     <div
-//       role="tabpanel"
-//       hidden={value !== index}
-//       id={`nav-tabpanel-${index}`}
-//       aria-labelledby={`nav-tab-${index}`}
-//       {...other}
-//     >
-//       {value === index && (
-//         <Box p={3}>
-//           <Typography>{children}</Typography>
-//         </Box>
-//       )}
-//     </div>
-//   );
-// }
-
 function a11yProps(index: any) {
   return {
-    id: `nav-tab-${index}`,
+    'id': `nav-tab-${index}`,
     'aria-controls': `nav-tabpanel-${index}`,
   };
 }
@@ -89,13 +61,6 @@ const NavTabs: React.FC<Props> = ({
   selectedCountryIndex,
   selectedLanguage,
 }) => {
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
-
   useEffect(() => {
     switch (history.location.pathname) {
       case '/country/map':

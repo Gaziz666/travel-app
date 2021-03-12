@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
-import CountriesService from '../../services/countries-service';
 import * as actions from '../../actions/actions-country';
 import styles from './country-name.module.css';
 
@@ -20,13 +19,6 @@ const CountryName: React.FC<Props> = ({
   selectedLanguage,
   countriesLoaded,
 }) => {
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
-
   const country = countries[selectedCountryIndex];
 
   return (
