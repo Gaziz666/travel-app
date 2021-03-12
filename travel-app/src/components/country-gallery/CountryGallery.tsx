@@ -6,6 +6,7 @@ import { RootStateType } from '../../reducers/root-reducer';
 import CountriesService from '../../services/countries-service';
 import ImageGallery from 'react-image-gallery';
 import classes from './country-gallery.module.css';
+import "~react-image-gallery/styles/css/image-gallery.css";
 
 
 type MapDispatchToProps = {
@@ -32,7 +33,13 @@ type MapDispatchToProps = {
       
        return(
         <div className={classes.gallery__wrapper}>
+            <div className={classes.sidebar}>
+                <div className={classes.description}>
+                {countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage] : 'description of Sightseeing'}
+                </div>
+                <div className={classes.rating}></div>
 
+            </div>
 
         </div>
        );
