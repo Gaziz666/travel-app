@@ -3,6 +3,7 @@
 }
 
 .app__container {
+  position: relative;
   max-width: 1440px;
   height: 100%;
   padding: 28px 28px 0;
@@ -12,6 +13,12 @@
   border-radius: 30px;
   background-image: url('https://res.cloudinary.com/dtzazbcf5/image/upload/v1615395509/travel-app/countryBigImg/france_d96zf0.jpg');
   transition: background-image 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 1496px) {
+  .app__container {
+    border-radius: 0;
+  }
 }
 
 .app__title {

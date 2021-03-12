@@ -3,7 +3,7 @@ import classes from './footer.module.css';
 
 const Footer: React.FC = () => {
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <a href="https://github.com/juliememe" className={classes.footer__link}>
         Juliememe
       </a>
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
       >
         Rs School
       </a>
-    </div>
+    </footer>
   );
 };
 

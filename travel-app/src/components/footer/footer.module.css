@@ -2,20 +2,24 @@
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
 }
 
 .footer__link {
   text-decoration: none;
-  color: #0f052f;
-  margin: 5px;
+  color: #ffffff;
+  margin: 5px 5px 0;
   transition: margin 0.2s ease-in-out;
 
   font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 
 .footer__link:hover {
+  color: #ffffff;
   margin-top: -1px;
 }
 

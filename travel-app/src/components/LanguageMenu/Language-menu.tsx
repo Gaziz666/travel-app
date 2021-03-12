@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions-country';
 import { LanguageType } from '../../reducers/country-reducer';
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as LangSvg } from '../../assets/images/langSVG.svg';
 
 type MapDispatchToProps = {
   languageSelect: (value: LanguageType) => actions.languageSelectActionType;
@@ -32,7 +33,9 @@ const LanguageMenu: React.FC<MapDispatchToProps> = ({ languageSelect }) => {
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
-      />
+      >
+        <LangSvg fill="white" className={styles.lang__icon} />
+      </div>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
