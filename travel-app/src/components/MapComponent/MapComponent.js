@@ -10,7 +10,7 @@ const MapComponent = (props) => {
 
     return (
         <div className={styles.map__wrapper}>
-            <MapContainer height={'500px'} center={position} zoom={2} scrollWheelZoom={true} >
+            <MapContainer center={position} zoom={5}  >
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

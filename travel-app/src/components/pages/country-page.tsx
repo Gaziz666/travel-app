@@ -33,7 +33,6 @@ const CountryPage: React.FC<Props> = (props) => {
     <React.Fragment>
       <NavTabs history={props.history} />
       {renderContent()}
-
     </React.Fragment>
   );
 };
