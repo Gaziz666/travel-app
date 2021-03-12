@@ -53,7 +53,7 @@ const WeatherWidget: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex,
         }
         request();
 
-    }, [countries])
+    }, [countries, selectedLanguage])
 
 
     return (

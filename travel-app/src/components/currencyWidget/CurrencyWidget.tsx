@@ -19,11 +19,11 @@ const CurrencyWidget: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex
     const CURRENCY_EXCHANGE = ['USD', 'EUR', 'RUB'];
     let currencyBase = '';
     let rate = '';
-    const [outputCurrency, setOutputCurrency] = useState([]);
+    const [outputCurrency, setOutputCurrency] = useState(['']);
     if (countries.length > 0) {
         currencyBase = countries[selectedCountryIndex].translations[selectedLanguage].currency;
         rate = countries[selectedCountryIndex].rate;
-        // if (rate === 'EUR') setOutputCurrency(['EUR: 1']);
+
 
     }
     useEffect(() => {
@@ -41,6 +41,7 @@ const CurrencyWidget: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex
             try {
                 const response = await fetch(CURRENCY_API);
                 const data = await response.json();
+                console.log(data);
                 CURRENCY_EXCHANGE.map(rate => {
                     Object.entries(data.rates).map(
                         ([key, value]) => {
@@ -49,7 +50,7 @@ const CurrencyWidget: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex
                                     console.log(outputCurrency)
                                     setOutputCurrency(outputCurrency => (
                                         [
-                                            ...outputCurrency, `${key}: ${value.toFixed(2)}`
+                                            ...outputCurrency, `${key}: ${(value as number).toFixed(2)}`
                                         ]
                                     ))
                                 }
