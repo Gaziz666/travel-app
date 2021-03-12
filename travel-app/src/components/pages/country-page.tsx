@@ -5,6 +5,7 @@ import * as actions from '../../actions/auth-actions';
 import Inspire from '../Inspire/Inspire';
 import NavTabs from '../tabs/tabs';
 import { AuthStateType } from '../../reducers/auth-reducer';
+import CountryInfo from '../country-info/country-info';
 
 export const tabs = {
   inspire: 'inspire',
@@ -24,12 +25,11 @@ const CountryPage: React.FC<Props> = (props) => {
   }, []);
 
   const renderContent = () => {
-    console.log(props);
     switch (props.match.params.id) {
       case tabs.inspire:
         return <Inspire />;
       case tabs.introducing:
-        return <div>introduction</div>;
+        return <CountryInfo />;
       case tabs.while:
         return <div>while</div>;
       case tabs.map:
@@ -38,6 +38,7 @@ const CountryPage: React.FC<Props> = (props) => {
         return null;
     }
   };
+
   return (
     <React.Fragment>
       <NavTabs history={props.history} />

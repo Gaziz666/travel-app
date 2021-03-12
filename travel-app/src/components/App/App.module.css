@@ -3,6 +3,7 @@
 }
 
 .app__container {
+  position: relative;
   max-width: 1440px;
   height: 100%;
   padding: 28px 28px 0;
@@ -11,6 +12,12 @@
   background-repeat: no-repeat;
   border-radius: 30px;
   transition: background-image 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 1496px) {
+  .app__container {
+    border-radius: 0;
+  }
 }
 
 .app__title {

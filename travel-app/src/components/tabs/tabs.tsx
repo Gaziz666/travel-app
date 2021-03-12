@@ -42,7 +42,7 @@ import { tabs } from '../pages/country-page';
 
 function a11yProps(index: any) {
   return {
-    'id': `nav-tab-${index}`,
+    id: `nav-tab-${index}`,
     'aria-controls': `nav-tabpanel-${index}`,
   };
 }
@@ -69,7 +69,6 @@ function LinkTab(props: LinkTabProps) {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
   },
 }));
 
@@ -96,6 +95,24 @@ const NavTabs: React.FC<Props> = ({
       countriesLoaded(countries.data);
     });
   }, [countriesLoaded]);
+
+  useEffect(() => {
+    switch (history.location.pathname) {
+      case '/country/map':
+        setValue(3);
+        break;
+      case '/country/while':
+        setValue(2);
+        break;
+      case '/country/introducing':
+        setValue(1);
+        break;
+
+      default:
+        setValue(0);
+        break;
+    }
+  }, [history]);
 
   const classes = useStyles();
   const [value, setValue] = React.useState(0);

@@ -48,16 +48,13 @@ const App: React.FC<Props> = ({
         const img = new Image();
         const url = countries[selectedCountryIndex].imgUrl;
         img.src = url;
-        console.log('before');
         img.onload = () => {
           if (appDiv && mainIsOpen) {
-            console.log(appDiv.current, mainIsOpen);
             (appDiv.current! as HTMLElement).style.backgroundImage = `url(${url})`;
           }
         };
       } else if (countries.length > 0) {
         (appDiv.current! as HTMLElement).style.backgroundImage = '';
-        console.log('bck change ', mainIsOpen);
       }
     };
     countryImg();
@@ -75,7 +72,7 @@ const App: React.FC<Props> = ({
               <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </Router>
