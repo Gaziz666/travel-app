@@ -18,9 +18,6 @@ type Props = MapDispatchToProps & AuthStateType;
 const Header: React.FC<Props> = ({ mainPageIsOpen, mainIsOpen }) => {
   const { t } = useTranslation();
   let color = mainIsOpen ? '#fff' : '#000';
-  useEffect(() => {
-    color = mainIsOpen ? '#fff' : '#000';
-  }, [mainIsOpen]);
 
   return (
     <header className={classes.header}>
@@ -46,7 +43,12 @@ const Header: React.FC<Props> = ({ mainPageIsOpen, mainIsOpen }) => {
           {t('main-page.header-link.destination')}
         </Link>
         <LanguageMenu />
-        <Link to={routs.auth} className={classes.header__login}>
+        <Link
+          to={routs.auth}
+          className={`${classes.header__login} ${
+            mainIsOpen ? '' : classes.header__login_black
+          }`}
+        >
           <UserSvg fill={color} className={classes.header__login_svg} />
         </Link>
       </div>
