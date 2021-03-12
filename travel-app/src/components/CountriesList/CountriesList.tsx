@@ -102,7 +102,6 @@ const CountriesList: React.FC<Props> = ({
         return <CountryCard index={country.index} key={country._id} />;
       });
     settingsChange(cardArray.length);
-    console.log(cardArray);
     return cardArray;
   };
 

@@ -21,6 +21,7 @@ export type Countries = {
   places: [
     {
       imgUrl: string;
+      imgSmallUrl: string;
       rating: [
         {
           score: number;
