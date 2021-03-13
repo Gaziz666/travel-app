@@ -38,7 +38,7 @@ const CountryPage: React.FC<Props> = (props) => {
         return <div>while</div>;
       case tabs.map:
         return <div>
-          map</div>;
+          <MapComponent /></div>;
       default:
         return null;
     }
@@ -48,7 +48,7 @@ const CountryPage: React.FC<Props> = (props) => {
     <React.Fragment>
       <NavTabs history={props.history} />
       {renderContent()}
-      {/* <MapComponent /> */}
+
       <div >
         <CurrencyWidget />
         <WeatherWidget />
