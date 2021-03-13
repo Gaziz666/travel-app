@@ -9,6 +9,7 @@ import { AuthStateType } from '../../reducers/auth-reducer';
 import CountryInfo from '../country-info/country-info';
 import CurrencyWidget from '../currencyWidget/CurrencyWidget';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
+import TimeWidget from '../time-widget/TimeWidget';
 
 export const tabs = {
   inspire: 'inspire',
@@ -49,6 +50,7 @@ const CountryPage: React.FC<Props> = (props) => {
       {/* <MapComponent /> */}
       <div>
         <CurrencyWidget />
+        <TimeWidget/>
         <WeatherWidget />
       </div>
     </React.Fragment>

@@ -4,7 +4,8 @@ import classes from "./time-widget.module.css";
 import * as actions from "../../actions/actions-country";
 import { connect } from "react-redux";
 import { RootStateType } from "../../reducers/root-reducer";
-import CountriesService from "../../services/countries-service";
+import { useTranslation } from "react-i18next";
+
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -20,9 +21,8 @@ const TimeWidget: React.FC<Props> = ({
   selectedLanguage,
 }) => {
 
-  
   const [timeAndDate, setTimeAndDate] = useState(new Date());
-  const [timeZone, setTimeZone] = useState(countries[selectedCountryIndex] ? countries[selectedCountryIndex].timeZone : '');
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timerId = setInterval(() => tick(), 1000);
@@ -33,35 +33,28 @@ const TimeWidget: React.FC<Props> = ({
 
   const tick = () => setTimeAndDate(new Date());
 
-
-
   const options: Object = {
     month: "long",
     day: "numeric",
     weekday: "long",
-    timeZone: {timeZone},
+    timeZone: (countries[selectedCountryIndex] ? countries[selectedCountryIndex].timeZone : ''),
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
   };
 
-  console.log(countries)
-  // const timeZone = countries[selectedCountryId] ? countries[selectedCountryId].timeZone : '';
-  // const locale = countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].: '';
-
-  // console.log(new Date().toLocaleDateString("en-US", options));
-  // console.log(countries);
+  const locale = countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].timeFormat : '';
 
   return (
     <div className={classes.time__wraper}>
       <div className={classes.time}>
         {countries[selectedCountryIndex]
-          ? countries[selectedCountryIndex].translations[selectedLanguage].name
-          : ""}{" "}
-        Local time{" "}
+          ? countries[selectedCountryIndex].translations[selectedLanguage].capital
+          : ""}{" "} {t('country-page.times.localTime')}
+
       </div>
       <div className={classes.date}>
-            {timeAndDate.toLocaleDateString('en-US', options)}
+            {timeAndDate.toLocaleDateString(locale, options)}
       </div>
     </div>
   );

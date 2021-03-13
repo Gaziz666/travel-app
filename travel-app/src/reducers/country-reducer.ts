@@ -37,7 +37,7 @@ export type Countries = {
           name: string;
           info: string;
           favorite: boolean;
-          timeFormat: string;
+          // timeFormat: string;
         };
         ru: {
           name: string;
@@ -48,7 +48,6 @@ export type Countries = {
           name: string;
           info: string;
           favorite: boolean;
-          timeFormat: string;
         };
       };
     }
@@ -67,6 +66,8 @@ export type Countries = {
       headOfState: string;
       headOfGovernment: string;
       currency: string;
+      timeFormat: string;
+
     };
     ru: {
       name: string;
@@ -80,6 +81,8 @@ export type Countries = {
       headOfState: string;
       headOfGovernment: string;
       currency: string;
+      timeFormat: string;
+
     };
     uk: {
       name: string;
@@ -93,6 +96,8 @@ export type Countries = {
       headOfState: string;
       headOfGovernment: string;
       currency: string;
+      timeFormat: string;
+
     };
   };
 };
