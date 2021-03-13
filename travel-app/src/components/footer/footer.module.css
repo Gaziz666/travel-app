@@ -2,17 +2,24 @@
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  color: #ffffff;
 }
 
 .footer__link {
   text-decoration: none;
-  color: #0f052f;
-  margin: 5px;
+  margin: 5px 5px 0;
   transition: margin 0.2s ease-in-out;
 
   font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
+.footer__link_black {
+  color: #000000;
 }
 
 .footer__link:hover {
@@ -32,4 +39,16 @@
 
 .footer__rs-logo:hover {
   color: transparent;
+}
+
+.footer__link__wrapper{
+  display: flex;
+  align-self: flex-end;
+
+}
+
+.widget__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

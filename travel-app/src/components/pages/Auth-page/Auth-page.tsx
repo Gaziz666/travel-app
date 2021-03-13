@@ -14,7 +14,6 @@ const AuthPage: React.FC = () => {
       </div>
       <div className={styles['block-container right-block']}>
         <AuthBlock />
-        <TimeWidget/>
       </div>
     </div>
   );

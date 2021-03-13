@@ -2,7 +2,9 @@ import {
   COUNTRIES_LOAD,
   COUNTRY_SELECT,
   LANGUAGE_SELECT,
-} from "../actions/actions-country";
+  SEARCH_CHANGE,
+} from '../actions/actions-country';
+
 
 export type Countries = {
   _id: string;
@@ -18,6 +20,7 @@ export type Countries = {
   rate: string;
   index: number;
   timeZone: string;
+
   places: [
     {
       imgUrl: string;
@@ -26,7 +29,8 @@ export type Countries = {
         {
           score: number;
           author: string;
-        }
+        },
+
       ];
       translations: {
         en: {
@@ -39,7 +43,6 @@ export type Countries = {
           name: string;
           info: string;
           favorite: boolean;
-          timeFormat: string;
         };
         uk: {
           name: string;
@@ -49,6 +52,7 @@ export type Countries = {
         };
       };
     }
+
   ];
   translations: {
     en: {
@@ -101,14 +105,16 @@ export enum LanguageType {
 
 export type CountriesStateType = {
   countries: Array<Countries>;
-  selectedCountryId: string;
+  selectedCountryIndex: number;
   selectedLanguage: LanguageType;
+  searchText: string;
 };
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryId: "",
+  selectedCountryIndex: 1,
   selectedLanguage: LanguageType.en,
+  searchText: '',
 };
 
 const countryReducer = (
@@ -124,12 +130,17 @@ const countryReducer = (
     case COUNTRY_SELECT:
       return {
         ...state,
-        selectedCountryId: action.payload,
+        selectedCountryIndex: action.payload,
       };
     case LANGUAGE_SELECT:
       return {
         ...state,
         selectedLanguage: action.payload,
+      };
+    case SEARCH_CHANGE:
+      return {
+        ...state,
+        searchText: action.payload,
       };
     default:
       return state;

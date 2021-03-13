@@ -1,9 +1,22 @@
 import React from 'react';
 import classes from './footer.module.css';
+import * as actions from '../../actions/auth-actions';
+import { connect } from 'react-redux';
+import { RootStateType } from '../../reducers/root-reducer';
+import { AuthStateType } from '../../reducers/auth-reducer';
 
-const Footer: React.FC = () => {
+type MapDispatchToProps = {
+  mainPageIsOpen: (value: boolean) => actions.AuthStatusChangeActionType;
+};
+type Props = MapDispatchToProps & AuthStateType;
+
+const Footer: React.FC<Props> = ({ mainIsOpen }) => {
+  const linkBlack = mainIsOpen
+    ? classes.footer__link_white
+    : classes.footer__link_black;
+
   return (
-    <div className={classes.footer}>
+    <footer className={`${classes.footer} ${linkBlack}`}>
       <a href="https://github.com/juliememe" className={classes.footer__link}>
         Juliememe
       </a>
@@ -22,8 +35,14 @@ const Footer: React.FC = () => {
       >
         Rs School
       </a>
-    </div>
+
+
+    </footer>
   );
 };
 
-export default Footer;
+const mapStateToProps = (state: RootStateType) => {
+  return state.authStatusState;
+};
+
+export default connect(mapStateToProps, actions)(Footer);

@@ -10,26 +10,19 @@ type MapDispatchToProps = {
   countriesLoaded: (
     value: Array<Countries>
   ) => actions.CountriesLoadedActionType;
-  countrySelect: (value: string) => actions.CountrySelectActionType;
+  countrySelect: (value: number )=> actions.CountrySelectActionType;
 };
 type Props = MapDispatchToProps & CountriesStateType;
 
 const TimeWidget: React.FC<Props> = ({
-  countriesLoaded,
-  countrySelect,
   countries,
-  selectedCountryId,
+  selectedCountryIndex,
   selectedLanguage,
 }) => {
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
+
   
   const [timeAndDate, setTimeAndDate] = useState(new Date());
-  const [timeZone, setTimeZone] = useState('');
+  const [timeZone, setTimeZone] = useState(countries[selectedCountryIndex] ? countries[selectedCountryIndex].timeZone : '');
 
   useEffect(() => {
     const timerId = setInterval(() => tick(), 1000);
@@ -41,17 +34,20 @@ const TimeWidget: React.FC<Props> = ({
   const tick = () => setTimeAndDate(new Date());
 
 
+
   const options: Object = {
     month: "long",
     day: "numeric",
     weekday: "long",
-    timeZone: setTimeZone(countries[selectedCountryId] ? countries[selectedCountryId].timeZone : ''),
+    timeZone: {timeZone},
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
   };
+
+  console.log(countries)
   // const timeZone = countries[selectedCountryId] ? countries[selectedCountryId].timeZone : '';
-  const locale = countries[selectedCountryId] ? countries[selectedCountryId].translations[selectedLanguage].timeFormat : '';
+  // const locale = countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].: '';
 
   // console.log(new Date().toLocaleDateString("en-US", options));
   // console.log(countries);
@@ -59,13 +55,13 @@ const TimeWidget: React.FC<Props> = ({
   return (
     <div className={classes.time__wraper}>
       <div className={classes.time}>
-        {countries[+selectedCountryId]
-          ? countries[+selectedCountryId].translations[selectedLanguage].name
+        {countries[selectedCountryIndex]
+          ? countries[selectedCountryIndex].translations[selectedLanguage].name
           : ""}{" "}
         Local time{" "}
       </div>
       <div className={classes.date}>
-            {timeAndDate.toLocaleDateString(locale, options)}
+            {timeAndDate.toLocaleDateString('en-US', options)}
       </div>
     </div>
   );
