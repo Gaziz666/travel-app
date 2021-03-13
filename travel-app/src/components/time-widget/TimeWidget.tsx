@@ -21,61 +21,51 @@ const TimeWidget: React.FC<Props> = ({
   selectedCountryId,
   selectedLanguage,
 }) => {
-
-  const [time, setTime] = useState(new Date());
   useEffect(() => {
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
       countriesLoaded(countries.data);
     });
   }, [countriesLoaded]);
+  
+  const [timeAndDate, setTimeAndDate] = useState(new Date());
+  const [timeZone, setTimeZone] = useState('');
 
-  useEffect(() =>{
-    const timerId = setInterval(() => tick(), 1000 );
-    return function cleanUp(){
+  useEffect(() => {
+    const timerId = setInterval(() => tick(), 1000);
+    return function cleanUp() {
       clearInterval(timerId);
     };
   });
 
-  const tick = () =>setTime(new Date());
-
-  const enLocalFormat = new Intl.DateTimeFormat("en-US").format;
-  const ruLocalFormat = new Intl.DateTimeFormat("ru-RU").format;
-  const ukLocalFormat = new Intl.DateTimeFormat("uk-UA").format;
+  const tick = () => setTimeAndDate(new Date());
 
 
+  const options: Object = {
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+    timeZone: setTimeZone(countries[selectedCountryId] ? countries[selectedCountryId].timeZone : ''),
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+  // const timeZone = countries[selectedCountryId] ? countries[selectedCountryId].timeZone : '';
+  const locale = countries[selectedCountryId] ? countries[selectedCountryId].translations[selectedLanguage].timeFormat : '';
 
-
-//   const utcData = 
-  let times = new Date();
-  const format1 = enLocalFormat(times);
-  const format2 = ruLocalFormat(times);
-  const format3 = ukLocalFormat(times);
-  console.log(format1, "HEY");
-  console.log(format2, "HEY");
-  console.log(format3, "HEY");
-// console.log(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }))
-// console.log(new Date().toLocaleString('en-US', { timeZone: 'Europe/Rome' }))
-// console.log(new Date().toLocaleString('en-US', { timeZone: 'Turkey' }))
-// console.log(new Date().toLocaleString('en-US', { timeZone: 'Japan' }))
-// console.log(new Date().toLocaleString('en-US', { timeZone: 'Brazil/East' }), 'Бразилия')
-console.log(new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai' }), 'Шанхай')
-console.log(countries)
-
-
-const timer = () => {
-
-
-}
-
+  // console.log(new Date().toLocaleDateString("en-US", options));
+  // console.log(countries);
 
   return (
     <div className={classes.time__wraper}>
-      <div className={classes.time}> 
-        {/* {countries[selectedCountryId]
-          ? countries[selectedCountryId].translations[selectedLanguage].name
+      <div className={classes.time}>
+        {countries[+selectedCountryId]
+          ? countries[+selectedCountryId].translations[selectedLanguage].name
           : ""}{" "}
-        Local time{" "} */}
+        Local time{" "}
+      </div>
+      <div className={classes.date}>
+            {timeAndDate.toLocaleDateString(locale, options)}
       </div>
     </div>
   );

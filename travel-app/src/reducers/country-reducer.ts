@@ -2,11 +2,12 @@ import {
   COUNTRIES_LOAD,
   COUNTRY_SELECT,
   LANGUAGE_SELECT,
-} from '../actions/actions-country';
+} from "../actions/actions-country";
 
 export type Countries = {
   _id: string;
   imgUrl: string;
+  smallImg: string;
   flagUrl: string;
   videoUrl: string;
   coordinate: {
@@ -14,9 +15,45 @@ export type Countries = {
     y: number;
   };
   placesCount: number;
+  rate: string;
+  index: number;
+  timeZone: string;
+  places: [
+    {
+      imgUrl: string;
+      imgSmallUrl: string;
+      rating: [
+        {
+          score: number;
+          author: string;
+        }
+      ];
+      translations: {
+        en: {
+          name: string;
+          info: string;
+          favorite: boolean;
+          timeFormat: string;
+        };
+        ru: {
+          name: string;
+          info: string;
+          favorite: boolean;
+          timeFormat: string;
+        };
+        uk: {
+          name: string;
+          info: string;
+          favorite: boolean;
+          timeFormat: string;
+        };
+      };
+    }
+  ];
   translations: {
     en: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -25,9 +62,11 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
     ru: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -36,9 +75,11 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
     uk: {
       name: string;
+      info: string;
       about: string;
       area: string;
       population: string;
@@ -47,14 +88,15 @@ export type Countries = {
       government: string;
       headOfState: string;
       headOfGovernment: string;
+      currency: string;
     };
   };
 };
 
 export enum LanguageType {
-  en = 'en',
-  ru = 'ru',
-  uk = 'uk',
+  en = "en",
+  ru = "ru",
+  uk = "uk",
 }
 
 export type CountriesStateType = {
@@ -65,13 +107,13 @@ export type CountriesStateType = {
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryId: '',
+  selectedCountryId: "",
   selectedLanguage: LanguageType.en,
 };
 
 const countryReducer = (
   state = initialState,
-  action: { type: string; payload: Array<Countries> | string },
+  action: { type: string; payload: Array<Countries> | string }
 ) => {
   switch (action.type) {
     case COUNTRIES_LOAD:
