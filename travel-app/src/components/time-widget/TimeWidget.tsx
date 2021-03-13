@@ -46,11 +46,11 @@ const TimeWidget: React.FC<Props> = ({
   const locale = countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].timeFormat : '';
 
   return (
-    <div className={classes.time__wraper}>
+    <div className={classes.time__widget}>
       <div className={classes.time}>
         {countries[selectedCountryIndex]
           ? countries[selectedCountryIndex].translations[selectedLanguage].capital
-          : ""}{" "} {t('country-page.times.localTime')}
+          : ""},{" "} {t('country-page.times.localTime')}
 
       </div>
       <div className={classes.date}>
