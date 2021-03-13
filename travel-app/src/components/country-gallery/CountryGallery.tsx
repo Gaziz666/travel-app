@@ -6,12 +6,6 @@ import { RootStateType } from "../../reducers/root-reducer";
 import CountriesService from "../../services/countries-service";
 import ImageGallery from "react-image-gallery";
 import classes from "./country-gallery.module.css";
-import pic1 from '../../assets/gallery/1.jpeg';
-import pic2 from '../../assets/gallery/2.jpeg';
-import pic3 from '../../assets/gallery/3.jpeg';
-import pic4 from '../../assets/gallery/4.jpeg';
-import pic5 from '../../assets/gallery/5.jpeg';
-import pic6 from '../../assets/gallery/6.jpeg';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -35,42 +29,26 @@ const CountryGallery: React.FC<Props> = ({
     });
   }, [countriesLoaded]);
 
-  const images = [
-    {
-      original:  pic1,
-      thumbnail: pic1,
-    },
-    {
-        original: pic2,
-        thumbnail: pic2,
-      },
-      {
-        original: pic3,
-        thumbnail: pic3,
-      },
-      {
-        original: pic4,
-        thumbnail: pic4,
-      },
-      {
-        original: pic5,
-        thumbnail: pic5,
-      },
-      {
-        original: pic6,
-        thumbnail: pic6,
-      },
-  ];
-  console.log(countries, 'gallery');
+  const renderImages = () => {
+  
+      return countries[selectedCountryIndex].places.map((place) => {
+        return ({ original: place.imgUrl, thumbnail: place.imgSmallUrl, originalTitle:place.translations[selectedLanguage].name,  description: place.translations[selectedLanguage].info });
+      });
+ 
+  };
+  
+
 
   return (
     <div className={classes.gallery__wrapper}>
       <div className={classes.gallery__top}>
         <div className={classes.gallery__mainscreen}>
-            <ImageGallery items={images}/>
+        <ImageGallery showBullets={true}  items={renderImages()} />
         </div>
         <div className={classes.gallery__sidebar}>
           <div className={classes.description}>
+            {/* {originalTitle} */}
+            {/* {countries[selectedCountryIndex].places[selectedItemIndex].translations[selectedLanguage].info} */}
             {/* <h2 className={classes.title}>{countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].}</h2> */}
             {/* {countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].} */}
           </div>
