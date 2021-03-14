@@ -41,13 +41,11 @@ const CurrencyWidget: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex
             try {
                 const response = await fetch(CURRENCY_API);
                 const data = await response.json();
-                console.log(data);
                 CURRENCY_EXCHANGE.map(rate => {
                     Object.entries(data.rates).map(
                         ([key, value]) => {
                             if (key === rate) {
                                 if (!cleanupFunction) {
-                                    console.log(outputCurrency)
                                     setOutputCurrency(outputCurrency => (
                                         [
                                             ...outputCurrency, `${key}: ${(value as number).toFixed(2)}`
