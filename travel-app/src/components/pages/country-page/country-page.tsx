@@ -50,8 +50,10 @@ const CountryPage: React.FC<Props> = (props) => {
       {renderContent()}
       {/* <MapComponent /> */}
       <div className={classes.country__widgets}>
-        <CurrencyWidget />
-        <TimeWidget />
+        <div className={classes.widgets__group}>
+          <CurrencyWidget />
+          <TimeWidget />
+        </div>
         <WeatherWidget />
       </div>
     </React.Fragment>
