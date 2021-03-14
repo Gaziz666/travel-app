@@ -5,7 +5,8 @@
       "destination": "Места назначения"
     },
     "main-body": {
-      "explore": "исследовать"
+      "explore": "исследовать",
+      "search": "поиск"
     }
   },
   "auth-page": {

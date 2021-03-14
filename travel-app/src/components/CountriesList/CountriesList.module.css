@@ -2,6 +2,7 @@
   height: 50%;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
@@ -29,4 +30,17 @@
   width: 60%;
   display: inline-block;
   padding-right: 3%;
+}
+
+@media screen and (max-width: 640px) {
+  .explore-button {
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .country-list {
+    width: 100%;
+    margin: 0 auto;
+  }
 }

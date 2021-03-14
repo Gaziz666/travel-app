@@ -5,7 +5,8 @@
       "destination": "Destination"
     },
     "main-body": {
-      "explore": "explore"
+      "explore": "explore",
+      "search": "search"
     }
   },
   "auth-page": {

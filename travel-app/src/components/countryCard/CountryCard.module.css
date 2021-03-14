@@ -20,3 +20,9 @@
   font-size: 1.6rem;
   color: #ffffff;
 }
+
+@media screen and (max-width: 540px) {
+  .card-wrapper {
+    margin: 0 auto;
+  }
+}
