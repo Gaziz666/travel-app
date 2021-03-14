@@ -32,6 +32,9 @@
       "second": "Introducing",
       "third": "While you’re there",
       "fourth": "Map"
+    },
+    "times": {
+      "localTime": "local time"
     }
   }
 }
