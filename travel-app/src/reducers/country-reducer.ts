@@ -5,7 +5,6 @@ import {
   SEARCH_CHANGE,
 } from '../actions/actions-country';
 
-
 export type Countries = {
   _id: string;
   imgUrl: string;
@@ -20,24 +19,22 @@ export type Countries = {
   rate: string;
   index: number;
   timeZone: string;
-
   places: [
     {
       imgUrl: string;
       imgSmallUrl: string;
+      id: string;
       rating: [
         {
           score: number;
           author: string;
         },
-
       ];
       translations: {
         en: {
           name: string;
           info: string;
           favorite: boolean;
-          // timeFormat: string;
         };
         ru: {
           name: string;
@@ -50,8 +47,7 @@ export type Countries = {
           favorite: boolean;
         };
       };
-    }
-
+    },
   ];
   translations: {
     en: {
@@ -67,7 +63,6 @@ export type Countries = {
       headOfGovernment: string;
       currency: string;
       timeFormat: string;
-
     };
     ru: {
       name: string;
@@ -82,7 +77,6 @@ export type Countries = {
       headOfGovernment: string;
       currency: string;
       timeFormat: string;
-
     };
     uk: {
       name: string;
@@ -97,15 +91,14 @@ export type Countries = {
       headOfGovernment: string;
       currency: string;
       timeFormat: string;
-
     };
   };
 };
 
 export enum LanguageType {
-  en = "en",
-  ru = "ru",
-  uk = "uk",
+  en = 'en',
+  ru = 'ru',
+  uk = 'uk',
 }
 
 export type CountriesStateType = {
@@ -124,7 +117,7 @@ const initialState: CountriesStateType = {
 
 const countryReducer = (
   state = initialState,
-  action: { type: string; payload: Array<Countries> | string }
+  action: { type: string; payload: Array<Countries> | string },
 ) => {
   switch (action.type) {
     case COUNTRIES_LOAD:
