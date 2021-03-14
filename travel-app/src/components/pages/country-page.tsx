@@ -10,7 +10,6 @@ import CountryInfo from '../country-info/country-info';
 import CurrencyWidget from '../currencyWidget/CurrencyWidget';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
 
-
 export const tabs = {
   inspire: 'inspire',
   introducing: 'introducing',
@@ -26,7 +25,7 @@ type Props = MapDispatchToProps & AuthStateType & any;
 const CountryPage: React.FC<Props> = (props) => {
   useEffect(() => {
     props.mainPageIsOpen(false);
-  }, []);
+  }, [props.mainPageIsOpen]);
 
   const renderContent = () => {
     switch (props.match.params.id) {
@@ -52,7 +51,6 @@ const CountryPage: React.FC<Props> = (props) => {
       <div >
         <CurrencyWidget />
         <WeatherWidget />
-
       </div>
     </React.Fragment>
   );

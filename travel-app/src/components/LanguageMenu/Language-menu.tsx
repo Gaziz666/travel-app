@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions-country';
 import { LanguageType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
-import { AuthStateType } from '../../reducers/auth-reducer';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as LangSvg } from '../../assets/images/langSVG.svg';
 
@@ -26,6 +25,7 @@ const LanguageMenu: React.FC<Props> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   let color = mainIsOpen ? '#fff' : '#000';
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     color = mainIsOpen ? '#fff' : '#000';
   }, [mainIsOpen]);
 

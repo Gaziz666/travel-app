@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
-import CountriesService from '../../services/countries-service';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import CountryCard from '../countryCard/CountryCard';
@@ -23,23 +22,22 @@ type MapDispatchToProps = {
 };
 type Props = MapDispatchToProps & CountriesStateType;
 
-const settings = {
+let settings = {
   dots: false,
+  initialSlide: 0,
   infinite: true,
   speed: 500,
-  focusOnSelect: true,
   slidesToShow: 3,
   slidesToScroll: 1,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 5000,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
-        dots: true,
       },
     },
     {
@@ -47,8 +45,7 @@ const settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
-        infinite: true,
-        dots: true,
+        infinite: false,
       },
     },
     {
@@ -56,26 +53,56 @@ const settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: true,
-        dots: true,
+        infinite: false,
       },
     },
   ],
 };
 
-const CountriesList: React.FC<Props> = ({ countriesLoaded, countries }) => {
+const settingsChange = (length: number) => {
+  if (length === 2) {
+    settings.responsive[0].settings.slidesToShow = 2;
+    settings.responsive[1].settings.slidesToShow = 2;
+    settings.responsive[2].settings.slidesToShow = 1;
+  } else if (length === 1) {
+    settings.responsive[0].settings.slidesToShow = 1;
+    settings.responsive[1].settings.slidesToShow = 1;
+    settings.responsive[2].settings.slidesToShow = 1;
+  } else if (length > 2) {
+    settings.responsive[0].settings.slidesToShow = 3;
+    settings.responsive[1].settings.slidesToShow = 2;
+    settings.responsive[2].settings.slidesToShow = 1;
+  }
+};
+
+const CountriesList: React.FC<Props> = ({
+  countriesLoaded,
+  countries,
+  searchText,
+  selectedLanguage,
+}) => {
   const { t } = useTranslation();
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
 
   const renderCard = () => {
-    return countries.map((country, index) => {
-      return <CountryCard index={index} key={country._id} />;
-    });
+    const cardArray = countries
+      .filter((country) => {
+        const name = country.translations[selectedLanguage].name.toLowerCase();
+        const capital = country.translations[
+          selectedLanguage
+        ].capital.toLowerCase();
+        if (
+          name.includes(searchText.toLowerCase()) ||
+          capital.includes(searchText.toLowerCase())
+        ) {
+          return country;
+        }
+        return false;
+      })
+      .map((country) => {
+        return <CountryCard index={country.index} key={country._id} />;
+      });
+    settingsChange(cardArray.length);
+    return cardArray;
   };
 
   return (
