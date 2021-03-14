@@ -25,5 +25,6 @@
 }
 
 .app__main {
-  min-height: calc(100vh - 122px);
+  height: calc(100vh - 122px);
+  min-height: 590px;
 }

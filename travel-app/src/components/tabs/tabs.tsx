@@ -10,11 +10,11 @@ import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
 import { connect } from 'react-redux';
 import { routs } from '../App/App';
-import { tabs } from '../pages/country-page';
+import { tabs } from '../pages/country-page/country-page';
 
 function a11yProps(index: any) {
   return {
-    'id': `nav-tab-${index}`,
+    id: `nav-tab-${index}`,
     'aria-controls': `nav-tabpanel-${index}`,
   };
 }
@@ -61,15 +61,19 @@ const NavTabs: React.FC<Props> = ({
   selectedCountryIndex,
   selectedLanguage,
 }) => {
+  const MAP_URL = '/country/map';
+  const WHILE_URL = '/country/while';
+  const INTRODUCING_URL = '/country/introducing';
+
   useEffect(() => {
     switch (history.location.pathname) {
-      case '/country/map':
+      case MAP_URL:
         setValue(3);
         break;
-      case '/country/while':
+      case WHILE_URL:
         setValue(2);
         break;
-      case '/country/introducing':
+      case INTRODUCING_URL:
         setValue(1);
         break;
 

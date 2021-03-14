@@ -25,3 +25,9 @@
   color: #ffffff;
   text-align: left;
 }
+
+@media screen and (max-width: 640px) {
+  .name-wrapper {
+    height: auto;
+  }
+}
