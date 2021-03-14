@@ -3,16 +3,16 @@
     height: 445px;
 }
 
-.marker__btn {
+/* .marker__btn {
     cursor: pointer;
     background: none;
     border: none;
-}
+} */
 
-.marker__btn img {
+/* .marker__btn img {
     width: 15px;
     height: 15px;
-}
+} */
 
 .polygon {
     border: 1px solid brown;
