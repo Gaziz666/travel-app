@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/actions-country";
 import { Countries, CountriesStateType } from "../../reducers/country-reducer";
@@ -30,32 +30,48 @@ const CountryGallery: React.FC<Props> = ({
   }, [countriesLoaded]);
 
   const renderImages = () => {
-  
-      return countries[selectedCountryIndex].places.map((place) => {
-        return ({ original: place.imgUrl, thumbnail: place.imgSmallUrl, originalTitle:place.translations[selectedLanguage].name,  description: place.translations[selectedLanguage].info });
-      });
- 
+    return countries[selectedCountryIndex].places.map((place) => {
+      return {
+        original: place.imgUrl,
+        thumbnail: place.imgSmallUrl,
+        originalTitle: place.translations[selectedLanguage].name,
+        description: place.translations[selectedLanguage].info,
+      };
+    });
   };
-  
+  // console.log(countries);
 
+  const [title, setTitle] = useState(countries[selectedCountryIndex].places[0].translations[selectedLanguage].name);
+  const [description, setDescription] = useState(countries[selectedCountryIndex].places[0].translations[selectedLanguage].info);
+
+  const renderSidebar = (index: number) => {
+    console.log(index);
+
+    console.log(countries[selectedCountryIndex].places[index].translations[selectedLanguage].name);
+    return (
+      setTitle(countries[selectedCountryIndex].places[index].translations[selectedLanguage].name),
+      setDescription(countries[selectedCountryIndex].places[index].translations[selectedLanguage].info)
+    );
+  };
 
   return (
     <div className={classes.gallery__wrapper}>
       <div className={classes.gallery__top}>
         <div className={classes.gallery__mainscreen}>
-        <ImageGallery showBullets={true}  items={renderImages()} />
+          <ImageGallery
+            showBullets={true}
+            items={renderImages()}
+            onSlide={renderSidebar}
+          />
         </div>
         <div className={classes.gallery__sidebar}>
           <div className={classes.description}>
-            {/* {originalTitle} */}
-            {/* {countries[selectedCountryIndex].places[selectedItemIndex].translations[selectedLanguage].info} */}
-            {/* <h2 className={classes.title}>{countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].}</h2> */}
-            {/* {countries[selectedCountryIndex] ? countries[selectedCountryIndex].translations[selectedLanguage].} */}
+        <h2>{title}</h2>
+        <p>{description}</p>
           </div>
           <div className={classes.rating}></div>
         </div>
       </div>
-    
     </div>
   );
 };

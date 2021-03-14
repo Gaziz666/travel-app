@@ -18,10 +18,12 @@ export type Countries = {
   placesCount: number;
   rate: string;
   index: number;
+  id: string;
   places: [
     {
       imgUrl: string;
       imgSmallUrl: string;
+
       rating: [
         {
           score: number;
