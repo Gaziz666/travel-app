@@ -17,7 +17,6 @@ type Props = MapDispatchToProps & CountriesStateType;
 
 const CountryGallery: React.FC<Props> = ({
   countriesLoaded,
-  countrySelect,
   countries,
   selectedCountryIndex,
   selectedLanguage,
@@ -35,7 +34,7 @@ const CountryGallery: React.FC<Props> = ({
         original: place.imgUrl,
         thumbnail: place.imgSmallUrl,
         originalTitle: place.translations[selectedLanguage].name,
-        description: place.translations[selectedLanguage].info,
+       
       };
     });
   };

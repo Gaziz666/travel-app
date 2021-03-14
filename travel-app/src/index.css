@@ -112,3 +112,6 @@ span.MuiTabs-indicator {
   border-radius: 10px;
 
 }
+.image-gallery-slide .image-gallery-image{
+  object-fit: cover;
+}
