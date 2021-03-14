@@ -24,7 +24,7 @@ const CountryInfo: React.FC<Props> = ({
     <div className={classes['card-info-wrapper']}>
       <div className={classes['card-info-about']}>
         <h3 className={classes.card__title}>
-          About {}
+          {}
           {countries[selectedCountryIndex]
             ? countries[selectedCountryIndex].translations[selectedLanguage]
                 .name

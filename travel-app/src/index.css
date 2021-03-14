@@ -115,3 +115,12 @@ span.MuiTabs-indicator {
 .image-gallery-slide .image-gallery-image{
   object-fit: cover;
 }
+.image-gallery-slide{
+  left: -20px;
+}
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+width: 35px;
+}
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg:hover {
+color: #d8f5f7;
+}

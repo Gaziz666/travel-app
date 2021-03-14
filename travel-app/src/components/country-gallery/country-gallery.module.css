@@ -12,11 +12,11 @@
 }
 
 .gallery__mainscreen {
-  background-color: #d8f5f7;
+  /* background-color: #d8f5f7; */
   border-radius: 30px;
   margin: 20px 20px 0 0;
   text-align: left;
-  padding: 35px 45px;
+  /* padding: 15px; */
   font-family: "Poppins";
   font-weight: 400;
   font-size: 18px;
