@@ -18,10 +18,12 @@ export type Countries = {
   placesCount: number;
   rate: string;
   index: number;
+  timeZone: string;
   places: [
     {
       imgUrl: string;
       imgSmallUrl: string;
+      id: string;
       rating: [
         {
           score: number;
@@ -60,6 +62,7 @@ export type Countries = {
       headOfState: string;
       headOfGovernment: string;
       currency: string;
+      timeFormat: string;
     };
     ru: {
       name: string;
@@ -73,6 +76,7 @@ export type Countries = {
       headOfState: string;
       headOfGovernment: string;
       currency: string;
+      timeFormat: string;
     };
     uk: {
       name: string;
@@ -86,6 +90,7 @@ export type Countries = {
       headOfState: string;
       headOfGovernment: string;
       currency: string;
+      timeFormat: string;
     };
   };
 };
@@ -105,7 +110,7 @@ export type CountriesStateType = {
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryIndex: 1,
+  selectedCountryIndex: 0,
   selectedLanguage: LanguageType.en,
   searchText: '',
 };

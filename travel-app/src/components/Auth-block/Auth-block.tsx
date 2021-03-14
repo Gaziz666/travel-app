@@ -7,6 +7,7 @@ import * as actions from '../../actions/auth-actions';
 import styles from './auth-block.module.css';
 import { AuthButton } from '../AuthButton/Auth-button';
 import { useTranslation } from 'react-i18next';
+import AuthService from '../../services/auth-service';
 
 type MapDispatchToProps = {
   authStatusChange: (
@@ -18,19 +19,24 @@ type Props = AuthStateType & MapDispatchToProps;
 
 const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
   const { t } = useTranslation();
+  const header =
+    authStatus === 0
+      ? t('auth-page.auth-block.sign-in')
+      : t('auth-page.auth-block.log-in');
+
+  const handleLogin = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    const authService = new AuthService();
+    authService.addNewUser();
+  };
+
+  const handleSigning = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+  };
 
   return (
-    <div className={styles['auth-container']}>
-      {authStatus === 0 ? (
-        <div className={styles['auth-header']}>
-          {t('auth-page.auth-block.sign-in')}
-        </div>
-      ) : null}
-      {authStatus === 1 ? (
-        <div className={styles['auth-header']}>
-          {t('auth-page.auth-block.log-in')}
-        </div>
-      ) : null}
+    <>
+      <div className={styles['auth-header']}>{header}</div>
       <form className={styles['auth-form']}>
         <label className={styles['auth-label']}>
           {t('auth-page.auth-block.name')}
@@ -53,22 +59,21 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
             <div className={styles['button__wrapper']}>
               <AuthButton
                 value={t('auth-page.auth-block.sign-in')}
-                handleClick={(event) => event.preventDefault()}
+                handleClick={handleSigning}
               />
             </div>
             <div className={styles['skip-button']}>
               <Link to="/main">{t('auth-page.auth-block.skip')}</Link>
             </div>
           </>
-        ) : null}
-        {authStatus === 1 ? (
+        ) : (
           <div className={styles['button__wrapper']}>
             <AuthButton
               value={t('auth-page.auth-block.log-in')}
-              handleClick={(event) => event.preventDefault()}
+              handleClick={handleLogin}
             />
           </div>
-        ) : null}
+        )}
       </form>
       {authStatus === 0 ? (
         <div
@@ -77,16 +82,15 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
         >
           {t('auth-page.auth-block.sign-up-text')}
         </div>
-      ) : null}
-      {authStatus === 1 ? (
+      ) : (
         <div
           className={styles['change-login__text']}
           onClick={() => authStatusChange(0)}
         >
           {t('auth-page.auth-block.sign-in-text')}
         </div>
-      ) : null}
-    </div>
+      )}
+    </>
   );
 };
 const mapStateToProps = (state: RootStateType) => state.authStatusState;

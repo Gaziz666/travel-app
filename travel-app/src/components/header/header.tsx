@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({
   }, []);
 
   const toMain = () => {
-    countrySelect(1);
+    countrySelect(0);
   };
 
   return (
