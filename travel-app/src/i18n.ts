@@ -19,4 +19,8 @@ i18n
     },
   });
 
+i18n.use(Backend).init({
+  backend: { loadPath: '/locales/{{lng}}/{{ns}}.json' },
+});
+
 export default i18n;
