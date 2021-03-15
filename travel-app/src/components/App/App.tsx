@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import classes from './App.module.css';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from '../pages/main-page/main-page';
-import CountryPage from '../pages/country-page';
+import CountryPage from '../pages/country-page/country-page';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import AuthPage from '../pages/Auth-page/Auth-page';
@@ -74,7 +74,6 @@ const App: React.FC<Props> = ({
               <Route path={`${routs.country}/:id`} component={CountryPage} />
               <Route path={routs.auth} component={AuthPage} exact />
             </Switch>
-
           </main>
           <Footer />
         </div>

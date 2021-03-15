@@ -5,7 +5,8 @@
       "destination": "Destination"
     },
     "main-body": {
-      "explore": "explore"
+      "explore": "explore",
+      "search": "search"
     }
   },
   "auth-page": {
@@ -40,6 +41,10 @@
       "government": "Government",
       "headOfState": "Head of State",
       "headOfGov": "Head of Government"
+    },
+    "times": {
+      "localTime": "local time"
+
     }
   }
 }

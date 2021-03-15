@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: row;
   display: flex;
-  height: 60vh;
+  /* height: 60vh; */
   box-sizing: border-box;
+  margin-bottom: 20px;
+
 }
 
 .card-info-about {
@@ -19,6 +21,7 @@
   font-size: 18px;
   text-indent: 20px;
   flex-grow: 1;
+  padding-bottom: 20px;
 }
 
 .card-info-sidebar {

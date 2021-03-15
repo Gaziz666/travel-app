@@ -15,8 +15,6 @@ type MapDispatchToProps = {
 type Props = MapDispatchToProps & CountriesStateType;
 
 const CountryInfo: React.FC<Props> = ({
-  countriesLoaded,
-  countrySelect,
   countries,
   selectedCountryIndex,
   selectedLanguage,

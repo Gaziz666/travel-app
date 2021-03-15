@@ -5,7 +5,8 @@
       "destination": "Места назначения"
     },
     "main-body": {
-      "explore": "исследовать"
+      "explore": "исследовать",
+      "search": "поиск"
     }
   },
   "auth-page": {
@@ -32,7 +33,7 @@
       "third": "Пока вы там",
       "fourth": "Карта"
     },
-    "key-facts":{
+    "key-facts": {
       "area": "Площадь",
       "population": "Население страны",
       "pop-density": "Плотность населения",
@@ -40,6 +41,9 @@
       "government": "Форма правления",
       "headOfState": "Глава страны",
       "headOfGov": "Глава правительства"
+    },
+    "times": {
+      "localTime": "местное время"
     }
   }
 }

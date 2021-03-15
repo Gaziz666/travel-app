@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { RootStateType } from '../../reducers/root-reducer';
-import * as actions from '../../actions/auth-actions';
-import Inspire from '../Inspire/Inspire';
-import NavTabs from '../tabs/tabs';
-import MapComponent from '../MapComponent/MapComponent';
-import { AuthStateType } from '../../reducers/auth-reducer';
-import CountryInfo from '../country-info/country-info';
+import { RootStateType } from '../../../reducers/root-reducer';
+import * as actions from '../../../actions/auth-actions';
+import Inspire from '../../Inspire/Inspire';
+import NavTabs from '../../tabs/tabs';
+import MapComponent from '../../MapComponent/MapComponent';
+import { AuthStateType } from '../../../reducers/auth-reducer';
+import CountryInfo from '../../country-info/country-info';
+import CurrencyWidget from '../../currencyWidget/CurrencyWidget';
+import WeatherWidget from '../../WeatherWidget/WeatherWidget';
+import classes from './country-page.module.css';
+import TimeWidget from '../../time-widget/TimeWidget';
+import CountryGallery from '../../country-gallery/CountryGallery';
 
-import CountryGallery from '../country-gallery/CountryGallery';
-import CurrencyWidget from '../currencyWidget/CurrencyWidget';
-import WeatherWidget from '../WeatherWidget/WeatherWidget';
 
 
 export const tabs = {
@@ -50,8 +52,11 @@ const CountryPage: React.FC<Props> = (props) => {
       <NavTabs history={props.history} />
       {renderContent()}
       {/* <MapComponent /> */}
-      <div>
-        <CurrencyWidget />
+      <div className={classes.country__widgets}>
+        <div className={classes.widgets__group}>
+          <CurrencyWidget />
+          <TimeWidget />
+        </div>
         <WeatherWidget />
       </div>
     </React.Fragment>
