@@ -23,3 +23,9 @@
     border-radius: 10px;
   }
 }
+
+@media screen and (max-width: 420px) {
+  .widget {
+    width: 100%;
+  }
+}
