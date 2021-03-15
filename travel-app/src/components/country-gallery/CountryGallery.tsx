@@ -6,6 +6,7 @@ import { RootStateType } from "../../reducers/root-reducer";
 import CountriesService from "../../services/countries-service";
 import ImageGallery from "react-image-gallery";
 import classes from "./country-gallery.module.css";
+import Rating from "../rating/rating";
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -66,9 +67,11 @@ const CountryGallery: React.FC<Props> = ({
         <div className={classes.gallery__sidebar}>
           <div className={classes.description}>
         <h2>{title}</h2>
-        <p>{description}</p>
+        <div className={classes.descript}>{description}</div>
           </div>
-          <div className={classes.rating}></div>
+          <div className={classes.rating}>
+            <Rating/>
+            </div>
         </div>
       </div>
     </div>

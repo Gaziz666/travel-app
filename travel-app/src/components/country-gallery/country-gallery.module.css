@@ -57,3 +57,7 @@
   min-height: 20vh;
   flex-grow: 1;
 }
+.descript{
+  overflow: scroll;
+  max-height: 400px;
+}
