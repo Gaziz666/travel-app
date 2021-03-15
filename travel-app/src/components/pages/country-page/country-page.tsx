@@ -11,6 +11,9 @@ import CurrencyWidget from '../../currencyWidget/CurrencyWidget';
 import WeatherWidget from '../../WeatherWidget/WeatherWidget';
 import classes from './country-page.module.css';
 import TimeWidget from '../../time-widget/TimeWidget';
+import CountryGallery from '../../country-gallery/CountryGallery';
+
+
 
 export const tabs = {
   inspire: 'inspire',
@@ -36,7 +39,7 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.introducing:
         return <CountryInfo />;
       case tabs.while:
-        return <div>while</div>;
+        return <CountryGallery/>;
       case tabs.map:
         return <div>map</div>;
       default:
