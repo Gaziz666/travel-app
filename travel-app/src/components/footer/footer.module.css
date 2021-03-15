@@ -1,7 +1,6 @@
 .footer {
-  justify-content: flex-end;
-  flex-wrap: wrap;
   color: #ffffff;
+  margin-top: 5px;
 }
 
 .footer__link {
