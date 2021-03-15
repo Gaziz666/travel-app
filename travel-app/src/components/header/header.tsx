@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './header.module.css';
 import { Link } from 'react-router-dom';
-import LanguageMenu from '../LanguageMenu/Language-menu';
+import LanguageMenuSelect from '../LanguageMenu/Select';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 import * as actionsAuth from '../../actions/auth-actions';
 import * as actionCountry from '../../actions/actions-country';
@@ -24,10 +24,6 @@ const Header: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   let color = mainIsOpen ? '#fff' : '#000';
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    color = mainIsOpen ? '#fff' : '#000';
-  }, []);
 
   const toMain = () => {
     countrySelect(1);
@@ -60,7 +56,7 @@ const Header: React.FC<Props> = ({
         >
           {t('main-page.header-link.destination')}
         </Link>
-        <LanguageMenu />
+        <LanguageMenuSelect />
         <Link
           to={routs.auth}
           className={`${classes.header__login} ${

@@ -24,10 +24,6 @@ const LanguageMenu: React.FC<Props> = ({
   const { i18n } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   let color = mainIsOpen ? '#fff' : '#000';
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    color = mainIsOpen ? '#fff' : '#000';
-  }, [mainIsOpen]);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

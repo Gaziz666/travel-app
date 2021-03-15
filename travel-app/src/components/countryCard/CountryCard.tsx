@@ -6,7 +6,7 @@ import { RootStateType } from '../../reducers/root-reducer';
 import * as actionsCountry from '../../actions/actions-country';
 import * as actionsAuth from '../../actions/auth-actions';
 import { routs } from '../App/App';
-import { tabs } from '../pages/country-page';
+import { tabs } from '../pages/country-page/country-page';
 import styles from './CountryCard.module.css';
 
 type MapDispatchToProps = {
@@ -41,7 +41,6 @@ const CountryCard: React.FC<Props> = ({
         onClick={selectCountry}
       >
         <div className={styles['country-name']}>{info.name}</div>
-       
       </div>
     </Link>
   );

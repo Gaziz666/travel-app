@@ -1,4 +1,4 @@
-.widget {
+.time__widget {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -14,8 +14,12 @@
   line-height: 21px;
 }
 
+.date {
+  width: 210px;
+}
+
 @media screen and (max-width: 800px) {
-  .widget {
+  .time__widget {
     width: 48%;
     min-height: 50px;
     margin-top: 10px;
@@ -25,7 +29,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .widget {
+  .time__widget {
     width: 100%;
   }
 }

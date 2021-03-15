@@ -6,6 +6,7 @@ import styles from './search-country.module.css';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
+import { useTranslation } from 'react-i18next';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -32,6 +33,7 @@ const SearchCountry: React.FC<Props> = ({
       (searchInput.current! as HTMLInputElement).focus();
     }
   });
+  const { t } = useTranslation();
 
   const inputChange = (event: React.ChangeEvent<{ value: string }>) => {
     searchInputChange(event.target.value);
@@ -50,7 +52,7 @@ const SearchCountry: React.FC<Props> = ({
         <input
           className={styles['search-input']}
           type="text"
-          placeholder="Search"
+          placeholder={t('main-page.main-body.search')}
           value={searchText}
           onChange={inputChange}
           ref={searchInput}
