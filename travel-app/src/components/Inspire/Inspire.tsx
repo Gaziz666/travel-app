@@ -16,8 +16,6 @@ type Props = CountriesStateType & MapDispatchToProps;
 const Inspire: React.FC<Props> = ({ countries, selectedCountryIndex }) => {
   return (
     <div className={classes.player__wrapper}>
-      {console.log(countries)}
-      {console.log(selectedCountryIndex)}
       <Player
         muted={true}
         autoPlay={true}
