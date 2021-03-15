@@ -4,6 +4,7 @@ import { RootStateType } from '../../reducers/root-reducer';
 import * as actions from '../../actions/actions-country';
 import classes from './country-info.module.css';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
+import { useTranslation } from 'react-i18next';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -20,6 +21,7 @@ const CountryInfo: React.FC<Props> = ({
   selectedCountryIndex,
   selectedLanguage,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className={classes['card-info-wrapper']}>
       <div className={classes['card-info-about']}>
@@ -50,7 +52,7 @@ const CountryInfo: React.FC<Props> = ({
         <div className={classes['country-key-facts']}>
           <div className={classes.title}>Key facts:</div>
           <div className={classes.area}>
-            <div className={classes.area__first}>Area: </div>
+            <div className={classes.area__first}>{t('country-page.key-facts.area')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
@@ -59,7 +61,7 @@ const CountryInfo: React.FC<Props> = ({
             </div>
           </div>
           <div className={classes.population}>
-            <div className={classes.population__first}>Population:</div>
+            <div className={classes.population__first}>{t('country-page.key-facts.population')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
@@ -68,7 +70,7 @@ const CountryInfo: React.FC<Props> = ({
             </div>
           </div>
           <div className={classes['population-density']}>
-            <div className={classes.pop_den}>Population density:</div>
+            <div className={classes.pop_den}>{t('country-page.key-facts.pop-density')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
@@ -77,7 +79,7 @@ const CountryInfo: React.FC<Props> = ({
             </div>
           </div>
           <div className={classes.capital}>
-            <div className={classes.capital__first}>Capital: </div>
+            <div className={classes.capital__first}>{t('country-page.key-facts.capital')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
@@ -86,7 +88,7 @@ const CountryInfo: React.FC<Props> = ({
             </div>
           </div>
           <div className={classes.government}>
-            <div className={classes.gov__first}>Government:</div>
+            <div className={classes.gov__first}>{t('country-page.key-facts.government')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
@@ -95,7 +97,7 @@ const CountryInfo: React.FC<Props> = ({
             </div>
           </div>
           <div className={classes['head-of-state']}>
-            <div className={classes.head}>Head of State:</div>
+            <div className={classes.head}>{t('country-page.key-facts.headOfState')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
@@ -104,7 +106,7 @@ const CountryInfo: React.FC<Props> = ({
             </div>
           </div>
           <div className={classes['head-of-government']}>
-            <div className={classes.head__gov}>Head of government:</div>
+            <div className={classes.head__gov}>{t('country-page.key-facts.headOfGov')}:</div>
             <div>
               {countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
