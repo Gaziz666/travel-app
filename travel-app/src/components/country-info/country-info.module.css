@@ -1,22 +1,18 @@
-
 .card-info-wrapper {
   display: flex;
   flex-direction: row;
-  display: flex;
-  /* height: 60vh; */
+  flex-grow: 1;
   box-sizing: border-box;
   margin-bottom: 20px;
-
 }
 
 .card-info-about {
-
   background-color: #d8f5f7;
   border-radius: 30px;
   margin: 20px 20px 0 0;
   text-align: left;
   padding: 35px 45px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 18px;
   text-indent: 20px;
@@ -34,14 +30,13 @@
   text-align: start;
 }
 .flag {
-  max-width: 100%;
-  width: 100%;
-  max-height: 100%;
+  width: 250px;
+  max-height: 180px;
 
   border-radius: 15px;
   background-color: #d8f5f7;
-  border:0.2px solid #d8f5f7;
-  margin-bottom: 20px;
+  border: 0.2px solid #d8f5f7;
+  margin: 0 auto 20px;
 }
 .country-key-facts {
   background-color: #d8f5f7;
@@ -92,7 +87,7 @@
 
 .country-key-facts {
   padding: 10px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-size: 11px;
   font-weight: 400;
 }
@@ -104,12 +99,13 @@
 }
 
 h3.card__title {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 700;
   font-size: 18px;
 }
 
-.about{
-  max-height: 400px;
-  overflow: scroll;
+@media screen and (max-width: 570px) {
+  .card-info-wrapper {
+    flex-wrap: wrap;
+  }
 }

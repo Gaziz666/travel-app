@@ -1,10 +1,6 @@
 .footer {
-  display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
-  position: absolute;
-  right: 25px;
-  bottom: 25px;
   color: #ffffff;
 }
 
@@ -41,10 +37,9 @@
   color: transparent;
 }
 
-.footer__link__wrapper{
+.footer__link__wrapper {
   display: flex;
   align-self: flex-end;
-
 }
 
 .widget__wrapper {
