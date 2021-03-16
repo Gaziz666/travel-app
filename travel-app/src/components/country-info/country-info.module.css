@@ -21,7 +21,6 @@
   font-size: 18px;
   text-indent: 20px;
   flex-grow: 1;
-  padding-bottom: 20px;
 }
 
 .card-info-sidebar {
@@ -111,5 +110,5 @@ h3.card__title {
 
 .about{
   max-height: 400px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
