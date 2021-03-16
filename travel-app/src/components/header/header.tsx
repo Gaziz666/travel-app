@@ -26,7 +26,7 @@ const Header: React.FC<Props> = ({
   let color = mainIsOpen ? '#fff' : '#000';
 
   const toMain = () => {
-    countrySelect(1);
+    countrySelect(0);
   };
 
   return (

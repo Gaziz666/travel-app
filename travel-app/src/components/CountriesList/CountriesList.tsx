@@ -38,6 +38,7 @@ let settings = {
         slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
+        initialSlide: 0,
       },
     },
     {
@@ -45,7 +46,8 @@ let settings = {
       settings: {
         slidesToShow: 2,
         slidesToScroll: 1,
-        infinite: false,
+        infinite: true,
+        initialSlide: 0,
       },
     },
     {
@@ -53,7 +55,8 @@ let settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
-        infinite: false,
+        infinite: true,
+        initialSlide: 0,
       },
     },
   ],
