@@ -1,9 +1,10 @@
 .gallery__wrapper {
   display: flex;
   flex-direction: column;
-  display: flex;
-  height: 80vh;
+  flex-grow: 1;
   box-sizing: border-box;
+  flex-grow: 1;
+  padding: 10px;
 }
 
 .gallery__top {
@@ -12,12 +13,10 @@
 }
 
 .gallery__mainscreen {
-  /* background-color: #d8f5f7; */
   border-radius: 30px;
   margin: 20px 20px 0 0;
   text-align: left;
-  /* padding: 15px; */
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 18px;
   text-indent: 20px;
@@ -50,15 +49,17 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.gallery__thumbnails{
+.gallery__thumbnails {
   background-color: #d8f5f7;
   border-radius: 15px;
   margin: 10px 0;
   min-height: 20vh;
   flex-grow: 1;
 }
+
 .descript{
   overflow: scroll;
   max-height: 400px;
   min-height: 400px;
 }
+

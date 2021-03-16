@@ -1,18 +1,18 @@
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import styles from './auth-button.module.css';
 
 type Props = {
   value: string;
-  handleClick: (event: SyntheticEvent) => void;
+  buttonClick?: () => void;
 };
 
-const AuthButton: React.FC<Props> = ({ value, handleClick }) => {
+const AuthButton: React.FC<Props> = ({ value, buttonClick }) => {
   return (
     <input
       className={styles['auth-button']}
       type="submit"
       value={value}
-      onClick={(event: SyntheticEvent) => handleClick(event)}
+      onClick={buttonClick}
     />
   );
 };

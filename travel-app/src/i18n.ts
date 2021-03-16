@@ -9,13 +9,17 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
     detection: {
       order: ['queryString', 'cookie'],
       cache: ['cookie'],
     },
     interpolation: {
       escapeValue: false,
+    },
+    backend: {
+      loadPath:
+        'https://rrroman.github.io/travel-app/travel-app/locales/{{lng}}/{{ns}}.json',
     },
   });
 

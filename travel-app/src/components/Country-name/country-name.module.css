@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 50%;
   margin-top: 5%;
   width: 40%;
   margin-left: 10%;
@@ -29,5 +28,6 @@
 @media screen and (max-width: 640px) {
   .name-wrapper {
     height: auto;
+    width: auto;
   }
 }
