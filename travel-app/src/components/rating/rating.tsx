@@ -22,6 +22,7 @@ const StarsRating: React.FC<Props> = ({
   countries,
   selectedCountryIndex,
   selectedLanguage,
+  selectedPlace,
 }) => {
   useEffect(() => {
     const countryService = new CountriesService();
@@ -29,17 +30,27 @@ const StarsRating: React.FC<Props> = ({
       countriesLoaded(countries.data);
     });
   }, [countriesLoaded]);
-const [rating, setRating] = useState(0);
 
-  const ratingChanged = (newRating: any) => {
-      setRating(newRating);
-    console.log(newRating)
-  }
+
+  const currentPlace = countries[selectedCountryIndex].places[selectedPlace];
+  const ratingLength = currentPlace.rating.length;
+  const sumRating = currentPlace.rating.reduce((sum, item) => {
+    return (sum += Number(item.score));
+  }, 0);
+
+  const rating = ratingLength ? sumRating / ratingLength : 0;
+
+  console.log(ratingLength, sumRating, currentPlace, rating);
+  // const ratingChanged = (newRating: any) => {
+  //     setRating(newRating);
+  //   console.log(newRating)
+  // }
   return (
     <div className={classes.rating}>
-      <ReactStars className={classes.stars}
+      <ReactStars
+        className={classes.stars}
         count={5}
-        onChange={ratingChanged}
+        // onChange={ratingChanged}
         size={30}
         value={rating}
         // edit={false}
