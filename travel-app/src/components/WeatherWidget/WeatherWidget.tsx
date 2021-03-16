@@ -29,13 +29,6 @@ const WeatherWidget: React.FC<Props> = ({
       countries[selectedCountryIndex].translations[selectedLanguage].capital;
   }
 
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
-
   const [temperature, setTemperature] = useState(0);
   const [weatherIcon, setWeatherIcon] = useState('');
   const [weatherDescription, setWeatherDescription] = useState('');

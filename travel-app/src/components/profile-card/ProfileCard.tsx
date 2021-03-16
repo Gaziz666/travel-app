@@ -39,9 +39,9 @@ const ProfileCard: React.FC<Props> = ({
       </div>
       <div className={styles['user-login']}>{userLogin}</div>
       <div className={styles['profile-params']}>
-        <label className={styles['user-params-label']}>
+        <p className={styles['user-params-label']}>
           {t('auth-page.profileCard.name')}
-        </label>
+        </p>
         <input
           className={styles['user-params-input']}
           type="text"
@@ -50,9 +50,9 @@ const ProfileCard: React.FC<Props> = ({
         />
       </div>
       <div className={styles['profile-params']}>
-        <label className={styles['user-params-label']}>
+        <p className={styles['user-params-label']}>
           {t('auth-page.profileCard.email')}
-        </label>
+        </p>
         <input
           className={styles['user-params-input']}
           type="text"
@@ -67,9 +67,9 @@ const ProfileCard: React.FC<Props> = ({
         />
       </div>
       <div className={styles['favorite-container']}>
-        <label className={styles['user-params-label']}>
+        <p className={styles['user-params-label']}>
           {t('auth-page.profileCard.favorite')}
-        </label>
+        </p>
       </div>
     </div>
   );
