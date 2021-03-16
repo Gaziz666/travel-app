@@ -53,10 +53,7 @@ const StarsRating: React.FC<Props> = ({
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
   ) => {
-    return countries[selectedCountryIndex].places[selectedPlace].rating[0]
-      .author === 'string'
-      ? null
-      : setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget);
   };
 
   const handlePopoverClose = () => {
