@@ -8,7 +8,6 @@ import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
 
-<<<<<<< HEAD
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2VuZXJhbC1tIiwiYSI6ImNraWozZjdrdjJkbWYycnBlNmw5N3RhNjgifQ.awd7EvjA7RM8Dl4Xb_5dBA'
 
 type MapDispatchToProps = {
@@ -175,27 +174,3 @@ export default connect(mapStateToProps, actions)(MapComponent);
 
 
 
-=======
-const MapComponent = (props) => {
-  const position = [41.319279, 16.283991];
-  const [coordinate, setCoordinate] = useState([]);
-
-  return (
-    <div className={styles.map__wrapper}>
-      <MapContainer center={position} zoom={5}>
-        <TileLayer
-          attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {/* <Marker position={position}>
-                <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker> */}
-      </MapContainer>
-    </div>
-  );
-};
-
-export default MapComponent;
->>>>>>> 1882c129e8b249e1bdb46babd5150f308eba3696
