@@ -23,10 +23,6 @@ const LanguageMenu: React.FC<Props> = ({
   const { i18n } = useTranslation();
 
   let color = mainIsOpen ? '#fff' : '#000';
-  // useEffect(() => {
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   color = mainIsOpen ? '#fff' : '#000';
-  // }, [mainIsOpen]);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     languageSelect(event.target.value as LanguageType);

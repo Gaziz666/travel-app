@@ -13,6 +13,7 @@ type MapDispatchToProps = {
     value: Array<Countries>,
   ) => actions.CountriesLoadedActionType;
   countrySelect: (value: number) => actions.CountrySelectActionType;
+  changeSelectPlaces: (value: number) => actions.SelectPlacesActionType;
 };
 type Props = MapDispatchToProps & CountriesStateType;
 
@@ -21,6 +22,8 @@ const CountryGallery: React.FC<Props> = ({
   countries,
   selectedCountryIndex,
   selectedLanguage,
+  selectedPlace,
+  changeSelectPlaces,
 }) => {
   const renderImages = () => {
     return countries[selectedCountryIndex].places.map((place) => {
@@ -41,14 +44,12 @@ const CountryGallery: React.FC<Props> = ({
       .info,
   );
 
-  const renderSidebar = (index: number) => {
-    console.log(index);
+  useEffect(() => {
+    renderSidebar(selectedPlace);
+  }, [selectedLanguage]);
 
-    console.log(
-      countries[selectedCountryIndex].places[index].translations[
-        selectedLanguage
-      ].name,
-    );
+  const renderSidebar = (index: number) => {
+    changeSelectPlaces(index);
     return (
       setTitle(
         countries[selectedCountryIndex].places[index].translations[

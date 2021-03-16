@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import ReactStars from 'react-stars';
 import classes from './rating.module.css';
 import { connect } from 'react-redux';
@@ -7,7 +6,6 @@ import { RootStateType } from '../../reducers/root-reducer';
 import CountriesService from '../../services/countries-service';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import * as actions from '../../actions/actions-country';
-import { useState } from 'react';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -22,11 +20,19 @@ const StarsRating: React.FC<Props> = ({
   countries,
   selectedCountryIndex,
   selectedLanguage,
+  selectedPlace,
 }) => {
-  const [rating, setRating] = useState(0);
+  let rating = 0;
+  useEffect(() => {});
+  const currentPlace = countries[selectedCountryIndex].places[selectedPlace];
+  const ratingLength = currentPlace.rating.length;
+  const sumRating = currentPlace.rating.reduce((sum, item) => {
+    return (sum += Number(item.score));
+  }, 0);
 
+  rating = ratingLength ? sumRating / ratingLength : 0;
+  console.log('rating');
   const ratingChanged = (newRating: any) => {
-    setRating(newRating);
     console.log(newRating);
   };
   return (
