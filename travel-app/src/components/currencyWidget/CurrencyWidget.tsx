@@ -29,12 +29,6 @@ const CurrencyWidget: React.FC<Props> = ({
       countries[selectedCountryIndex].translations[selectedLanguage].currency;
     rate = countries[selectedCountryIndex].rate;
   }
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
 
   useEffect(() => {
     const CURRENCY_API = `https://api.exchangeratesapi.io/latest?base=${rate}`;

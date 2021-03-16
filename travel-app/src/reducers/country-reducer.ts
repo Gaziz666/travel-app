@@ -3,6 +3,7 @@ import {
   COUNTRY_SELECT,
   LANGUAGE_SELECT,
   SEARCH_CHANGE,
+  SELECT_PLACE,
 } from '../actions/actions-country';
 
 export type Countries = {
@@ -113,6 +114,7 @@ export type CountriesStateType = {
   selectedCountryIndex: number;
   selectedLanguage: LanguageType;
   searchText: string;
+  selectedPlace: number;
 };
 
 const initialState: CountriesStateType = {
@@ -120,6 +122,7 @@ const initialState: CountriesStateType = {
   selectedCountryIndex: 0,
   selectedLanguage: LanguageType.en,
   searchText: '',
+  selectedPlace: 0,
 };
 
 const countryReducer = (
@@ -146,6 +149,11 @@ const countryReducer = (
       return {
         ...state,
         searchText: action.payload,
+      };
+    case SELECT_PLACE:
+      return {
+        ...state,
+        selectedPlace: action.payload,
       };
     default:
       return state;
