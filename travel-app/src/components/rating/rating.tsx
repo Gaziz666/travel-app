@@ -21,7 +21,7 @@ const StarsRating: React.FC<Props> = ({
   selectedCountryIndex,
   selectedPlace,
 }) => {
-  
+
   useEffect(() => {
     countRate();
   }, [countries]);
@@ -32,8 +32,6 @@ const StarsRating: React.FC<Props> = ({
     const sumRating = currentPlace.rating.reduce((sum, item) => {
       return (sum += Number(item.score));
     }, 0);
-    console.log(currentPlace, ratingLength, sumRating);
-
     const rating = ratingLength ? sumRating / ratingLength : 0;
     return rating;
   };
