@@ -38,11 +38,6 @@ const StarsRating: React.FC<Props> = ({
     return rating;
   };
 
-  // console.log(ratingLength, sumRating, currentPlace, rating);
-  // const ratingChanged = (newRating: any) => {
-  //     setRating(newRating);
-  //   console.log(newRating)
-  // }
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       popover: {
@@ -60,49 +55,36 @@ const StarsRating: React.FC<Props> = ({
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
-
     setAnchorEl(event.currentTarget);
   };
 
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
-
   const open = Boolean(anchorEl);
-
-  // <div className={classes.rating__table}>
-  //   {countries[selectedCountryIndex].places[selectedPlace].rating.map((elem) => {
-  //     <div>
-  //       <div>elem.author</div>;
-  //       <div>elem.score</div>;
-  //       </div>
-  //   })
-
-  // }
-  // </div>
 
   const renderRating = () => {
     return (
       <div className={styles.rating}>
         {countries[selectedCountryIndex].places[selectedPlace].rating.map(
           (elem, index) => {
-            if(index <10){
-            return (
-              <div className={styles.rating__lines}>
-                <div className={styles.rating__name}>{elem.author}</div><div className={styles.rating__scores}><ReactStars value={elem.score} edit={false}/>
+            if (index < 10) {
+              return (
+                <div className={styles.rating__lines}>
+                  <div className={styles.rating__name}>{elem.author}</div>
+                  <div className={styles.rating__scores}>
+                    <ReactStars value={elem.score} edit={false} />
                   </div>
-              </div>
-            );
+                </div>
+              );
+            }
           }
-        }
         )}
-  
       </div>
     );
   };
 
   return (
-    // <div className={classes.rating}  onMouseOver ={showRatingTable}>
     <div onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
       <ReactStars
         count={5}
@@ -113,7 +95,7 @@ const StarsRating: React.FC<Props> = ({
         edit={true} //может редактировать рейтинг
         color2={"#ffd700"}
       />
-     
+
       <Popover
         id="mouse-over-popover"
         className={classes.popover}
