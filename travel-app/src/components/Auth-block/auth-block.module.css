@@ -1,21 +1,11 @@
-.auth-container {
-  min-width: 310px;
-  border-radius: 30px;
-  margin-left: 28px;
-  background: #ffffff;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-}
-
 .auth-header {
   font-style: normal;
   font-weight: 500;
-  font-size: 3rem;
-  line-height: 4.5rem;
-  color: #000;
-  margin-top: 4.2rem;
-  margin-left: 43px;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  color: #fff;
+  margin-top: 1.9rem;
+  margin-left: 34px;
   text-align: left;
 }
 
@@ -23,20 +13,20 @@
   background: #ffffff;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  margin-top: 46px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 20px;
+  margin-top: 12px;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .auth-label {
-  font-size: 1.8rem;
-  line-height: 2.7rem;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
   text-transform: capitalize;
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   color: #5a5a5a;
 }
 
@@ -46,12 +36,12 @@
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 10px;
-  margin-top: 7px;
-  font-size: 1.8rem;
+  margin-top: 10px;
+  font-size: 1.6rem;
 }
 
 .button__wrapper {
-  margin-top: 4rem;
+  margin-top: 3rem;
   width: 100%;
 }
 
@@ -62,10 +52,10 @@
   border-radius: 10px;
   font-weight: 600;
   font-size: 1.8rem;
-  line-height: 4.5rem;
+  line-height: 2.7rem;
   text-transform: capitalize;
   color: #0f052f;
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 0 10px;
   align-self: center;
 }
@@ -78,16 +68,14 @@
   margin-top: 3rem;
   margin-bottom: 11.7rem;
   color: #c4c4c4;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
-@media (max-width: 500px) {
-  .auth-container {
-    min-width: 310px;
-  }
-}
-
-@media (max-width: 1280px) and (min-width: 501px) {
-  .auth-container {
-    min-width: 250px;
-  }
+.error-label {
+  color: red;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  text-transform: capitalize;
+  margin-top: 5px;
 }
