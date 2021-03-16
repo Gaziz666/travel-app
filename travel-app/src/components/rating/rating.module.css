@@ -1,0 +1,24 @@
+.MuiPopover-root.makeSTyles-popover-96{
+    border-radius: 0px 10px 10px 0px;
+}
+.rating{
+    padding: 5px;
+
+}
+.rating__lines{
+    background: rgba(60, 205, 215, 0.15);
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 0px 10px;
+ 
+}
+
+.rating__name{
+width: 50px;
+padding-right: 10px;
+}
+.rating__scores{
+
+}

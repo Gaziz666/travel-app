@@ -26,12 +26,12 @@ const CountryGallery: React.FC<Props> = ({
   changeSelectPlaces
   
 }) => {
-  useEffect(() => {
-    const countryService = new CountriesService();
-    countryService.getAllCountry().then((countries) => {
-      countriesLoaded(countries.data);
-    });
-  }, [countriesLoaded]);
+  // useEffect(() => {
+  //   const countryService = new CountriesService();
+  //   countryService.getAllCountry().then((countries) => {
+  //     countriesLoaded(countries.data);
+  //   });
+  // }, [countriesLoaded]);
 
   const renderImages = () => {
     return countries[selectedCountryIndex].places.map((place) => {
