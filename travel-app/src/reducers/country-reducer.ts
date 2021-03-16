@@ -3,7 +3,7 @@ import {
   COUNTRY_SELECT,
   LANGUAGE_SELECT,
   SEARCH_CHANGE,
-} from "../actions/actions-country";
+} from '../actions/actions-country';
 
 export type Countries = {
   _id: string;
@@ -15,6 +15,12 @@ export type Countries = {
   coordinate: {
     latitude: number;
     longitude: number;
+  };
+  poligon: {
+    id: string;
+    type: string;
+    properties: { [key: string]: string | number | null };
+    coordinates: [[[[number]]]];
   };
   placesCount: number;
   rate: string;
@@ -29,7 +35,7 @@ export type Countries = {
         {
           score: number;
           author: string;
-        }
+        },
       ];
       translations: {
         en: {
@@ -48,7 +54,7 @@ export type Countries = {
           favorite: boolean;
         };
       };
-    }
+    },
   ];
   translations: {
     en: {
@@ -97,9 +103,9 @@ export type Countries = {
 };
 
 export enum LanguageType {
-  en = "en",
-  ru = "ru",
-  uk = "uk",
+  en = 'en',
+  ru = 'ru',
+  uk = 'uk',
 }
 
 export type CountriesStateType = {
@@ -113,12 +119,12 @@ const initialState: CountriesStateType = {
   countries: [],
   selectedCountryIndex: 0,
   selectedLanguage: LanguageType.en,
-  searchText: "",
+  searchText: '',
 };
 
 const countryReducer = (
   state = initialState,
-  action: { type: string; payload: Array<Countries> | string }
+  action: { type: string; payload: Array<Countries> | string },
 ) => {
   switch (action.type) {
     case COUNTRIES_LOAD:
