@@ -6,7 +6,7 @@ import { RootStateType } from '../../reducers/root-reducer';
 import CountriesService from '../../services/countries-service';
 import ImageGallery from 'react-image-gallery';
 import classes from './country-gallery.module.css';
-import Rating from '../rating/rating';
+import Rating from '../pages/main-page/rating/rating';
 
 type MapDispatchToProps = {
   countriesLoaded: (

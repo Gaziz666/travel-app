@@ -22,10 +22,13 @@ const MapComponent: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, 
 
     let latitudeCapital = 0;
     let longitudeCapital = 0;
+    let polygon = {};
 
     if (countries.length > 0) {
         latitudeCapital = countries[selectedCountryIndex].coordinate.latitude;
         longitudeCapital = countries[selectedCountryIndex].coordinate.longitude;
+        polygon = countries[selectedCountryIndex].poligon;
+        console.log(polygon)
     }
 
     useEffect(() => {
@@ -143,7 +146,7 @@ const MapComponent: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, 
 
                 </Marker>
                 <FullscreenControl position='top-right' />
-                <Source id={selectedCountryIndex.toString()} type="geojson" data={geojson4}>
+                <Source id={selectedCountryIndex.toString()} type="geojson" data={polygon}>
                     <Layer
                         id='anything'
                         type='fill'

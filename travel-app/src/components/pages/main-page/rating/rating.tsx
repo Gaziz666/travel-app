@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import ReactStars from 'react-stars';
 import classes from './rating.module.css';
 import { connect } from 'react-redux';
-import { RootStateType } from '../../reducers/root-reducer';
-import CountriesService from '../../services/countries-service';
-import { Countries, CountriesStateType } from '../../reducers/country-reducer';
-import * as actions from '../../actions/actions-country';
+import { RootStateType } from '../../../../reducers/root-reducer'
+import CountriesService from '../../../../services/countries-service';
+import { Countries, CountriesStateType } from '../../../../reducers/country-reducer';
+import * as actions from '../../../../actions/actions-country';
 
 type MapDispatchToProps = {
   countriesLoaded: (
