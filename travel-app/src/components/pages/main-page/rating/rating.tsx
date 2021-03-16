@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import ReactStars from "react-stars";
 import classes from "./rating.module.css";
 import { connect } from "react-redux";
-import { RootStateType } from "../../reducers/root-reducer";
-import CountriesService from "../../services/countries-service";
-import { Countries, CountriesStateType } from "../../reducers/country-reducer";
-import * as actions from "../../actions/actions-country";
+import { RootStateType } from "../../../../reducers/root-reducer";
+import CountriesService from "../../../../services/countries-service";
+import { Countries, CountriesStateType } from "../../../../reducers/country-reducer";
+import * as actions from "../../../../actions/actions-country";
 import { useState } from "react";
 
 type MapDispatchToProps = {
@@ -29,10 +29,10 @@ const StarsRating: React.FC<Props> = ({
       countriesLoaded(countries.data);
     });
   }, [countriesLoaded]);
-const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(0);
 
   const ratingChanged = (newRating: any) => {
-      setRating(newRating);
+    setRating(newRating);
     console.log(newRating)
   }
   return (

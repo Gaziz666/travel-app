@@ -1,6 +1,8 @@
 header.tabs {
   border-radius: 30px 30px 0px 0px;
-  background: #3ccdd733;
+  
+  background: #d8f5f7;
+
   overflow: hidden;
   border: 0.1px solid rgba(15, 5, 47, 0.5);
 }

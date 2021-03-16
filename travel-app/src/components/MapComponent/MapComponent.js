@@ -7,7 +7,6 @@ import CountriesService from '../../services/countries-service';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
-// import polygonCountries from './polygonCountries';
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZ2VuZXJhbC1tIiwiYSI6ImNraWozZjdrdjJkbWYycnBlNmw5N3RhNjgifQ.awd7EvjA7RM8Dl4Xb_5dBA'
 
@@ -77,26 +76,70 @@ const MapComponent: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, 
     //     language._initialStyleUpdate();
     // }
 
-    console.log(countries[selectedCountryIndex].translations.en.name, selectedCountryIndex);
-    // console.log(polygonCountries)
+    // const changeMapLanguage = (map) => {
+    //     map.getStyle().layers.forEach((layer) => {
+    //         if (layer.id.endsWith('-label')) {
+    //             map.setLayoutProperty(layer.id, 'text-field', [
+    //                 'coalesce',
+    //                 ['get', 'name_ru'],
+    //                 ['get', 'name_ru'],
+    //             ]);
+    //         }
+    //     });
+    // };
+
+
+    // const changeMapLanguage = (map) => {
+    //     map.setLayoutProperty('country-label', 'text-field', [
+    //         'get',
+    //         'name_' + selectedLanguage
+    //     ]);
+    // }
+
+    // map.getStyle().layers.forEach(function(thisLayer){
+    //     console.log(thisLayer);
+    //         if(thisLayer.id.indexOf('-label')>0){
+    //             console.log('change '+thisLayer.id);
+    //             map.setLayoutProperty(thisLayer.id, 'text-field', ['get','name_fr'])
+    //         }
+    //     });
+
+    const changeMapLanguage = (map) => {
+        console.log(map)
+        // map.setLayoutProperty('country-label', 'text-field', [
+        //     'get',
+        // //     'name_ru'
+        // ]);
+        // map.getStyle().layers.forEach((layer) => {
+        //     if (layer.id.endsWith('-label')) {
+        //         map.setLayoutProperty(layer.id, 'text-field', [
+        //             'coalesce',
+        //             ['get', 'name_ru'],
+        //             ['get', 'name'],
+        //         ]);
+        //     }
+        // });
+    };
+
     return (
         <div>
             <ReactMapboxGL
+
+
                 style={{ width: '100%', height: '445px' }}
-                mapStyle='mapbox://styles/general-m/ckirr8k4t08tt19ozy2u7lkr7'
+                mapStyle="mapbox://styles/general-m/ckmbenfqo4bxi17qivmeeyxo9"
                 accessToken={MAPBOX_ACCESS_TOKEN}
                 latitude={viewport.latitude}
                 longitude={viewport.longitude}
                 zoom={viewport.zoom}
                 onViewportChange={setViewport}
+                onLoad={changeMapLanguage}
+
 
             >
                 <Marker latitude={latitudeCapital} longitude={longitudeCapital}>
-
                     <div className={classes.marker}>
-
                     </div>
-
 
                 </Marker>
                 <FullscreenControl position='top-right' />
@@ -105,7 +148,7 @@ const MapComponent: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, 
                         id='anything'
                         type='fill'
                         paint={{
-                            'fill-color': 'red',
+                            'fill-color': '#f4cb67',
                             'fill-opacity': 0.6
                         }}
                         source={selectedCountryIndex.toString()} />
