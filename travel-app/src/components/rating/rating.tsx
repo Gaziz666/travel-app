@@ -1,9 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import ReactStars from "react-stars";
 import styles from "./rating.module.css";
 import { connect } from "react-redux";
 import { RootStateType } from "../../reducers/root-reducer";
-import CountriesService from "../../services/countries-service";
 import { Countries, CountriesStateType } from "../../reducers/country-reducer";
 import * as actions from "../../actions/actions-country";
 import Popover from "@material-ui/core/Popover";
@@ -18,7 +17,6 @@ type MapDispatchToProps = {
 type Props = MapDispatchToProps & CountriesStateType;
 
 const StarsRating: React.FC<Props> = ({
-  countriesLoaded,
   countries,
   selectedCountryIndex,
   selectedPlace,
@@ -45,6 +43,8 @@ const StarsRating: React.FC<Props> = ({
       },
       paper: {
         padding: theme.spacing(1),
+        backgroundColor:"rgba(60, 205, 215, 1)",
+      
       },
     })
   );
@@ -61,6 +61,7 @@ const StarsRating: React.FC<Props> = ({
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
+
   const open = Boolean(anchorEl);
 
   const renderRating = () => {
@@ -87,8 +88,8 @@ const StarsRating: React.FC<Props> = ({
   return (
     <div onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
       <ReactStars
+      className={styles.stars__rating}
         count={5}
-        // onChange={ratingChanged}
         size={30}
         value={countRate()}
         // edit={false}
@@ -105,12 +106,12 @@ const StarsRating: React.FC<Props> = ({
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: "top",
+          horizontal: "center",
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: "bottom",
+          horizontal: "center",
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
