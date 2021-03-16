@@ -13,8 +13,8 @@ export type Countries = {
   videoUrl: string;
   prevImg: string;
   coordinate: {
-    x: number;
-    y: number;
+    latitude: number;
+    longitude: number;
   };
   placesCount: number;
   rate: string;
@@ -25,7 +25,6 @@ export type Countries = {
       imgUrl: string;
       imgSmallUrl: string;
       id: string;
-
       rating: [
         {
           score: number;
@@ -112,7 +111,7 @@ export type CountriesStateType = {
 
 const initialState: CountriesStateType = {
   countries: [],
-  selectedCountryIndex: 1,
+  selectedCountryIndex: 0,
   selectedLanguage: LanguageType.en,
   searchText: "",
 };
