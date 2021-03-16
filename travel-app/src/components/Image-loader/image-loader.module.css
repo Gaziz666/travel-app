@@ -1,4 +1,5 @@
 .profile-img {
+  border-radius: 50%;
   height: 54px;
   width: 54px;
   object-fit: cover;

@@ -33,21 +33,7 @@ const ImageLoader: React.FC<Props> = ({
     imageList: ImageListType,
     addUpdateIndex: number[] | undefined,
   ) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
     setImages(imageList as never[]);
-
-    console.log(images);
-    const data = new FormData();
-    // const imagedata = imageList[0];
-    data.append('file', imageList[0].file as Blob);
-    // var xhr = new XMLHttpRequest();
-    // xhr.onload = function (e) {};
-    // var formData = new FormData();
-    // xhr.open('POST', url, true);
-    // formData.append('file', fileData);
-    // xhr.send(formData);
-
     const authService = new AuthService();
     authService
       .updateImage(imageList[0].dataURL, userLogin)
@@ -66,13 +52,7 @@ const ImageLoader: React.FC<Props> = ({
         {({
           imageList,
           onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps,
         }) => (
-          // write your building UI
           <div className="upload__image-wrapper">
             {file ? (
               <img

@@ -17,7 +17,6 @@
   font-size: 18px;
   text-indent: 20px;
   flex-grow: 1;
-  padding-bottom: 20px;
 }
 
 .card-info-sidebar {
@@ -104,8 +103,15 @@ h3.card__title {
   font-size: 18px;
 }
 
+
+.about{
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
 @media screen and (max-width: 570px) {
   .card-info-wrapper {
     flex-wrap: wrap;
   }
 }
+

@@ -103,14 +103,12 @@ const AuthBlock: React.FC<Props> = ({
       <div className={styles['auth-header']}>{header}</div>
       <form className={styles['auth-form']} onSubmit={userParamSubmit}>
         {isError ? (
-          <label className={styles['error-label']}>
-            {error[selectedLanguage]}
-          </label>
+          <p className={styles['error-label']}>{error[selectedLanguage]}</p>
         ) : null}
 
-        <label className={styles['auth-label']}>
+        <p className={styles['auth-label']}>
           {t('auth-page.auth-block.name')}*
-        </label>
+        </p>
         <input
           className={styles['auth-input']}
           type="text"
@@ -120,9 +118,9 @@ const AuthBlock: React.FC<Props> = ({
         />
         {authStatus === 1 ? (
           <>
-            <label className={styles['auth-label']}>
+            <p className={styles['auth-label']}>
               {t('auth-page.auth-block.email')}*
-            </label>
+            </p>
             <input
               className={styles['auth-input']}
               type="email"
@@ -132,9 +130,9 @@ const AuthBlock: React.FC<Props> = ({
             />
           </>
         ) : null}
-        <label className={styles['auth-label']}>
+        <p className={styles['auth-label']}>
           {t('auth-page.auth-block.password')}*
-        </label>
+        </p>
         <input
           className={styles['auth-input']}
           type="text"
