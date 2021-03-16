@@ -18,13 +18,13 @@ type MapDispatchToProps = {
 type Props = MapDispatchToProps & CountriesStateType;
 
 const CountryGallery: React.FC<Props> = ({
-  countriesLoaded,
   countries,
   selectedCountryIndex,
   selectedLanguage,
   selectedPlace,
   changeSelectPlaces,
 }) => {
+
   const renderImages = () => {
     return countries[selectedCountryIndex].places.map((place) => {
       return {
