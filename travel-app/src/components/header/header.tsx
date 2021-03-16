@@ -43,14 +43,14 @@ const Header: React.FC<Props> = ({
       </div>
       <div className={classes.header__menu}>
         <Link
-          to="/"
+          to="/main"
           className={classes['header__link']}
           style={{ color: color }}
         >
           {t('main-page.header-link.about')}
         </Link>
         <Link
-          to="/"
+          to="/main"
           className={classes['header__link']}
           style={{ color: color }}
         >
