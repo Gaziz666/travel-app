@@ -1,5 +1,6 @@
 .time__widget {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
@@ -15,7 +16,7 @@
 }
 
 .date {
-  width: 210px;
+  width: 100%;
 }
 
 @media screen and (max-width: 800px) {

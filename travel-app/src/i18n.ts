@@ -17,6 +17,10 @@ i18n
     interpolation: {
       escapeValue: false,
     },
+    backend: {
+      loadPath:
+        'https://rrroman.github.io/travel-app/travel-app/locales/{{lng}}/{{ns}}.json',
+    },
   });
 
 export default i18n;

@@ -11,6 +11,7 @@ export type Countries = {
   smallImg: string;
   flagUrl: string;
   videoUrl: string;
+  prevImg: string;
   coordinate: {
     x: number;
     y: number;
