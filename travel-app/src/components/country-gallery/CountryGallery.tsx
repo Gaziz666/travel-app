@@ -1,37 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import * as actions from "../../actions/actions-country";
-import { Countries, CountriesStateType } from "../../reducers/country-reducer";
-import { RootStateType } from "../../reducers/root-reducer";
-import CountriesService from "../../services/countries-service";
-import ImageGallery from "react-image-gallery";
-import classes from "./country-gallery.module.css";
-import Rating from "../rating/rating";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/actions-country';
+import { Countries, CountriesStateType } from '../../reducers/country-reducer';
+import { RootStateType } from '../../reducers/root-reducer';
+import CountriesService from '../../services/countries-service';
+import ImageGallery from 'react-image-gallery';
+import classes from './country-gallery.module.css';
+import Rating from '../rating/rating';
 
 type MapDispatchToProps = {
   countriesLoaded: (
-    value: Array<Countries>
+    value: Array<Countries>,
   ) => actions.CountriesLoadedActionType;
   countrySelect: (value: number) => actions.CountrySelectActionType;
   changeSelectPlaces: (value: number) => actions.SelectPlacesActionType;
-}; 
+};
 type Props = MapDispatchToProps & CountriesStateType;
 
 const CountryGallery: React.FC<Props> = ({
-  countriesLoaded,
   countries,
   selectedCountryIndex,
   selectedLanguage,
   selectedPlace,
-  changeSelectPlaces
-  
+  changeSelectPlaces,
 }) => {
-  // useEffect(() => {
-  //   const countryService = new CountriesService();
-  //   countryService.getAllCountry().then((countries) => {
-  //     countriesLoaded(countries.data);
-  //   });
-  // }, [countriesLoaded]);
 
   const renderImages = () => {
     return countries[selectedCountryIndex].places.map((place) => {
@@ -39,24 +31,37 @@ const CountryGallery: React.FC<Props> = ({
         original: place.imgUrl,
         thumbnail: place.imgSmallUrl,
         originalTitle: place.translations[selectedLanguage].name,
-       
       };
     });
   };
   // console.log(countries);
 
-  const [title, setTitle] = useState(countries[selectedCountryIndex].places[0].translations[selectedLanguage].name);
-  const [description, setDescription] = useState(countries[selectedCountryIndex].places[0].translations[selectedLanguage].info);
+  const [title, setTitle] = useState(
+    countries[selectedCountryIndex].places[0].translations[selectedLanguage]
+      .name,
+  );
+  const [description, setDescription] = useState(
+    countries[selectedCountryIndex].places[0].translations[selectedLanguage]
+      .info,
+  );
 
-  useEffect(()=>{
-  renderSidebar(selectedPlace)
-  }, [selectedLanguage])
+  useEffect(() => {
+    renderSidebar(selectedPlace);
+  }, [selectedLanguage]);
 
   const renderSidebar = (index: number) => {
     changeSelectPlaces(index);
     return (
-      setTitle(countries[selectedCountryIndex].places[index].translations[selectedLanguage].name),
-      setDescription(countries[selectedCountryIndex].places[index].translations[selectedLanguage].info)
+      setTitle(
+        countries[selectedCountryIndex].places[index].translations[
+          selectedLanguage
+        ].name,
+      ),
+      setDescription(
+        countries[selectedCountryIndex].places[index].translations[
+          selectedLanguage
+        ].info,
+      )
     );
   };
 
@@ -72,12 +77,12 @@ const CountryGallery: React.FC<Props> = ({
         </div>
         <div className={classes.gallery__sidebar}>
           <div className={classes.description}>
-        <h2>{title}</h2>
-        <div className={classes.descript}>{description}</div>
+            <h2>{title}</h2>
+            <div className={classes.descript}>{description}</div>
           </div>
           <div className={classes.rating}>
-            <Rating/>
-            </div>
+            <Rating />
+          </div>
         </div>
       </div>
     </div>

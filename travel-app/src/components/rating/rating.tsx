@@ -21,6 +21,7 @@ const StarsRating: React.FC<Props> = ({
   selectedCountryIndex,
   selectedPlace,
 }) => {
+  
   useEffect(() => {
     countRate();
   }, [countries]);
@@ -31,6 +32,7 @@ const StarsRating: React.FC<Props> = ({
     const sumRating = currentPlace.rating.reduce((sum, item) => {
       return (sum += Number(item.score));
     }, 0);
+    console.log(currentPlace, ratingLength, sumRating);
 
     const rating = ratingLength ? sumRating / ratingLength : 0;
     return rating;
@@ -43,8 +45,7 @@ const StarsRating: React.FC<Props> = ({
       },
       paper: {
         padding: theme.spacing(1),
-        backgroundColor:"rgba(60, 205, 215, 1)",
-      
+        backgroundColor: "rgba(60, 205, 215, 1)",
       },
     })
   );
@@ -55,7 +56,10 @@ const StarsRating: React.FC<Props> = ({
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
-    setAnchorEl(event.currentTarget);
+    return countries[selectedCountryIndex].places[selectedPlace].rating[0]
+      .author === "string"
+      ? null
+      : setAnchorEl(event.currentTarget);
   };
 
   const handlePopoverClose = () => {
@@ -88,7 +92,7 @@ const StarsRating: React.FC<Props> = ({
   return (
     <div onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
       <ReactStars
-      className={styles.stars__rating}
+        className={styles.stars__rating}
         count={5}
         size={30}
         value={countRate()}
