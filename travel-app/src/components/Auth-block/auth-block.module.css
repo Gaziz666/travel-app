@@ -69,4 +69,13 @@
   margin-bottom: 11.7rem;
   color: #c4c4c4;
   padding: 0 10px;
+  cursor: pointer;
+}
+
+.error-label {
+  color: red;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  text-transform: capitalize;
+  margin-top: 5px;
 }

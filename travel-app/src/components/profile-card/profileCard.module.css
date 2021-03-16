@@ -56,3 +56,8 @@
 .favorite-container {
   margin: 20px 31px 0;
 }
+
+.button__wrapper {
+  padding: 3rem 31px 0;
+  width: 100%;
+}

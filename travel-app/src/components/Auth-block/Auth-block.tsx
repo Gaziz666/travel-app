@@ -1,66 +1,151 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { AuthStateType, AuthStatusNum } from '../../reducers/auth-reducer';
+import { Link, useHistory } from 'react-router-dom';
+import {
+  AuthStateType,
+  AuthStatusNum,
+  ErrorMsgType,
+} from '../../reducers/auth-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
-import * as actions from '../../actions/auth-actions';
+import * as authActions from '../../actions/auth-actions';
+import * as userActions from '../../actions/user-actions';
 import styles from './auth-block.module.css';
 import { AuthButton } from '../AuthButton/Auth-button';
 import { useTranslation } from 'react-i18next';
 import AuthService from '../../services/auth-service';
+import { UserStateType } from '../../reducers/user-reducer';
+import { CountriesStateType } from '../../reducers/country-reducer';
 
 type MapDispatchToProps = {
   authStatusChange: (
     newStatus: AuthStatusNum,
-  ) => actions.AuthStatusChangeActionType;
+  ) => authActions.AuthStatusChangeActionType;
+  loginInputChange: (value: string) => authActions.AuthInputChangeActionType;
+  emailInputChange: (value: string) => authActions.AuthInputChangeActionType;
+  passwordInputChange: (value: string) => authActions.AuthInputChangeActionType;
+  authErrorStatusChange: (
+    value: boolean,
+  ) => authActions.AuthStatusChangeActionType;
+  userUpdate: (user: UserStateType) => userActions.UserActionType;
+  saveErrorMessage: (value: ErrorMsgType) => authActions.ErrorMsgSaveActionType;
 };
 
-type Props = AuthStateType & MapDispatchToProps;
+type Props = AuthStateType &
+  MapDispatchToProps &
+  CountriesStateType &
+  UserStateType;
 
-const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
+const AuthBlock: React.FC<Props> = ({
+  authStatus,
+  inputLogin,
+  inputEmail,
+  inputPassword,
+  isError,
+  error,
+  selectedLanguage,
+  userLogin,
+  authStatusChange,
+  loginInputChange,
+  emailInputChange,
+  passwordInputChange,
+  authErrorStatusChange,
+  userUpdate,
+  saveErrorMessage,
+}) => {
   const { t } = useTranslation();
+  const history = useHistory();
   const header =
     authStatus === 0
       ? t('auth-page.auth-block.sign-in')
       : t('auth-page.auth-block.log-in');
 
-  const handleLogin = (event: React.SyntheticEvent) => {
+  const userParamSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     const authService = new AuthService();
-    authService.addNewUser();
-  };
-
-  const handleSigning = (event: React.SyntheticEvent) => {
-    event.preventDefault();
+    if (authStatus === 1) {
+      console.log('inputLogin', inputLogin);
+      authService
+        .createNewUser({
+          login: inputLogin,
+          email: inputEmail,
+          password: inputPassword,
+        })
+        .then((data) => {
+          if (data.error !== null) {
+            authErrorStatusChange(true);
+            saveErrorMessage(data.error);
+          } else {
+            authErrorStatusChange(false);
+            userUpdate(data.data);
+            authStatusChange(2);
+            history.goBack();
+          }
+        });
+    } else if (authStatus === 0) {
+      authService
+        .loginApp({ login: inputLogin, password: inputPassword })
+        .then((data) => {
+          if (data.error !== null) {
+            authErrorStatusChange(true);
+            saveErrorMessage(data.error);
+          } else {
+            authErrorStatusChange(false);
+            userUpdate(data.data);
+            authStatusChange(2);
+            history.goBack();
+          }
+        });
+    }
   };
 
   return (
     <>
       <div className={styles['auth-header']}>{header}</div>
-      <form className={styles['auth-form']}>
+      <form className={styles['auth-form']} onSubmit={userParamSubmit}>
+        {isError ? (
+          <label className={styles['error-label']}>
+            {error[selectedLanguage]}
+          </label>
+        ) : null}
+
         <label className={styles['auth-label']}>
-          {t('auth-page.auth-block.name')}
+          {t('auth-page.auth-block.name')}*
         </label>
-        <input className={styles['auth-input']} type="text" name="name" />
+        <input
+          className={styles['auth-input']}
+          type="text"
+          name="name"
+          value={inputLogin}
+          onChange={(event) => loginInputChange(event.target.value)}
+        />
         {authStatus === 1 ? (
           <>
             <label className={styles['auth-label']}>
-              {t('auth-page.auth-block.email')}
+              {t('auth-page.auth-block.email')}*
             </label>
-            <input className={styles['auth-input']} type="email" name="email" />
+            <input
+              className={styles['auth-input']}
+              type="email"
+              name="email"
+              value={inputEmail}
+              onChange={(event) => emailInputChange(event.target.value)}
+            />
           </>
         ) : null}
         <label className={styles['auth-label']}>
-          {t('auth-page.auth-block.password')}
+          {t('auth-page.auth-block.password')}*
         </label>
-        <input className={styles['auth-input']} type="text" name="password" />
+        <input
+          className={styles['auth-input']}
+          type="text"
+          name="password"
+          value={inputPassword}
+          onChange={(event) => passwordInputChange(event.target.value)}
+        />
         {authStatus === 0 ? (
           <>
             <div className={styles['button__wrapper']}>
-              <AuthButton
-                value={t('auth-page.auth-block.sign-in')}
-                handleClick={handleSigning}
-              />
+              <AuthButton value={t('auth-page.auth-block.sign-in')} />
             </div>
             <div className={styles['skip-button']}>
               <Link to="/main">{t('auth-page.auth-block.skip')}</Link>
@@ -68,10 +153,7 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
           </>
         ) : (
           <div className={styles['button__wrapper']}>
-            <AuthButton
-              value={t('auth-page.auth-block.log-in')}
-              handleClick={handleLogin}
-            />
+            <AuthButton value={t('auth-page.auth-block.log-in')} />
           </div>
         )}
       </form>
@@ -93,6 +175,15 @@ const AuthBlock: React.FC<Props> = ({ authStatus, authStatusChange }) => {
     </>
   );
 };
-const mapStateToProps = (state: RootStateType) => state.authStatusState;
+const mapStateToProps = (state: RootStateType) => {
+  return {
+    ...state.authStatusState,
+    ...state.userState,
+    ...state.countryState,
+    ...state.userState,
+  };
+};
+
+const actions = { ...userActions, ...authActions };
 
 export default connect(mapStateToProps, actions)(AuthBlock);

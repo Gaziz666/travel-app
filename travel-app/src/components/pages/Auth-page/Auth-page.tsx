@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ProfileCard from '../../../profile-card/ProfileCard';
+
 import { AuthStateType, AuthStatusNum } from '../../../reducers/auth-reducer';
 import { RootStateType } from '../../../reducers/root-reducer';
 import * as actions from '../../../actions/auth-actions';
 import AuthBlock from '../../Auth-block/Auth-block';
 import VideoStart from '../../Video-start/Video-start';
 import styles from './auth-page.module.css';
+import ProfileCard from '../../profile-card/ProfileCard';
 
 type MapDispatchToProps = {
   authStatusChange: (

@@ -12,8 +12,8 @@ export type Countries = {
   flagUrl: string;
   videoUrl: string;
   coordinate: {
-    x: number;
-    y: number;
+    latitude: number;
+    longitude: number;
   };
   placesCount: number;
   rate: string;

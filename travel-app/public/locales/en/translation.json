@@ -13,9 +13,10 @@
       "sign-in": "Sign in",
       "log-in": "Sign up",
       "email": "Email",
-      "name": "Name",
+      "name": "Login",
       "password": "Password",
       "skip": "Skip",
+      "logout": "Log out",
       "sign-up-text": "Don’t Have An Account Yet? Sing Up",
       "sign-in-text": "You have an account yet? Sing In"
     },
