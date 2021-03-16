@@ -1,3 +1,4 @@
+@import '~react-image-gallery/styles/css/image-gallery.css';
 @font-face {
   font-family: 'Poppins';
   font-weight: 500;
@@ -26,6 +27,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
 }
 
 * {
@@ -40,6 +42,7 @@ code {
 
 html {
   font-size: 10px;
+  min-height: 100%;
 }
 
 a:active,
@@ -87,4 +90,38 @@ span.MuiTabs-indicator {
   html {
     font-size: 10px;
   }
+}
+
+.image-gallery-slides {
+  border-radius: 30px;
+}
+
+.image-gallery-thumbnail-image {
+  border-radius: 10px;
+}
+.image-gallery-thumbnail {
+  max-width: 100px;
+  overflow: hidden;
+}
+.image-gallery-thumbnail:focus {
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px 0px #000000 25%;
+  border: none;
+}
+.image-gallery-thumbnail:hover {
+  border-radius: 10px;
+}
+.image-gallery-slide .image-gallery-image {
+  object-fit: cover;
+}
+.image-gallery-slide {
+  left: -20px;
+}
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  width: 35px;
+}
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg:hover {
+  color: #d8f5f7;
 }

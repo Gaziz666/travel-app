@@ -5,7 +5,8 @@
       "destination": "Місця призначення"
     },
     "main-body": {
-      "explore": "досліджувати"
+      "explore": "досліджувати",
+      "search": "пошук"
     }
   },
   "auth-page": {
@@ -37,6 +38,18 @@
       "second": "Представляємо",
       "third": "Поки ви там",
       "fourth": "Карта"
+    },
+    "key-facts": {
+      "area": "Площа",
+      "population": "Населення країни",
+      "pop-density": "Щільність населення",
+      "capital": "Столиця",
+      "government": "Форма правління",
+      "headOfState": "Глава держави",
+      "headOfGov": "Глава уряду"
+    },
+    "times": {
+      "localTime": "мiсцевий час"
     }
   }
 }

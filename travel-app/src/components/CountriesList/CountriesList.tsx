@@ -13,7 +13,7 @@ import PrevArrow from './PrevArrow';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { routs } from '../App/App';
-import { tabs } from '../pages/country-page';
+import { tabs } from '../pages/country-page/country-page';
 
 type MapDispatchToProps = {
   countriesLoaded: (
