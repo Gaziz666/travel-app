@@ -28,12 +28,6 @@
   flex-direction: column;
 }
 
-@media screen and (max-width: 1496px) {
-  .app__container {
-    border-radius: 0;
-  }
-}
-
 @media screen and (max-height: 630px) {
   .app {
     height: 100%;
