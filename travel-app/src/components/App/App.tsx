@@ -39,6 +39,7 @@ const App: React.FC<Props> = ({
 
   useEffect(() => {
     i18n.changeLanguage(selectedLanguage);
+
     const countryService = new CountriesService();
     countryService.getAllCountry().then((countries) => {
       countriesLoaded(countries.data);
@@ -66,17 +67,19 @@ const App: React.FC<Props> = ({
   return (
     <Router basename="/travel-app">
       <div className={classes.app}>
-        <div ref={appDiv} className={classes.app__container}>
-          <Header />
-          <main className={classes.app__main}>
-            <Switch>
-              <Route path={routs.main} component={MainPage} />
-              <Route path={`${routs.country}/:id`} component={CountryPage} />
-              <Route path={routs.auth} component={AuthPage} exact />
-            </Switch>
-          </main>
-          <Footer />
-        </div>
+        {countries.length > 0 ? (
+          <div ref={appDiv} className={classes.app__container}>
+            <Header />
+            <main className={classes.app__main}>
+              <Switch>
+                <Route path={routs.main} component={MainPage} />
+                <Route path={`${routs.country}/:id`} component={CountryPage} />
+                <Route path={routs.auth} component={AuthPage} exact />
+              </Switch>
+            </main>
+            <Footer />
+          </div>
+        ) : null}
       </div>
     </Router>
   );

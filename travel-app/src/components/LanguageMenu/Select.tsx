@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './language-menu.module.css';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions-country';

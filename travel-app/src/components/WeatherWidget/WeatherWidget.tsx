@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classes from './WeatherWidget.module.css';
 import { connect } from 'react-redux';
-import CountriesService from '../../services/countries-service';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
@@ -20,11 +19,11 @@ const WeatherWidget: React.FC<Props> = ({
   countries,
   selectedLanguage,
 }) => {
-  let countryCapitalEn = '';
+  // let countryCapitalEn = '';
   let countryCapital = '';
 
   if (countries.length > 0) {
-    countryCapitalEn = countries[selectedCountryIndex].translations.en.capital;
+    // countryCapitalEn = countries[selectedCountryIndex].translations.en.capital;
     countryCapital =
       countries[selectedCountryIndex].translations[selectedLanguage].capital;
   }
@@ -34,6 +33,8 @@ const WeatherWidget: React.FC<Props> = ({
   const [weatherDescription, setWeatherDescription] = useState('');
 
   useEffect(() => {
+    const countryCapitalEn =
+      countries[selectedCountryIndex].translations.en.capital;
     const WEATHER_API = `https://api.openweathermap.org/data/2.5/weather?q=${countryCapitalEn}&appid=630198738706e6feb41dd55034d68b96&units=imperial&lang=${selectedLanguage}`;
     const request = async () => {
       try {
@@ -49,13 +50,13 @@ const WeatherWidget: React.FC<Props> = ({
       }
     };
     request();
-  }, [countries, selectedLanguage]);
+  }, [countries, selectedCountryIndex, selectedLanguage]);
 
   return (
     <div className={classes.widget}>
       <div>{countryCapital}</div>
       <div>{temperature}°</div>
-      <img src={weatherIcon} />
+      <img src={weatherIcon} alt="cloud" />
       <div>{weatherDescription}</div>
     </div>
   );

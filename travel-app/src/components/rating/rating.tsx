@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactStars from 'react-stars';
-import classes from './rating.module.css';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import CountriesService from '../../services/countries-service';
@@ -24,24 +23,28 @@ const StarsRating: React.FC<Props> = ({
   selectedCountryIndex,
   selectedPlace,
   userLogin,
+  countriesLoaded,
 }) => {
   const ratingChanged = (newRating: number) => {
+    console.log('rating change');
     const ratingData = {
       countryId: countries[selectedCountryIndex]._id,
-      placeIndex: selectedPlace,
+      placeIndex: selectedPlace.toString(),
       newRating,
       userLogin,
     };
     const countryService = new CountriesService();
-    countryService.updateRating(ratingData);
+    countryService.updateRating(ratingData).then((data) => {
+      console.log(data);
+      countryService.getAllCountry().then((countries) => {
+        countriesLoaded(countries.data);
+      });
+    });
   };
-
-  useEffect(() => {
-    countRate();
-  }, [countries]);
 
   const countRate = () => {
     const currentPlace = countries[selectedCountryIndex].places[selectedPlace];
+    console.log(countries, selectedCountryIndex, selectedPlace);
     const ratingLength = currentPlace.rating.length;
     const sumRating = currentPlace.rating.reduce((sum, item) => {
       return (sum += Number(item.score));
@@ -104,15 +107,17 @@ const StarsRating: React.FC<Props> = ({
 
   return (
     <div onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
-      <ReactStars
-        className={styles.stars__rating}
-        count={5}
-        size={30}
-        value={countRate()}
-        onChange={ratingChanged}
-        edit={true}
-        color2={'#ffd700'}
-      />
+      {countries.length > 0 ? (
+        <ReactStars
+          className={styles.stars__rating}
+          count={5}
+          size={30}
+          value={countRate()}
+          onChange={ratingChanged}
+          edit={true}
+          color2={'#ffd700'}
+        />
+      ) : null}
 
       <Popover
         id="mouse-over-popover"
