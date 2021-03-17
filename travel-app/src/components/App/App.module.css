@@ -28,7 +28,7 @@
   flex-direction: column;
 }
 
-@media screen and (max-height: 630px) {
+@media screen and (max-height: 520px) {
   .app {
     height: 100%;
   }

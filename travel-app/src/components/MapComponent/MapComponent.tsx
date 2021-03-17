@@ -59,7 +59,7 @@ const MapComponent: React.FC<Props> = ({
   return (
     <div className={classes.map__wrapper}>
       <ReactMapboxGL
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '100%', minHeight: '300px' }}
         mapStyle="mapbox://styles/general-m/ckmbenfqo4bxi17qivmeeyxo9"
         accessToken={MAPBOX_ACCESS_TOKEN}
         latitude={viewport.latitude}
