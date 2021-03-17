@@ -32,7 +32,7 @@ const SearchCountry: React.FC<Props> = ({
     if (searchInput) {
       (searchInput.current! as HTMLInputElement).focus();
     }
-  });
+  }, []);
   const { t } = useTranslation();
 
   const inputChange = (event: React.ChangeEvent<{ value: string }>) => {
