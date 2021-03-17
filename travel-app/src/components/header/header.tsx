@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './header.module.css';
 import { Link } from 'react-router-dom';
 import LanguageMenuSelect from '../LanguageMenu/Select';
@@ -41,32 +41,30 @@ const Header: React.FC<Props> = ({
           Explore the World
         </span>
       </div>
-      <div className={classes.header__menu}>
-        <Link
-          to="/"
-          className={classes['header__link']}
-          style={{ color: color }}
-        >
-          {t('main-page.header-link.about')}
-        </Link>
-        <Link
-          to="/"
-          className={classes['header__link']}
-          style={{ color: color }}
-        >
-          {t('main-page.header-link.destination')}
-        </Link>
-        <LanguageMenuSelect />
-        <Link
-          to={routs.auth}
-          className={`${classes.header__login} ${
-            mainIsOpen ? '' : classes.header__login_black
-          }`}
-          onClick={() => mainPageIsOpen(false)}
-        >
-          <UserSvg fill={color} className={classes.header__login_svg} />
-        </Link>
-      </div>
+      <Link
+        to="/main"
+        className={classes['header__link']}
+        style={{ color: color }}
+      >
+        {t('main-page.header-link.about')}
+      </Link>
+      <Link
+        to="/main"
+        className={classes['header__link']}
+        style={{ color: color }}
+      >
+        {t('main-page.header-link.destination')}
+      </Link>
+      <LanguageMenuSelect />
+      <Link
+        to={routs.auth}
+        className={`${classes.header__login} ${
+          mainIsOpen ? '' : classes.header__login_black
+        }`}
+        onClick={() => mainPageIsOpen(false)}
+      >
+        <UserSvg fill={color} className={classes.header__login_svg} />
+      </Link>
     </header>
   );
 };

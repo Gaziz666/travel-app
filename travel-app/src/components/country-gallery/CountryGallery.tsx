@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
-import CountriesService from '../../services/countries-service';
 import ImageGallery from 'react-image-gallery';
 import classes from './country-gallery.module.css';
-import Rating from '../pages/main-page/rating/rating';
+import StarsRating from '../rating/rating';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -18,7 +17,6 @@ type MapDispatchToProps = {
 type Props = MapDispatchToProps & CountriesStateType;
 
 const CountryGallery: React.FC<Props> = ({
-  countriesLoaded,
   countries,
   selectedCountryIndex,
   selectedLanguage,
@@ -34,7 +32,6 @@ const CountryGallery: React.FC<Props> = ({
       };
     });
   };
-  // console.log(countries);
 
   const [title, setTitle] = useState(
     countries[selectedCountryIndex].places[0].translations[selectedLanguage]
@@ -47,6 +44,7 @@ const CountryGallery: React.FC<Props> = ({
 
   useEffect(() => {
     renderSidebar(selectedPlace);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLanguage]);
 
   const renderSidebar = (index: number) => {
@@ -74,14 +72,14 @@ const CountryGallery: React.FC<Props> = ({
             items={renderImages()}
             onSlide={renderSidebar}
           />
-        </div>
+        </div>{' '}
         <div className={classes.gallery__sidebar}>
           <div className={classes.description}>
             <h2>{title}</h2>
             <div className={classes.descript}>{description}</div>
           </div>
           <div className={classes.rating}>
-            <Rating />
+            <StarsRating />
           </div>
         </div>
       </div>

@@ -13,8 +13,6 @@ import classes from './country-page.module.css';
 import TimeWidget from '../../time-widget/TimeWidget';
 import CountryGallery from '../../country-gallery/CountryGallery';
 
-
-
 export const tabs = {
   inspire: 'inspire',
   introducing: 'introducing',
@@ -28,9 +26,10 @@ type MapDispatchToProps = {
 type Props = MapDispatchToProps & AuthStateType & any;
 
 const CountryPage: React.FC<Props> = (props) => {
+  const { mainPageIsOpen } = props;
   useEffect(() => {
-    props.mainPageIsOpen(false);
-  }, [props.mainPageIsOpen]);
+    mainPageIsOpen(false);
+  }, [mainPageIsOpen]);
 
   const renderContent = () => {
     switch (props.match.params.id) {

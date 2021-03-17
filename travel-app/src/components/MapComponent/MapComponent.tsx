@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapboxGL, { Marker, FullscreenControl, Layer, Source } from '@urbica/react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-// import MapboxLanguage from 'react-mapbox-gl-language';
-// import ReactDOM from 'react-dom';
 import classes from './MapComponent.module.css';
 import { connect } from 'react-redux';
 import CountriesService from '../../services/countries-service';
@@ -46,13 +44,6 @@ const MapComponent: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, 
         zoom: 3
     });
 
-    // const changeMapLanguage = (map) => {
-    //     console.log(map)
-    //     map.setLayoutProperty('country-label', 'text-field', [
-    //         'get',
-    //         'name_' + selectedLanguage
-    //     ]);
-    // };
 
     return (
         <div>
@@ -65,7 +56,6 @@ const MapComponent: React.FC<Props> = ({ countriesLoaded, selectedCountryIndex, 
                 longitude={viewport.longitude}
                 zoom={viewport.zoom}
                 onViewportChange={setViewport}
-            // onStyleLoad={changeMapLanguage}
             >
 
                 <Marker latitude={latitudeCapital} longitude={longitudeCapital}>
