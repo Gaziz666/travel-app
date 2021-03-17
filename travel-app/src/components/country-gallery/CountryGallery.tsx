@@ -34,7 +34,6 @@ const CountryGallery: React.FC<Props> = ({
       };
     });
   };
-  // console.log(countries);
 
   const [title, setTitle] = useState(
     countries[selectedCountryIndex].places[0].translations[selectedLanguage]

@@ -32,11 +32,11 @@ select:hover {
   color: #fff;
 }
 
-label {
+.label__wrapper {
   position: relative;
 }
 
-label:after {
+.label__wrapper:after {
   content: '<>';
   font-size: 11px;
   color: #000;
@@ -47,7 +47,7 @@ label:after {
   position: absolute;
   pointer-events: none;
 }
-label:before {
+.label__wrapper:before {
   content: '';
   right: 10px;
   top: 0px;

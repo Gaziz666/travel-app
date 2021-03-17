@@ -6,6 +6,7 @@ import { LanguageType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as LangSvg } from '../../assets/images/langSVG.svg';
+import classes from './language-menu.module.css';
 
 type MapDispatchToProps = {
   languageSelect: (value: LanguageType) => actions.languageSelectActionType;
@@ -31,7 +32,7 @@ const LanguageMenu: React.FC<Props> = ({
   return (
     <>
       <LangSvg fill={color} className={styles.lang__icon} />
-      <label>
+      <label className={classes.label__wrapper}>
         <select
           defaultValue={selectedLanguage}
           onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>

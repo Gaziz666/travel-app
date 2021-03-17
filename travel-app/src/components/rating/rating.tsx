@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import ReactStars from "react-stars";
-import styles from "./rating.module.css";
-import { connect } from "react-redux";
-import { RootStateType } from "../../reducers/root-reducer";
-import { Countries, CountriesStateType } from "../../reducers/country-reducer";
-import * as actions from "../../actions/actions-country";
-import Popover from "@material-ui/core/Popover";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import React, { useEffect } from 'react';
+import ReactStars from 'react-stars';
+import styles from './rating.module.css';
+import { connect } from 'react-redux';
+import { RootStateType } from '../../reducers/root-reducer';
+import { Countries, CountriesStateType } from '../../reducers/country-reducer';
+import * as actions from '../../actions/actions-country';
+import Popover from '@material-ui/core/Popover';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 type MapDispatchToProps = {
   countriesLoaded: (
-    value: Array<Countries>
+    value: Array<Countries>,
   ) => actions.CountriesLoadedActionType;
   countrySelect: (value: number) => actions.CountrySelectActionType;
 };
@@ -21,7 +21,6 @@ const StarsRating: React.FC<Props> = ({
   selectedCountryIndex,
   selectedPlace,
 }) => {
-
   useEffect(() => {
     countRate();
   }, [countries]);
@@ -39,23 +38,23 @@ const StarsRating: React.FC<Props> = ({
   const useStyles = makeStyles((theme: Theme) =>
     createStyles({
       popover: {
-        pointerEvents: "none",
+        pointerEvents: 'none',
       },
       paper: {
         padding: theme.spacing(1),
-        backgroundColor: "rgba(60, 205, 215, 1)",
+        backgroundColor: 'rgba(60, 205, 215, 1)',
       },
-    })
+    }),
   );
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (
-    event: React.MouseEvent<HTMLElement, MouseEvent>
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
   ) => {
     return countries[selectedCountryIndex].places[selectedPlace].rating[0]
-      .author === "string"
+      .author === 'string'
       ? null
       : setAnchorEl(event.currentTarget);
   };
@@ -81,7 +80,7 @@ const StarsRating: React.FC<Props> = ({
                 </div>
               );
             }
-          }
+          },
         )}
       </div>
     );
@@ -96,7 +95,7 @@ const StarsRating: React.FC<Props> = ({
         value={countRate()}
         // edit={false}
         edit={true} //может редактировать рейтинг
-        color2={"#ffd700"}
+        color2={'#ffd700'}
       />
 
       <Popover
@@ -108,12 +107,12 @@ const StarsRating: React.FC<Props> = ({
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
+          vertical: 'top',
+          horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: 'bottom',
+          horizontal: 'center',
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
