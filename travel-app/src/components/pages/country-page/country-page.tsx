@@ -40,8 +40,7 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.while:
         return <CountryGallery />;
       case tabs.map:
-        return <div>
-          <MapComponent /></div>;
+        return <MapComponent />;
       default:
         return null;
     }

@@ -25,7 +25,6 @@ export default class CountriesService {
       headers: { 'content-type': 'application/json' },
     });
     const data = await res.json();
-
     if (!res.ok) {
       throw new Error(`could not fetch `);
     }

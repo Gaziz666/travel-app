@@ -5,11 +5,11 @@ import LanguageMenuSelect from '../LanguageMenu/Language-menu';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 import * as actionsAuth from '../../actions/auth-actions';
 import * as actionCountry from '../../actions/actions-country';
-
 import { routs } from '../App/App';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import { AuthStateType } from '../../reducers/auth-reducer';
+import { LanguageType } from '../../reducers/country-reducer';
 
 type MapDispatchToProps = {
   countrySelect: (value: number) => actionCountry.CountrySelectActionType;
@@ -42,6 +42,13 @@ const Header: React.FC<Props> = ({
       </div>
 
       <LanguageMenuSelect />
+
+      <select>
+        <option value={LanguageType.en}>EN</option>
+        <option value={LanguageType.ru}>RU</option>
+        <option value={LanguageType.uk}>UK</option>
+      </select>
+      <LanguageMenuSelect></LanguageMenuSelect>
       <Link
         to={routs.auth}
         className={`${classes.header__login} ${

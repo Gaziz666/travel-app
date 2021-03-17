@@ -15,14 +15,7 @@
   margin: 0 auto;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 42px;
   transition: background-image 0.5s ease-in-out;
-}
-
-@media screen and (max-width: 1496px) {
-  .app__container {
-    border-radius: 0;
-  }
 }
 
 .app__title {
@@ -33,4 +26,10 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-height: 630px) {
+  .app {
+    height: 100%;
+  }
 }
