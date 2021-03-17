@@ -51,7 +51,6 @@ const CountryPage: React.FC<Props> = (props) => {
     <React.Fragment>
       <NavTabs history={props.history} />
       {renderContent()}
-      {/* <MapComponent /> */}
       <div className={classes.country__widgets}>
         <div className={classes.widgets__group}>
           <CurrencyWidget />

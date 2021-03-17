@@ -10,36 +10,39 @@
 
 .gallery__top {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   height: 100%;
 }
 
 .gallery__mainscreen {
+  max-width: 900px;
+  width: 100%;
+  padding: 10px;
   border-radius: 30px;
-  margin: 20px 20px 0 0;
+  margin: auto auto;
   text-align: left;
   font-family: 'Poppins';
   font-weight: 400;
   font-size: 18px;
   text-indent: 20px;
-  flex-grow: 1;
-  width: 100%;
 }
 
 .gallery__sidebar {
   display: flex;
   flex-direction: column;
   max-width: 292px;
-  width: 100%;
   margin-top: 20px;
   box-sizing: border-box;
   background-color: #d8f5f7;
   padding: 10px;
   border-radius: 15px;
 }
+
 .title {
   margin-bottom: 15px;
 }
+
 .description {
   font-size: 14px;
   padding-bottom: 15px;
@@ -75,5 +78,11 @@
   }
   .gallery__sidebar {
     min-width: 100%;
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  .gallery__sidebar {
+    max-width: 100%;
   }
 }
