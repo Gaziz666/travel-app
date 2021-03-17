@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './header.module.css';
 import { Link } from 'react-router-dom';
-import LanguageMenuSelect from '../LanguageMenu/Select';
+import LanguageMenuSelect from '../LanguageMenu/Language-menu';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 import * as actionsAuth from '../../actions/auth-actions';
 import * as actionCountry from '../../actions/actions-country';
@@ -41,7 +41,7 @@ const Header: React.FC<Props> = ({
           Explore the World
         </span>
       </div>
-      <Link
+      {/* <Link
         to="/main"
         className={classes['header__link']}
         style={{ color: color }}
@@ -54,7 +54,7 @@ const Header: React.FC<Props> = ({
         style={{ color: color }}
       >
         {t('main-page.header-link.destination')}
-      </Link>
+      </Link> */}
       <LanguageMenuSelect />
       <Link
         to={routs.auth}

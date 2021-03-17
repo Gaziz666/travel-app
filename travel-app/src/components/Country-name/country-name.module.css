@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 5%;
-  width: 40%;
+  width: 50%;
   margin-left: 10%;
 }
 
@@ -23,13 +22,19 @@
   display: block;
   color: #ffffff;
   text-align: left;
-  height: 340px;
   overflow: auto;
+  height: 340px;
 }
 
 @media screen and (max-width: 640px) {
   .name-wrapper {
     height: auto;
     width: auto;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .name-wrapper {
+    height: 300px;
   }
 }
