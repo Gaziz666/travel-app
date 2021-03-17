@@ -6,9 +6,9 @@ import CountriesService from '../../services/countries-service';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import * as actions from '../../actions/actions-country';
 import { UserStateType } from '../../reducers/user-reducer';
-import styles from './rating.module.css';
 import Popover from '@material-ui/core/Popover';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import styles from './rating.module.css';
 
 type MapDispatchToProps = {
   countriesLoaded: (
