@@ -42,17 +42,13 @@ const ImageLoader: React.FC<Props> = ({
       })
       .catch((err) => {
         alert(errMsg[selectedLanguage]);
-        console.log('err', err);
       });
   };
 
   return (
     <div className="App">
       <ImageUploading multiple={false} value={images} onChange={onChange}>
-        {({
-          imageList,
-          onImageUpload,
-        }) => (
+        {({ imageList, onImageUpload }) => (
           <div className="upload__image-wrapper">
             {file ? (
               <img

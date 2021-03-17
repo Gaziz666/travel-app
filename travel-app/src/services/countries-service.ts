@@ -19,14 +19,13 @@ export default class CountriesService {
     newRating: number;
     userLogin: string;
   }) {
-    console.log(ratingData);
     const res = await fetch(`${this.countryUrl}/rating`, {
       method: 'PUT',
       body: JSON.stringify(ratingData),
       headers: { 'content-type': 'application/json' },
     });
     const data = await res.json();
-    console.log('server work', data);
+
     if (!res.ok) {
       throw new Error(`could not fetch `);
     }

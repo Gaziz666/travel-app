@@ -63,7 +63,6 @@ const authReducer = (
     case AUTH_ERROR_CHANGE:
       return { ...state, isError: action.payload };
     case SAVE_ERROR_MESSAGE:
-      console.log(action.payload);
       return { ...state, error: action.payload };
     default:
       return state;

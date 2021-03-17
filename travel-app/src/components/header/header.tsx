@@ -5,7 +5,7 @@ import LanguageMenuSelect from '../LanguageMenu/Language-menu';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 import * as actionsAuth from '../../actions/auth-actions';
 import * as actionCountry from '../../actions/actions-country';
-import { useTranslation } from 'react-i18next';
+
 import { routs } from '../App/App';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
@@ -22,7 +22,6 @@ const Header: React.FC<Props> = ({
   mainPageIsOpen,
   mainIsOpen,
 }) => {
-  const { t } = useTranslation();
   let color = mainIsOpen ? '#fff' : '#000';
 
   const toMain = () => {
@@ -41,20 +40,7 @@ const Header: React.FC<Props> = ({
           Explore the World
         </span>
       </div>
-      {/* <Link
-        to="/main"
-        className={classes['header__link']}
-        style={{ color: color }}
-      >
-        {t('main-page.header-link.about')}
-      </Link>
-      <Link
-        to="/main"
-        className={classes['header__link']}
-        style={{ color: color }}
-      >
-        {t('main-page.header-link.destination')}
-      </Link> */}
+
       <LanguageMenuSelect />
       <Link
         to={routs.auth}
