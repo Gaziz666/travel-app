@@ -13,9 +13,6 @@ import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
 
-const MAPBOX_ACCESS_TOKEN =
-  'pk.eyJ1IjoiZ2VuZXJhbC1tIiwiYSI6ImNraWozZjdrdjJkbWYycnBlNmw5N3RhNjgifQ.awd7EvjA7RM8Dl4Xb_5dBA';
-
 type MapDispatchToProps = {
   countriesLoaded: (
     value: Array<Countries>,
@@ -33,6 +30,8 @@ const MapComponent: React.FC<Props> = ({
   let latitudeCapital = 0;
   let longitudeCapital = 0;
   let polygon = {};
+  const MAPBOX_ACCESS_TOKEN =
+    'pk.eyJ1IjoiZ2VuZXJhbC1tIiwiYSI6ImNraWozZjdrdjJkbWYycnBlNmw5N3RhNjgifQ.awd7EvjA7RM8Dl4Xb_5dBA';
 
   if (countries.length > 0) {
     latitudeCapital = countries[selectedCountryIndex].coordinate.latitude;

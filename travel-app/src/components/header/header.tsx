@@ -5,7 +5,7 @@ import LanguageMenuSelect from '../LanguageMenu/Language-menu';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 import * as actionsAuth from '../../actions/auth-actions';
 import * as actionCountry from '../../actions/actions-country';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { routs } from '../App/App';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
@@ -23,7 +23,7 @@ const Header: React.FC<Props> = ({
   mainPageIsOpen,
   mainIsOpen,
 }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   let color = mainIsOpen ? '#fff' : '#000';
 
   const toMain = () => {
