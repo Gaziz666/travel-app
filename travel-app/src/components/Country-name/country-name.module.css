@@ -23,8 +23,8 @@
   display: block;
   color: #ffffff;
   text-align: left;
-  overflow: auto;
-  height: 75px;
+  overflow: hidden;
+  height: 100px;
 }
 
 @media screen and (max-width: 640px) {
