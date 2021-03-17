@@ -1,11 +1,10 @@
 .country-list-wrapper {
-  height: 50%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .explore-button {

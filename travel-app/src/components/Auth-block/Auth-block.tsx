@@ -63,7 +63,6 @@ const AuthBlock: React.FC<Props> = ({
     event.preventDefault();
     const authService = new AuthService();
     if (authStatus === 1) {
-      console.log('inputLogin', inputLogin);
       authService
         .createNewUser({
           login: inputLogin,

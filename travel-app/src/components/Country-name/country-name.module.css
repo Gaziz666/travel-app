@@ -4,6 +4,7 @@
   align-items: flex-start;
   width: 50%;
   margin-left: 10%;
+  height: 250px;
 }
 
 .country-name {
@@ -22,19 +23,13 @@
   display: block;
   color: #ffffff;
   text-align: left;
-  overflow: auto;
-  height: 340px;
+  overflow: hidden;
+  height: 100px;
 }
 
 @media screen and (max-width: 640px) {
   .name-wrapper {
     height: auto;
     width: auto;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .name-wrapper {
-    height: 300px;
   }
 }

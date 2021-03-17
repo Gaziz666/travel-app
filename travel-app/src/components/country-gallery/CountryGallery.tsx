@@ -78,9 +78,7 @@ const CountryGallery: React.FC<Props> = ({
             <h2>{title}</h2>
             <div className={classes.descript}>{description}</div>
           </div>
-          <div className={classes.rating}>
-            <StarsRating />
-          </div>
+          <StarsRating />
         </div>
       </div>
     </div>

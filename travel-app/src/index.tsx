@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import '../node_modules/video-react/dist/video-react.css';
-// import '~video-react/dist/video-react.css';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 

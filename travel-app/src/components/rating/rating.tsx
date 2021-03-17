@@ -26,7 +26,6 @@ const StarsRating: React.FC<Props> = ({
   countriesLoaded,
 }) => {
   const ratingChanged = (newRating: number) => {
-    console.log('rating change');
     const ratingData = {
       countryId: countries[selectedCountryIndex]._id,
       placeIndex: selectedPlace.toString(),
@@ -35,7 +34,6 @@ const StarsRating: React.FC<Props> = ({
     };
     const countryService = new CountriesService();
     countryService.updateRating(ratingData).then((data) => {
-      console.log(data);
       countryService.getAllCountry().then((countries) => {
         countriesLoaded(countries.data);
       });
@@ -44,7 +42,6 @@ const StarsRating: React.FC<Props> = ({
 
   const countRate = () => {
     const currentPlace = countries[selectedCountryIndex].places[selectedPlace];
-    console.log(countries, selectedCountryIndex, selectedPlace);
     const ratingLength = currentPlace.rating.length;
     const sumRating = currentPlace.rating.reduce((sum, item) => {
       return (sum += Number(item.score));
@@ -71,10 +68,6 @@ const StarsRating: React.FC<Props> = ({
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
   ) => {
-    // return countries[selectedCountryIndex].places[selectedPlace].rating[0]
-    //   .author === 'string'
-    //   ? 'null'
-    //   : setAnchorEl(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
 

@@ -5,11 +5,12 @@ import LanguageMenuSelect from '../LanguageMenu/Language-menu';
 import { ReactComponent as UserSvg } from '../../assets/images/user.svg';
 import * as actionsAuth from '../../actions/auth-actions';
 import * as actionCountry from '../../actions/actions-country';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { routs } from '../App/App';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import { AuthStateType } from '../../reducers/auth-reducer';
+import { LanguageType } from '../../reducers/country-reducer';
 
 type MapDispatchToProps = {
   countrySelect: (value: number) => actionCountry.CountrySelectActionType;
@@ -22,7 +23,7 @@ const Header: React.FC<Props> = ({
   mainPageIsOpen,
   mainIsOpen,
 }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   let color = mainIsOpen ? '#fff' : '#000';
 
   const toMain = () => {
@@ -55,7 +56,12 @@ const Header: React.FC<Props> = ({
       >
         {t('main-page.header-link.destination')}
       </Link> */}
-      <LanguageMenuSelect />
+      <select>
+        <option value={LanguageType.en}>EN</option>
+        <option value={LanguageType.ru}>RU</option>
+        <option value={LanguageType.uk}>UK</option>
+      </select>
+      <LanguageMenuSelect></LanguageMenuSelect>
       <Link
         to={routs.auth}
         className={`${classes.header__login} ${
