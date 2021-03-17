@@ -19,11 +19,9 @@ const WeatherWidget: React.FC<Props> = ({
   countries,
   selectedLanguage,
 }) => {
-  // let countryCapitalEn = '';
   let countryCapital = '';
 
   if (countries.length > 0) {
-    // countryCapitalEn = countries[selectedCountryIndex].translations.en.capital;
     countryCapital =
       countries[selectedCountryIndex].translations[selectedLanguage].capital;
   }

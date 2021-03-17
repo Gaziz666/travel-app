@@ -17,12 +17,6 @@
   transition: background-image 0.5s ease-in-out;
 }
 
-@media screen and (max-width: 1496px) {
-  .app__container {
-    border-radius: 0;
-  }
-}
-
 .app__title {
   font-weight: 500;
 }
@@ -31,4 +25,16 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 1496px) {
+  .app__container {
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-height: 630px) {
+  .app {
+    height: 100%;
+  }
 }

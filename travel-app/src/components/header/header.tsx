@@ -10,6 +10,7 @@ import { routs } from '../App/App';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
 import { AuthStateType } from '../../reducers/auth-reducer';
+import { LanguageType } from '../../reducers/country-reducer';
 
 type MapDispatchToProps = {
   countrySelect: (value: number) => actionCountry.CountrySelectActionType;
@@ -55,7 +56,12 @@ const Header: React.FC<Props> = ({
       >
         {t('main-page.header-link.destination')}
       </Link> */}
-      <LanguageMenuSelect />
+      <select>
+        <option value={LanguageType.en}>EN</option>
+        <option value={LanguageType.ru}>RU</option>
+        <option value={LanguageType.uk}>UK</option>
+      </select>
+      <LanguageMenuSelect></LanguageMenuSelect>
       <Link
         to={routs.auth}
         className={`${classes.header__login} ${
