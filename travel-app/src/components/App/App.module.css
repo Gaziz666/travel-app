@@ -1,6 +1,8 @@
 .app {
   text-align: center;
   height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .app__container {

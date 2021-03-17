@@ -66,9 +66,9 @@ const App: React.FC<Props> = ({
 
   return (
     <Router basename="/travel-app">
-      <div className={classes.app}>
+      <div ref={appDiv} className={classes.app}>
         {countries.length > 0 ? (
-          <div ref={appDiv} className={classes.app__container}>
+          <div className={classes.app__container}>
             <Header />
             <main className={classes.app__main}>
               <Switch>
