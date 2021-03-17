@@ -4,7 +4,7 @@ import { RootStateType } from '../../../reducers/root-reducer';
 import * as actions from '../../../actions/auth-actions';
 import Inspire from '../../Inspire/Inspire';
 import NavTabs from '../../tabs/tabs';
-// import MapComponent from '../../MapComponent/MapComponent';
+import MapComponent from '../../MapComponent/MapComponent';
 import { AuthStateType } from '../../../reducers/auth-reducer';
 import CountryInfo from '../../country-info/country-info';
 import CurrencyWidget from '../../currencyWidget/CurrencyWidget';
@@ -40,7 +40,8 @@ const CountryPage: React.FC<Props> = (props) => {
       case tabs.while:
         return <CountryGallery />;
       case tabs.map:
-        return <div>map</div>;
+        return <div>
+          <MapComponent /></div>;
       default:
         return null;
     }
@@ -50,7 +51,6 @@ const CountryPage: React.FC<Props> = (props) => {
     <React.Fragment>
       <NavTabs history={props.history} />
       {renderContent()}
-      {/* <MapComponent /> */}
       <div className={classes.country__widgets}>
         <div className={classes.widgets__group}>
           <CurrencyWidget />
