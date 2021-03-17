@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactStars from 'react-stars';
-import styles from './rating.module.css';
 import { connect } from 'react-redux';
 import { RootStateType } from '../../reducers/root-reducer';
+import CountriesService from '../../services/countries-service';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import * as actions from '../../actions/actions-country';
+import { UserStateType } from '../../reducers/user-reducer';
 import Popover from '@material-ui/core/Popover';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import styles from './rating.module.css';
 
 type MapDispatchToProps = {
   countriesLoaded: (
@@ -14,19 +16,35 @@ type MapDispatchToProps = {
   ) => actions.CountriesLoadedActionType;
   countrySelect: (value: number) => actions.CountrySelectActionType;
 };
-type Props = MapDispatchToProps & CountriesStateType;
+type Props = MapDispatchToProps & CountriesStateType & UserStateType;
 
 const StarsRating: React.FC<Props> = ({
   countries,
   selectedCountryIndex,
   selectedPlace,
+  userLogin,
+  countriesLoaded,
 }) => {
-  useEffect(() => {
-    countRate();
-  }, [countries]);
+  const ratingChanged = (newRating: number) => {
+    console.log('rating change');
+    const ratingData = {
+      countryId: countries[selectedCountryIndex]._id,
+      placeIndex: selectedPlace.toString(),
+      newRating,
+      userLogin,
+    };
+    const countryService = new CountriesService();
+    countryService.updateRating(ratingData).then((data) => {
+      console.log(data);
+      countryService.getAllCountry().then((countries) => {
+        countriesLoaded(countries.data);
+      });
+    });
+  };
 
   const countRate = () => {
     const currentPlace = countries[selectedCountryIndex].places[selectedPlace];
+    console.log(countries, selectedCountryIndex, selectedPlace);
     const ratingLength = currentPlace.rating.length;
     const sumRating = currentPlace.rating.reduce((sum, item) => {
       return (sum += Number(item.score));
@@ -81,6 +99,7 @@ const StarsRating: React.FC<Props> = ({
                 </div>
               );
             }
+            return null;
           },
         )}
       </div>
@@ -89,15 +108,17 @@ const StarsRating: React.FC<Props> = ({
 
   return (
     <div onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
-      <ReactStars
-        className={styles.stars__rating}
-        count={5}
-        size={30}
-        value={countRate()}
-        // edit={false}
-        edit={true} //может редактировать рейтинг
-        color2={'#ffd700'}
-      />
+      {countries.length > 0 ? (
+        <ReactStars
+          className={styles.stars__rating}
+          count={5}
+          size={30}
+          value={countRate()}
+          onChange={ratingChanged}
+          edit={true}
+          color2={'#ffd700'}
+        />
+      ) : null}
 
       <Popover
         id="mouse-over-popover"
@@ -125,7 +146,7 @@ const StarsRating: React.FC<Props> = ({
 };
 
 const mapStateToProps = (state: RootStateType) => {
-  return state.countryState;
+  return { ...state.countryState, ...state.userState };
 };
 
 export default connect(mapStateToProps, actions)(StarsRating);
