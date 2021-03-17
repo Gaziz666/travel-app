@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classes from './CurrencyWidget.module.css';
 import { connect } from 'react-redux';
-import CountriesService from '../../services/countries-service';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
@@ -48,7 +47,9 @@ const CurrencyWidget: React.FC<Props> = ({
                 ]);
               }
             }
+            return null;
           });
+          return null;
         });
       } catch (e) {
         console.error(e.message);
@@ -57,6 +58,7 @@ const CurrencyWidget: React.FC<Props> = ({
     };
 
     request();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ouputC = () => {

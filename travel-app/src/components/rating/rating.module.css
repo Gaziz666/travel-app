@@ -1,27 +1,21 @@
-
-.rating{
-    padding: 5px;
-
+.rating {
+  padding: 5px;
 }
-.rating__lines{
-    background: rgba(231, 237, 237, 0.50);
+.rating__lines {
+  background: rgba(231, 237, 237, 0.5);
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding: 0px 10px;
- 
 }
 
-.rating__name{
-width: 50px;
-padding-right: 10px;
+.rating__name {
+  width: 50px;
+  padding-right: 10px;
 }
-.rating__scores{
 
-}
-.stars__rating{
-    display: flex;
-    justify-content: center;
-
+.stars__rating {
+  display: flex;
+  justify-content: center;
 }
