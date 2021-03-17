@@ -36,7 +36,7 @@ const LanguageMenu: React.FC<Props> = ({
   };
 
   return (
-    <div>
+    <>
       <div
         className={styles['lang-menu-button']}
         aria-controls="simple-menu"
@@ -56,7 +56,7 @@ const LanguageMenu: React.FC<Props> = ({
         <MenuItem onClick={() => handleClose(LanguageType.ru)}>RU</MenuItem>
         <MenuItem onClick={() => handleClose(LanguageType.uk)}>UK</MenuItem>
       </Menu>
-    </div>
+    </>
   );
 };
 

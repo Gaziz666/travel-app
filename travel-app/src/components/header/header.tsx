@@ -41,14 +41,13 @@ const Header: React.FC<Props> = ({
         </span>
       </div>
 
-      <LanguageMenuSelect />
-
       <select>
         <option value={LanguageType.en}>EN</option>
         <option value={LanguageType.ru}>RU</option>
         <option value={LanguageType.uk}>UK</option>
       </select>
-      <LanguageMenuSelect></LanguageMenuSelect>
+      <LanguageMenuSelect />
+
       <Link
         to={routs.auth}
         className={`${classes.header__login} ${
