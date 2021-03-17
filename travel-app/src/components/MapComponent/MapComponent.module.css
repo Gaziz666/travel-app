@@ -2,3 +2,22 @@
     width: 1230px;
     height: 445px;
 }
+
+.marker {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 25px;
+    height:35px;
+    color: white;
+    background-image: url(../../assets/images/marker_icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.polygon {
+    border: 1px solid brown;
+}
+.polygon:hover {
+    opacity: 0.5;
+}

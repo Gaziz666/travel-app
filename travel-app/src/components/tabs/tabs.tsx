@@ -110,12 +110,11 @@ const NavTabs: React.FC<Props> = ({
             {...a11yProps(0)}
           />
           <LinkTab
-            label={`${t('country-page.tabs.second')} ${
-              countries[selectedCountryIndex]
+            label={`${t('country-page.tabs.second')} ${countries[selectedCountryIndex]
                 ? countries[selectedCountryIndex].translations[selectedLanguage]
-                    .name
+                  .name
                 : 'No Country'
-            }`}
+              }`}
             click={() => history.push(`${routs.country}/${tabs.introducing}`)}
             {...a11yProps(1)}
           />
