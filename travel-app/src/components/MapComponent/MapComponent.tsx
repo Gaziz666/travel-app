@@ -5,6 +5,7 @@ import ReactMapboxGL, {
   Layer,
   Source,
 } from '@urbica/react-map-gl';
+import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import classes from './MapComponent.module.css';
 import { connect } from 'react-redux';
@@ -12,6 +13,9 @@ import CountriesService from '../../services/countries-service';
 import * as actions from '../../actions/actions-country';
 import { Countries, CountriesStateType } from '../../reducers/country-reducer';
 import { RootStateType } from '../../reducers/root-reducer';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 type MapDispatchToProps = {
   countriesLoaded: (
