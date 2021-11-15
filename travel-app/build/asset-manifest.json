@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/travel-app/travel-app/static/css/main.07eeda5c.chunk.css",
+    "main.js": "/travel-app/travel-app/static/js/main.5471c509.chunk.js",
+    "main.js.map": "/travel-app/travel-app/static/js/main.5471c509.chunk.js.map",
+    "runtime-main.js": "/travel-app/travel-app/static/js/runtime-main.32fea264.js",
+    "runtime-main.js.map": "/travel-app/travel-app/static/js/runtime-main.32fea264.js.map",
+    "static/css/2.af921d93.chunk.css": "/travel-app/travel-app/static/css/2.af921d93.chunk.css",
+    "static/js/2.29a79cf2.chunk.js": "/travel-app/travel-app/static/js/2.29a79cf2.chunk.js",
+    "static/js/2.29a79cf2.chunk.js.map": "/travel-app/travel-app/static/js/2.29a79cf2.chunk.js.map",
+    "static/js/3.4529a5a2.chunk.js": "/travel-app/travel-app/static/js/3.4529a5a2.chunk.js",
+    "static/js/3.4529a5a2.chunk.js.map": "/travel-app/travel-app/static/js/3.4529a5a2.chunk.js.map",
+    "index.html": "/travel-app/travel-app/index.html",
+    "static/css/2.af921d93.chunk.css.map": "/travel-app/travel-app/static/css/2.af921d93.chunk.css.map",
+    "static/css/main.07eeda5c.chunk.css.map": "/travel-app/travel-app/static/css/main.07eeda5c.chunk.css.map",
+    "static/js/2.29a79cf2.chunk.js.LICENSE.txt": "/travel-app/travel-app/static/js/2.29a79cf2.chunk.js.LICENSE.txt",
+    "static/js/mapbox-gl-csp-worker.9229b343.worker.js": "/travel-app/travel-app/static/js/mapbox-gl-csp-worker.9229b343.worker.js",
+    "static/js/mapbox-gl-csp-worker.9229b343.worker.js.map": "/travel-app/travel-app/static/js/mapbox-gl-csp-worker.9229b343.worker.js.map",
+    "static/media/index.css": "/travel-app/travel-app/static/media/Poppins-Medium.9e1bb626.ttf",
+    "static/media/auth-page.module.css": "/travel-app/travel-app/static/media/authBcg.c0165932.jpg",
+    "static/media/getFetch.cjs": "/travel-app/travel-app/static/media/getFetch.d7d6010d.cjs",
+    "static/media/langSVG.20279fe2.svg": "/travel-app/travel-app/static/media/langSVG.20279fe2.svg",
+    "static/media/header.module.css": "/travel-app/travel-app/static/media/logo-no-text-compressed.1fffc6b6.svg",
+    "static/media/MapComponent.module.css": "/travel-app/travel-app/static/media/marker_icon.4aaa003c.svg",
+    "static/media/footer.module.css": "/travel-app/travel-app/static/media/rs_school_js.ae26ed3c.svg",
+    "static/media/short-track.344c0135.mp4": "/travel-app/travel-app/static/media/short-track.344c0135.mp4",
+    "static/media/slick-theme.css": "/travel-app/travel-app/static/media/slick.c94f7671.ttf",
+    "static/media/user.628b974e.svg": "/travel-app/travel-app/static/media/user.628b974e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32fea264.js",
+    "static/css/2.af921d93.chunk.css",
+    "static/js/2.29a79cf2.chunk.js",
+    "static/css/main.07eeda5c.chunk.css",
+    "static/js/main.5471c509.chunk.js"
+  ]
+}
